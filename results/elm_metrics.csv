@@ -1,2 +1,0 @@
-Model,Hidden_Neurons,Train_Samples,Test_Samples,Training_Time_s,Mean_Inference_ms,Accuracy,Precision,Recall,TP,TN,FP,FN
-ELM,50,3446,1478,0.004858722999870224,0.0018235263870979004,0.9905277401894452,0,0.0,0,1464,0,14

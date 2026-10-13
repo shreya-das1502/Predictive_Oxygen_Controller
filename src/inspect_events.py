@@ -63,4 +63,4 @@ output.mkdir(exist_ok=True)
 result.to_csv(output / "record_07_events.csv", index=False)
 
 print("\nSaved to results/record_07_events.csv")
-python -u src/inspect_events.py
+# Legacy invocation: python -u src/inspect_events.py

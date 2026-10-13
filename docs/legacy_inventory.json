@@ -1,0 +1,372 @@
+[
+  {
+    "file": "src/advanced_experiment.py",
+    "lines": 587,
+    "imports": [
+      "from pathlib import Path",
+      "import time",
+      "import numpy as np",
+      "import pandas as pd",
+      "from sklearn.preprocessing import StandardScaler",
+      "from sklearn.linear_model import LogisticRegression",
+      "from sklearn.ensemble import RandomForestClassifier",
+      "from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, average_precision_score, confusion_matrix"
+    ],
+    "syntax_error": null,
+    "risks": [
+      "dropna",
+      "EXCLUDED_RECORDS"
+    ]
+  },
+  {
+    "file": "src/benchmark_latency.py",
+    "lines": 123,
+    "imports": [
+      "from pathlib import Path",
+      "import sys",
+      "import time",
+      "import numpy as np",
+      "import pandas as pd",
+      "from sklearn.model_selection import train_test_split",
+      "from sklearn.preprocessing import StandardScaler",
+      "from sklearn.linear_model import LogisticRegression",
+      "from elm_experiment import FEATURES, fit_elm, predict_elm"
+    ],
+    "syntax_error": null,
+    "risks": [
+      "train_test_split"
+    ]
+  },
+  {
+    "file": "src/check_dropped_samples.py",
+    "lines": 99,
+    "imports": [
+      "from pathlib import Path",
+      "import numpy as np",
+      "import pandas as pd"
+    ],
+    "syntax_error": null,
+    "risks": []
+  },
+  {
+    "file": "src/check_prediction_consistency.py",
+    "lines": 67,
+    "imports": [
+      "from pathlib import Path",
+      "import pandas as pd"
+    ],
+    "syntax_error": null,
+    "risks": []
+  },
+  {
+    "file": "src/check_records.py",
+    "lines": 62,
+    "imports": [
+      "from pathlib import Path",
+      "import numpy as np",
+      "import pandas as pd"
+    ],
+    "syntax_error": null,
+    "risks": [
+      "dropna"
+    ]
+  },
+  {
+    "file": "src/compare_models.py",
+    "lines": 166,
+    "imports": [
+      "from pathlib import Path",
+      "import time",
+      "import numpy as np",
+      "import pandas as pd",
+      "from sklearn.model_selection import train_test_split",
+      "from sklearn.preprocessing import StandardScaler",
+      "from sklearn.linear_model import LogisticRegression",
+      "from sklearn.metrics import accuracy_score, precision_score, recall_score, average_precision_score, confusion_matrix"
+    ],
+    "syntax_error": null,
+    "risks": [
+      "train_test_split",
+      "dropna"
+    ]
+  },
+  {
+    "file": "src/controller.py",
+    "lines": 0,
+    "imports": [],
+    "syntax_error": null,
+    "risks": []
+  },
+  {
+    "file": "src/conventional_experiment.py",
+    "lines": 156,
+    "imports": [
+      "from pathlib import Path",
+      "import time",
+      "import numpy as np",
+      "import pandas as pd",
+      "from sklearn.model_selection import train_test_split",
+      "from sklearn.preprocessing import StandardScaler",
+      "from sklearn.linear_model import LogisticRegression",
+      "from sklearn.metrics import accuracy_score, precision_score, recall_score, average_precision_score, confusion_matrix",
+      "from elm_experiment import FEATURES"
+    ],
+    "syntax_error": null,
+    "risks": [
+      "train_test_split"
+    ]
+  },
+  {
+    "file": "src/diagnose_advanced_results.py",
+    "lines": 119,
+    "imports": [
+      "from pathlib import Path",
+      "import numpy as np",
+      "import pandas as pd",
+      "from sklearn.metrics import average_precision_score, precision_score, recall_score, f1_score"
+    ],
+    "syntax_error": null,
+    "risks": []
+  },
+  {
+    "file": "src/diagnose_record_26.py",
+    "lines": 115,
+    "imports": [
+      "from pathlib import Path",
+      "import numpy as np",
+      "import pandas as pd"
+    ],
+    "syntax_error": null,
+    "risks": [
+      "dropna"
+    ]
+  },
+  {
+    "file": "src/diagnose_thresholds.py",
+    "lines": 108,
+    "imports": [
+      "from pathlib import Path",
+      "import numpy as np",
+      "import pandas as pd",
+      "from sklearn.metrics import average_precision_score, precision_score, recall_score, f1_score"
+    ],
+    "syntax_error": null,
+    "risks": []
+  },
+  {
+    "file": "src/elm_experiment.py",
+    "lines": 465,
+    "imports": [
+      "from pathlib import Path",
+      "import time",
+      "import numpy as np",
+      "import pandas as pd",
+      "from scipy.signal import butter, sosfiltfilt, find_peaks",
+      "from sklearn.model_selection import train_test_split",
+      "from sklearn.preprocessing import StandardScaler",
+      "from sklearn.metrics import accuracy_score, precision_score, recall_score, average_precision_score, confusion_matrix"
+    ],
+    "syntax_error": null,
+    "risks": [
+      "sosfiltfilt",
+      "train_test_split",
+      "dropna"
+    ]
+  },
+  {
+    "file": "src/elm_threshold_check.py",
+    "lines": 127,
+    "imports": [
+      "from pathlib import Path",
+      "import numpy as np",
+      "import pandas as pd",
+      "from sklearn.model_selection import train_test_split",
+      "from sklearn.preprocessing import StandardScaler",
+      "from sklearn.metrics import accuracy_score, precision_score, recall_score, average_precision_score, confusion_matrix",
+      "from elm_experiment import FEATURES, fit_elm, predict_elm"
+    ],
+    "syntax_error": null,
+    "risks": [
+      "train_test_split"
+    ]
+  },
+  {
+    "file": "src/elm_threshold_sweep.py",
+    "lines": 172,
+    "imports": [
+      "from pathlib import Path",
+      "import sys",
+      "import numpy as np",
+      "import pandas as pd",
+      "from sklearn.model_selection import train_test_split",
+      "from sklearn.preprocessing import StandardScaler",
+      "from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, average_precision_score, confusion_matrix",
+      "from elm_experiment import FEATURES, fit_elm, predict_elm"
+    ],
+    "syntax_error": null,
+    "risks": [
+      "train_test_split"
+    ]
+  },
+  {
+    "file": "src/feature_audit.py",
+    "lines": 104,
+    "imports": [
+      "from pathlib import Path",
+      "import numpy as np",
+      "import pandas as pd"
+    ],
+    "syntax_error": null,
+    "risks": [
+      "dropna"
+    ]
+  },
+  {
+    "file": "src/features.py",
+    "lines": 288,
+    "imports": [
+      "import pandas as pd",
+      "import numpy as np",
+      "from pathlib import Path",
+      "from scipy.signal import butter, sosfiltfilt, find_peaks"
+    ],
+    "syntax_error": null,
+    "risks": [
+      "sosfiltfilt",
+      "dropna"
+    ]
+  },
+  {
+    "file": "src/inspect_elm_dataset.py",
+    "lines": 83,
+    "imports": [
+      "from pathlib import Path",
+      "import pandas as pd"
+    ],
+    "syntax_error": null,
+    "risks": []
+  },
+  {
+    "file": "src/inspect_elm_scores.py",
+    "lines": 110,
+    "imports": [
+      "from pathlib import Path",
+      "import numpy as np",
+      "import pandas as pd"
+    ],
+    "syntax_error": null,
+    "risks": []
+  },
+  {
+    "file": "src/inspect_events.py",
+    "lines": 66,
+    "imports": [],
+    "syntax_error": "invalid syntax (<unknown>, line 66)",
+    "risks": [
+      "dropna"
+    ]
+  },
+  {
+    "file": "src/label_audit.py",
+    "lines": 101,
+    "imports": [
+      "from pathlib import Path",
+      "import numpy as np",
+      "import pandas as pd"
+    ],
+    "syntax_error": null,
+    "risks": []
+  },
+  {
+    "file": "src/labeling.py",
+    "lines": 113,
+    "imports": [
+      "import pandas as pd",
+      "import numpy as np",
+      "from pathlib import Path"
+    ],
+    "syntax_error": null,
+    "risks": [
+      "dropna"
+    ]
+  },
+  {
+    "file": "src/model.py",
+    "lines": 0,
+    "imports": [],
+    "syntax_error": null,
+    "risks": []
+  },
+  {
+    "file": "src/preprocessing.py",
+    "lines": 0,
+    "imports": [],
+    "syntax_error": null,
+    "risks": []
+  },
+  {
+    "file": "src/recall_first_elm.py",
+    "lines": 514,
+    "imports": [
+      "from pathlib import Path",
+      "import time",
+      "import numpy as np",
+      "import pandas as pd",
+      "from sklearn.preprocessing import StandardScaler",
+      "from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, average_precision_score, confusion_matrix"
+    ],
+    "syntax_error": null,
+    "risks": [
+      "dropna",
+      "EXCLUDED_RECORDS"
+    ]
+  },
+  {
+    "file": "src/recording_aware_elm.py",
+    "lines": 536,
+    "imports": [
+      "from pathlib import Path",
+      "import itertools",
+      "import time",
+      "import numpy as np",
+      "import pandas as pd",
+      "from sklearn.preprocessing import StandardScaler",
+      "from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, average_precision_score, confusion_matrix"
+    ],
+    "syntax_error": null,
+    "risks": [
+      "dropna"
+    ]
+  },
+  {
+    "file": "src/recording_aware_elm_v2.py",
+    "lines": 573,
+    "imports": [
+      "from pathlib import Path",
+      "import time",
+      "import warnings",
+      "import numpy as np",
+      "import pandas as pd",
+      "from sklearn.metrics import average_precision_score, confusion_matrix, f1_score, precision_recall_curve, precision_score, recall_score",
+      "from sklearn.preprocessing import StandardScaler"
+    ],
+    "syntax_error": null,
+    "risks": [
+      "dropna",
+      "warnings.filterwarnings"
+    ]
+  },
+  {
+    "file": "src/verify_labels.py",
+    "lines": 163,
+    "imports": [
+      "from pathlib import Path",
+      "import numpy as np",
+      "import pandas as pd"
+    ],
+    "syntax_error": null,
+    "risks": [
+      "dropna"
+    ]
+  }
+]

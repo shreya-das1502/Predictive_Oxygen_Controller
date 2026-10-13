@@ -1,0 +1,12 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+.mplconfig/
+# Preserve historical data/results; generated prepared data and trusted-only pickle artifacts stay local.
+results/validated/causal_dataset.csv
+results/validated/models/*.joblib
+results/validated/raw_pulses_*.csv
+results/validated/validation_oof_predictions.csv.gz
+results/validated/threshold_analysis.csv.gz
+results/validated/demo_replay.csv

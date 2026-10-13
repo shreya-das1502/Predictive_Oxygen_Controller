@@ -1,0 +1,2 @@
+Model,Training_Time_ms,Inference_Total_ms,Inference_Median_us_per_sample,Chosen_Threshold,Accuracy,Precision,Recall,Average_Precision,TP,TN,FP,FN,Test_Samples
+Logistic Regression,138.01086600005874,0.2756249998583371,,0.5326432571390269,0.7308367466354593,0.04610318331503842,0.45161290322580644,0.039082005696483,42,2456,869,51,3418

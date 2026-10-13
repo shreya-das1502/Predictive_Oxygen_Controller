@@ -1,0 +1,3 @@
+Reference,Samples,Positives,Negatives,TP,FN,FP,TN,Recall,Precision,Specificity,FPR,F1,Balanced_Accuracy,MCC,PR_AUC_AP,ROC_AUC,Predicted_Positive,Alert_Fraction,Target_Reached
+Always_Alert,20157,4587,15570,4587,0,15570,0,1.0,0.2275636255395148,0.0,1.0,0.3707565470417071,0.5,,0.2275636255395148,0.5,20157,1.0,True
+Never_Alert,20157,4587,15570,0,4587,0,15570,0.0,,1.0,0.0,0.0,0.5,,0.2275636255395148,0.5,0,0.0,False

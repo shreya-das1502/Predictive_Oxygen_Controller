@@ -1,0 +1,91 @@
+Record,Stage,Input_Rows,Output_Rows,Rows_Removed,Positive_Rows_Removed,Reason
+1,waveform_to_pulses,60001,721,59280,,representation change; waveform samples have no timestamp labels
+1,rolling_features,721,721,0,0.0,partial windows; singleton std and unavailable diff=0
+1,complete_future_target,721,619,102,,"{""verified"": 619, ""invalid_future_spo2"": 57, ""incomplete_future_horizon"": 45}; excluded targets unknown, never assumed negative"
+2,waveform_to_pulses,60001,746,59255,,representation change; waveform samples have no timestamp labels
+2,rolling_features,746,746,0,0.0,partial windows; singleton std and unavailable diff=0
+2,complete_future_target,746,700,46,,"{""verified"": 700, ""incomplete_future_horizon"": 46}; excluded targets unknown, never assumed negative"
+3,waveform_to_pulses,60001,618,59383,,representation change; waveform samples have no timestamp labels
+3,rolling_features,618,618,0,0.0,partial windows; singleton std and unavailable diff=0
+3,complete_future_target,618,580,38,,"{""verified"": 580, ""incomplete_future_horizon"": 38}; excluded targets unknown, never assumed negative"
+4,waveform_to_pulses,60001,732,59269,,representation change; waveform samples have no timestamp labels
+4,rolling_features,732,732,0,0.0,partial windows; singleton std and unavailable diff=0
+4,complete_future_target,732,690,42,,"{""verified"": 690, ""incomplete_future_horizon"": 42}; excluded targets unknown, never assumed negative"
+5,waveform_to_pulses,60001,770,59231,,representation change; waveform samples have no timestamp labels
+5,rolling_features,770,770,0,0.0,partial windows; singleton std and unavailable diff=0
+5,complete_future_target,770,675,95,,"{""verified"": 675, ""incomplete_future_horizon"": 49, ""invalid_future_spo2"": 46}; excluded targets unknown, never assumed negative"
+6,waveform_to_pulses,60001,665,59336,,representation change; waveform samples have no timestamp labels
+6,rolling_features,665,665,0,0.0,partial windows; singleton std and unavailable diff=0
+6,complete_future_target,665,624,41,,"{""verified"": 624, ""incomplete_future_horizon"": 41}; excluded targets unknown, never assumed negative"
+7,waveform_to_pulses,60001,728,59273,,representation change; waveform samples have no timestamp labels
+7,rolling_features,728,728,0,0.0,partial windows; singleton std and unavailable diff=0
+7,complete_future_target,728,682,46,,"{""verified"": 682, ""incomplete_future_horizon"": 46}; excluded targets unknown, never assumed negative"
+8,waveform_to_pulses,60001,798,59203,,representation change; waveform samples have no timestamp labels
+8,rolling_features,798,798,0,0.0,partial windows; singleton std and unavailable diff=0
+8,complete_future_target,798,748,50,,"{""verified"": 748, ""incomplete_future_horizon"": 50}; excluded targets unknown, never assumed negative"
+9,waveform_to_pulses,60001,615,59386,,representation change; waveform samples have no timestamp labels
+9,rolling_features,615,615,0,0.0,partial windows; singleton std and unavailable diff=0
+9,complete_future_target,615,577,38,,"{""verified"": 577, ""incomplete_future_horizon"": 38}; excluded targets unknown, never assumed negative"
+10,waveform_to_pulses,60001,666,59335,,representation change; waveform samples have no timestamp labels
+10,rolling_features,666,666,0,0.0,partial windows; singleton std and unavailable diff=0
+10,complete_future_target,666,621,45,,"{""verified"": 621, ""incomplete_future_horizon"": 45}; excluded targets unknown, never assumed negative"
+11,waveform_to_pulses,60001,805,59196,,representation change; waveform samples have no timestamp labels
+11,rolling_features,805,805,0,0.0,partial windows; singleton std and unavailable diff=0
+11,complete_future_target,805,751,54,,"{""verified"": 751, ""incomplete_future_horizon"": 54}; excluded targets unknown, never assumed negative"
+12,waveform_to_pulses,60001,748,59253,,representation change; waveform samples have no timestamp labels
+12,rolling_features,748,748,0,0.0,partial windows; singleton std and unavailable diff=0
+12,complete_future_target,748,702,46,,"{""verified"": 702, ""incomplete_future_horizon"": 46}; excluded targets unknown, never assumed negative"
+13,waveform_to_pulses,60001,543,59458,,representation change; waveform samples have no timestamp labels
+13,rolling_features,543,543,0,0.0,partial windows; singleton std and unavailable diff=0
+13,complete_future_target,543,509,34,,"{""verified"": 509, ""incomplete_future_horizon"": 34}; excluded targets unknown, never assumed negative"
+14,waveform_to_pulses,60001,757,59244,,representation change; waveform samples have no timestamp labels
+14,rolling_features,757,757,0,0.0,partial windows; singleton std and unavailable diff=0
+14,complete_future_target,757,709,48,,"{""verified"": 709, ""incomplete_future_horizon"": 48}; excluded targets unknown, never assumed negative"
+15,waveform_to_pulses,60001,857,59144,,representation change; waveform samples have no timestamp labels
+15,rolling_features,857,857,0,0.0,partial windows; singleton std and unavailable diff=0
+15,complete_future_target,857,804,53,,"{""verified"": 804, ""incomplete_future_horizon"": 53}; excluded targets unknown, never assumed negative"
+16,waveform_to_pulses,60001,876,59125,,representation change; waveform samples have no timestamp labels
+16,rolling_features,876,876,0,0.0,partial windows; singleton std and unavailable diff=0
+16,complete_future_target,876,822,54,,"{""verified"": 822, ""incomplete_future_horizon"": 54}; excluded targets unknown, never assumed negative"
+17,waveform_to_pulses,60001,670,59331,,representation change; waveform samples have no timestamp labels
+17,rolling_features,670,670,0,0.0,partial windows; singleton std and unavailable diff=0
+17,complete_future_target,670,626,44,,"{""verified"": 626, ""incomplete_future_horizon"": 44}; excluded targets unknown, never assumed negative"
+18,waveform_to_pulses,60001,731,59270,,representation change; waveform samples have no timestamp labels
+18,rolling_features,731,731,0,0.0,partial windows; singleton std and unavailable diff=0
+18,complete_future_target,731,686,45,,"{""verified"": 686, ""incomplete_future_horizon"": 45}; excluded targets unknown, never assumed negative"
+19,waveform_to_pulses,60001,587,59414,,representation change; waveform samples have no timestamp labels
+19,rolling_features,587,587,0,0.0,partial windows; singleton std and unavailable diff=0
+19,complete_future_target,587,241,346,,"{""invalid_future_spo2"": 310, ""verified"": 241, ""incomplete_future_horizon"": 36}; excluded targets unknown, never assumed negative"
+20,waveform_to_pulses,60001,711,59290,,representation change; waveform samples have no timestamp labels
+20,rolling_features,711,711,0,0.0,partial windows; singleton std and unavailable diff=0
+20,complete_future_target,711,667,44,,"{""verified"": 667, ""incomplete_future_horizon"": 44}; excluded targets unknown, never assumed negative"
+21,waveform_to_pulses,60001,985,59016,,representation change; waveform samples have no timestamp labels
+21,rolling_features,985,985,0,0.0,partial windows; singleton std and unavailable diff=0
+21,complete_future_target,985,921,64,,"{""verified"": 921, ""incomplete_future_horizon"": 64}; excluded targets unknown, never assumed negative"
+22,waveform_to_pulses,60001,657,59344,,representation change; waveform samples have no timestamp labels
+22,rolling_features,657,657,0,0.0,partial windows; singleton std and unavailable diff=0
+22,complete_future_target,657,615,42,,"{""verified"": 615, ""incomplete_future_horizon"": 42}; excluded targets unknown, never assumed negative"
+23,waveform_to_pulses,60001,547,59454,,representation change; waveform samples have no timestamp labels
+23,rolling_features,547,547,0,0.0,partial windows; singleton std and unavailable diff=0
+23,complete_future_target,547,515,32,,"{""verified"": 515, ""incomplete_future_horizon"": 32}; excluded targets unknown, never assumed negative"
+24,waveform_to_pulses,60001,764,59237,,representation change; waveform samples have no timestamp labels
+24,rolling_features,764,764,0,0.0,partial windows; singleton std and unavailable diff=0
+24,complete_future_target,764,718,46,,"{""verified"": 718, ""incomplete_future_horizon"": 46}; excluded targets unknown, never assumed negative"
+25,waveform_to_pulses,60001,987,59014,,representation change; waveform samples have no timestamp labels
+25,rolling_features,987,987,0,0.0,partial windows; singleton std and unavailable diff=0
+25,complete_future_target,987,927,60,,"{""verified"": 927, ""incomplete_future_horizon"": 60}; excluded targets unknown, never assumed negative"
+26,waveform_to_pulses,60001,704,59297,,representation change; waveform samples have no timestamp labels
+26,rolling_features,704,704,0,0.0,partial windows; singleton std and unavailable diff=0
+26,complete_future_target,704,660,44,,"{""verified"": 660, ""incomplete_future_horizon"": 44}; excluded targets unknown, never assumed negative"
+27,waveform_to_pulses,60001,706,59295,,representation change; waveform samples have no timestamp labels
+27,rolling_features,706,706,0,0.0,partial windows; singleton std and unavailable diff=0
+27,complete_future_target,706,660,46,,"{""verified"": 660, ""incomplete_future_horizon"": 46}; excluded targets unknown, never assumed negative"
+28,waveform_to_pulses,60001,680,59321,,representation change; waveform samples have no timestamp labels
+28,rolling_features,680,680,0,0.0,partial windows; singleton std and unavailable diff=0
+28,complete_future_target,680,636,44,,"{""verified"": 636, ""incomplete_future_horizon"": 44}; excluded targets unknown, never assumed negative"
+29,waveform_to_pulses,60001,731,59270,,representation change; waveform samples have no timestamp labels
+29,rolling_features,731,731,0,0.0,partial windows; singleton std and unavailable diff=0
+29,complete_future_target,731,685,46,,"{""verified"": 685, ""incomplete_future_horizon"": 46}; excluded targets unknown, never assumed negative"
+30,waveform_to_pulses,60001,843,59158,,representation change; waveform samples have no timestamp labels
+30,rolling_features,843,843,0,0.0,partial windows; singleton std and unavailable diff=0
+30,complete_future_target,843,787,56,,"{""verified"": 787, ""incomplete_future_horizon"": 56}; excluded targets unknown, never assumed negative"

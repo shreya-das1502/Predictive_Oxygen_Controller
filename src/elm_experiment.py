@@ -4,12 +4,29 @@ import time
 
 import numpy as np
 import pandas as pd
-from scipy.signal import butter, sosfiltfilt, find_peaks
+from scipy.signal import find_peaks, butter, sosfiltfilt
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import StandardScaler
+from sklearn.metrics import (
+    accuracy_score,
+    precision_score,
+    recall_score,
+    average_precision_score,
+    confusion_matrix,
+)
 
-ROOT = Path(__file__).resolve().parent.parent
-DATA = ROOT / "data"
-RESULTS = ROOT / "results"
-RESULTS.mkdir(exist_ok=True)
+# --------------------------------------------------
+# Configuration
+# --------------------------------------------------
+ROOT = Path(__file__).resolve().parents[1]
+DATA_DIR = ROOT / "data"
+RESULTS_DIR = ROOT / "results"
+RESULTS_DIR.mkdir(exist_ok=True)
+
+FIRST_RECORD = 1
+LAST_RECORD = 30
+FUTURE_SECONDS = 30
+SPO2_THRESHOLD = 94
 
 FEATURES = [
     "PPG_Amplitude",
@@ -18,326 +35,293 @@ FEATURES = [
     "Amplitude_Slope",
 ]
 
-# --------------------------------------------------
-# 1. Extract features and provisional labels
-# --------------------------------------------------
 
-def process_record(record):
-    signal_path = DATA / f"bidmc_{record:02d}_Signals.csv"
-    numeric_path = DATA / f"bidmc_{record:02d}_Numerics.csv"
-
-    if not signal_path.exists() or not numeric_path.exists():
-        print(f"Record {record:02d}: files missing, skipped")
-        return pd.DataFrame()
-
-    signals = pd.read_csv(signal_path)
-    numerics = pd.read_csv(numeric_path)
-
-    signals.columns = signals.columns.str.strip()
-    numerics.columns = numerics.columns.str.strip()
-
-    signals["Time [s]"] = pd.to_numeric(
-        signals["Time [s]"], errors="coerce"
-    )
-    signals["PLETH"] = pd.to_numeric(
-        signals["PLETH"], errors="coerce"
-    )
-    numerics["Time [s]"] = pd.to_numeric(
-        numerics["Time [s]"], errors="coerce"
-    )
-    numerics["SpO2"] = pd.to_numeric(
-        numerics["SpO2"], errors="coerce"
+def find_column(df, candidates):
+    """Find a column without depending on capitalization."""
+    lookup = {str(c).strip().lower(): c for c in df.columns}
+    for candidate in candidates:
+        if candidate.lower() in lookup:
+            return lookup[candidate.lower()]
+    raise ValueError(
+        f"Could not find any of {candidates}. "
+        f"Available columns: {list(df.columns)}"
     )
 
-    signals = (
-        signals.dropna(subset=["Time [s]", "PLETH"])
-        .sort_values("Time [s]")
-        .drop_duplicates("Time [s]")
-        .reset_index(drop=True)
-    )
-    numerics = (
-        numerics.dropna(subset=["Time [s]", "SpO2"])
-        .sort_values("Time [s]")
-        .drop_duplicates("Time [s]")
-        .reset_index(drop=True)
-    )
+
+def time_to_seconds(series):
+    """Convert common BIDMC time formats to seconds."""
+    numeric = pd.to_numeric(series, errors="coerce")
+
+    if numeric.notna().mean() > 0.95:
+        values = numeric.to_numpy(dtype=float)
+        values = values - values[0]
+        return values
+
+    td = pd.to_timedelta(series.astype(str), errors="coerce")
+    if td.notna().mean() > 0.95:
+        values = td.dt.total_seconds().to_numpy(dtype=float)
+        return values - values[0]
+
+    dt = pd.to_datetime(series, errors="coerce")
+    if dt.notna().mean() > 0.95:
+        values = dt.astype("int64").to_numpy(dtype=float) / 1e9
+        return values - values[0]
+
+    raise ValueError(f"Could not parse time column: {series.name}")
+
+
+def load_record(record_number):
+    record = f"{record_number:02d}"
+    signals_path = DATA_DIR / f"bidmc_{record}_Signals.csv"
+    numerics_path = DATA_DIR / f"bidmc_{record}_Numerics.csv"
+
+    if not signals_path.exists() or not numerics_path.exists():
+        print(f"Skipping record {record}: one or both CSV files are missing.")
+        return None
+
+    signals = pd.read_csv(signals_path)
+    numerics = pd.read_csv(numerics_path)
+
+    sig_time_col = find_column(signals, ["Time"])
+    ppg_col = find_column(signals, ["PLETH", "PPG"])
+
+    num_time_col = find_column(numerics, ["Time"])
+    spo2_col = find_column(numerics, ["SpO2", "SPO2", "SpO₂"])
+
+    signals["time_s"] = time_to_seconds(signals[sig_time_col])
+    numerics["time_s"] = time_to_seconds(numerics[num_time_col])
+
+    signals["ppg"] = pd.to_numeric(signals[ppg_col], errors="coerce")
+    numerics["spo2"] = pd.to_numeric(numerics[spo2_col], errors="coerce")
+
+    signals = signals.dropna(subset=["time_s", "ppg"]).sort_values("time_s")
+    numerics = numerics.dropna(subset=["time_s", "spo2"]).sort_values("time_s")
 
     if len(signals) < 100 or len(numerics) < 2:
-        print(f"Record {record:02d}: insufficient data")
-        return pd.DataFrame()
+        print(f"Skipping record {record}: insufficient usable data.")
+        return None
 
-    signal_time = signals["Time [s]"].to_numpy(dtype=float)
-    ppg = signals["PLETH"].to_numpy(dtype=float)
+    dt = np.diff(signals["time_s"].to_numpy())
+    dt = dt[np.isfinite(dt) & (dt > 0)]
+    if len(dt) == 0:
+        print(f"Skipping record {record}: invalid timestamps.")
+        return None
 
-    fs = 1.0 / np.median(np.diff(signal_time))
-    if not np.isfinite(fs) or fs <= 10:
-        print(f"Record {record:02d}: invalid sampling rate")
-        return pd.DataFrame()
+    fs = 1.0 / np.median(dt)
+    if fs <= 10:
+        print(f"Skipping record {record}: unexpected PPG sampling rate {fs:.2f} Hz.")
+        return None
 
-    # Bandpass-filter the PPG.
+    ppg = signals["ppg"].to_numpy(dtype=float)
+
+    # Band-pass filter for pulse-related activity.
     sos = butter(
-        3, [0.5, 5.0], btype="bandpass",
-        fs=fs, output="sos"
+        3, [0.5, min(5.0, fs * 0.45)],
+        btype="bandpass", fs=fs, output="sos"
     )
     filtered = sosfiltfilt(sos, ppg)
 
+    # A minimum separation of 0.3 s prevents implausibly close peaks.
     peaks, _ = find_peaks(
         filtered,
-        distance=max(1, int(0.3 * fs)),
-        prominence=max(0.01, 0.1 * np.std(filtered))
+        distance=max(1, int(0.30 * fs)),
+        prominence=max(np.std(filtered) * 0.15, 1e-12),
     )
 
     if len(peaks) < 3:
-        print(f"Record {record:02d}: insufficient PPG peaks")
-        return pd.DataFrame()
+        print(f"Skipping record {record}: too few PPG peaks.")
+        return None
 
+    times = signals["time_s"].to_numpy()
     rows = []
 
-    numeric_times = numerics["Time [s]"].to_numpy(dtype=float)
-    spo2 = numerics["SpO2"].to_numpy(dtype=float)
+    for i in range(1, len(peaks)):
+        peak = peaks[i]
+        previous_peak = peaks[i - 1]
 
-    for j in range(1, len(peaks)):
-        previous = peaks[j - 1]
-        peak = peaks[j]
-
-        interval = signal_time[peak] - signal_time[previous]
-        if interval <= 0:
+        interval = times[peak] - times[previous_peak]
+        if not 0.30 <= interval <= 2.0:
             continue
 
-        # Estimate pulse amplitude from the preceding valley.
-        valley = previous + np.argmin(filtered[previous:peak + 1])
-        amplitude = filtered[peak] - filtered[valley]
+        # Estimate pulse amplitude relative to the local trough.
+        left = max(0, previous_peak)
+        segment = filtered[left:peak + 1]
+        amplitude = filtered[peak] - np.min(segment)
 
-        t = float(signal_time[peak])
-
-        # Find the latest available SpO2 at or before this time.
-        current_index = np.searchsorted(
-            numeric_times, t, side="right"
-        ) - 1
-
-        if current_index < 0:
-            continue
-
-        current_spo2 = spo2[current_index]
-
-        # Only predict a future threshold crossing when current
-        # SpO2 is above 94%.
-        if current_spo2 <= 94:
-            continue
-
-        future_start = np.searchsorted(
-            numeric_times, t, side="right"
-        )
-        future_end = np.searchsorted(
-            numeric_times, t + 30, side="right"
-        )
-
-        # Skip rows without observed future measurements.
-        if future_start >= future_end:
-            continue
-
-        target = int(
-            np.any(spo2[future_start:future_end] <= 94)
+        previous_left = max(0, peaks[i - 2]) if i >= 2 else left
+        previous_segment = filtered[previous_left:previous_peak + 1]
+        previous_amplitude = (
+            filtered[previous_peak] - np.min(previous_segment)
         )
 
         rows.append({
+            "time_s": times[peak],
+            "PPG_Amplitude": float(amplitude),
+            "Pulse_Interval_s": float(interval),
+            "Pulse_Rate_BPM": float(60.0 / interval),
+            "Amplitude_Slope": float(
+                (amplitude - previous_amplitude) / interval
+            ),
             "Record": record,
-            "Time [s]": t,
-            "PPG_Amplitude": amplitude,
-            "Pulse_Interval_s": interval,
-            "Pulse_Rate_BPM": 60.0 / interval,
-            "Amplitude_Slope": (
-                amplitude - (
-                    filtered[previous] - filtered[valley]
-                )
-            ) / interval,
-            "Current_SpO2": current_spo2,
-            "Target": target,
         })
 
-    result = pd.DataFrame(rows)
+    if not rows:
+        return None
 
-    if not result.empty:
-        print(
-            f"Record {record:02d}: {len(result)} samples, "
-            f"{int(result['Target'].sum())} positive labels"
+    features = pd.DataFrame(rows).sort_values("time_s")
+
+    # Align each pulse with the most recent available SpO2 reading.
+    spo2 = numerics[["time_s", "spo2"]].sort_values("time_s")
+    aligned = pd.merge_asof(
+        features,
+        spo2,
+        on="time_s",
+        direction="backward",
+        tolerance=2.0,
+    )
+    aligned = aligned.dropna(subset=["spo2"]).copy()
+
+    # Target: current SpO2 is above the threshold, then SpO2 reaches
+    # the threshold or below within the next FUTURE_SECONDS.
+    spo2_times = spo2["time_s"].to_numpy()
+    spo2_values = spo2["spo2"].to_numpy()
+    labels = []
+
+    for t, current_spo2 in zip(aligned["time_s"], aligned["spo2"]):
+        if current_spo2 <= SPO2_THRESHOLD:
+            labels.append(np.nan)
+            continue
+
+        start = np.searchsorted(spo2_times, t, side="right")
+        end = np.searchsorted(
+            spo2_times, t + FUTURE_SECONDS, side="right"
         )
+        future = spo2_values[start:end]
 
-    return result
+        if len(future) == 0:
+            labels.append(np.nan)
+        else:
+            labels.append(int(np.any(future <= SPO2_THRESHOLD)))
+
+    aligned["Label"] = labels
+    aligned = aligned.dropna(subset=["Label"])
+    aligned["Label"] = aligned["Label"].astype(int)
+
+    return aligned[["Record", "time_s", *FEATURES, "spo2", "Label"]]
 
 
-# --------------------------------------------------
-# 2. Process all ten records
-# --------------------------------------------------
+def train_elm(X_train, y_train, X_test, hidden_nodes=100, ridge=1e-2):
+    """Single-hidden-layer ELM with tanh activation."""
+    rng = np.random.default_rng(42)
+    weights = rng.normal(0, 1, (X_train.shape[1], hidden_nodes))
+    biases = rng.normal(0, 1, (1, hidden_nodes))
 
-frames = []
+    H_train = np.tanh(X_train @ weights + biases)
+    H_test = np.tanh(X_test @ weights + biases)
 
-for record in range(1, 11):
-    frame = process_record(record)
-    if not frame.empty:
-        frames.append(frame)
-
-if not frames:
-    raise RuntimeError("No usable records found. Check data/.")
-
-data = pd.concat(frames, ignore_index=True)
-data = data.replace([np.inf, -np.inf], np.nan)
-data = data.dropna(subset=FEATURES + ["Target"])
-
-data.to_csv(RESULTS / "elm_dataset.csv", index=False)
-
-print("\nCombined dataset:", data.shape)
-print("Label counts:")
-print(data["Target"].value_counts().sort_index())
-
-# --------------------------------------------------
-# 3. Exploratory ELM experiment
-# --------------------------------------------------
-
-# ELM requires examples of both classes.
-if data["Target"].nunique() < 2:
-    raise RuntimeError(
-        "Only one target class exists. ELM cannot learn "
-        "a binary decision from this dataset."
+    # Ridge-regularized least-squares output weights.
+    identity = np.eye(hidden_nodes)
+    beta = np.linalg.solve(
+        H_train.T @ H_train + ridge * identity,
+        H_train.T @ y_train,
     )
+    return H_test @ beta
 
-# IMPORTANT: This random split is only a smoke test.
-# Nearby samples can overlap in time, so the test score
-# must NOT be treated as independent-record performance.
-rng = np.random.default_rng(42)
-train_parts = []
-test_parts = []
 
-for label in [0, 1]:
-    indices = np.flatnonzero(
-        data["Target"].to_numpy() == label
-    )
-    rng.shuffle(indices)
+def main():
+    frames = []
 
-    if len(indices) < 2:
+    for number in range(FIRST_RECORD, LAST_RECORD + 1):
+        try:
+            frame = load_record(number)
+            if frame is not None and not frame.empty:
+                frames.append(frame)
+                print(
+                    f"Record {number:02d}: {len(frame)} samples, "
+                    f"{int(frame['Label'].sum())} positive labels"
+                )
+        except Exception as exc:
+            print(f"Record {number:02d} failed: {exc}")
+
+    if not frames:
         raise RuntimeError(
-            f"Too few examples for class {label} to split."
+            "No usable records found. Check the CSV filenames and columns."
         )
 
-    cut = int(0.7 * len(indices))
-    cut = min(max(cut, 1), len(indices) - 1)
+    data = pd.concat(frames, ignore_index=True)
+    data = data.replace([np.inf, -np.inf], np.nan)
+    data = data.dropna(subset=FEATURES + ["Label"])
 
-    train_parts.extend(indices[:cut])
-    test_parts.extend(indices[cut:])
+    dataset_path = RESULTS_DIR / "elm_dataset.csv"
+    data.to_csv(dataset_path, index=False)
 
-train = data.iloc[train_parts]
-test = data.iloc[test_parts]
+    print("\nDataset saved:", dataset_path)
+    print("Dataset shape:", data.shape)
+    print("\nLabel counts:")
+    print(data["Label"].value_counts().sort_index())
+    print(f"Positive percentage: {100 * data['Label'].mean():.3f}%")
 
-X_train = train[FEATURES].to_numpy(dtype=float)
-X_test = test[FEATURES].to_numpy(dtype=float)
-y_train = train["Target"].to_numpy(dtype=float)
-y_test = test["Target"].to_numpy(dtype=int)
+    print("\nPositive labels by record:")
+    print(data.groupby("Record")["Label"].agg(["count", "sum"]))
 
-# Standardize using training data only.
-mean = X_train.mean(axis=0)
-std = X_train.std(axis=0)
-std[std < 1e-8] = 1.0
+    # This is an initial diagnostic split, not final generalization evidence.
+    if data["Label"].nunique() < 2 or data["Label"].value_counts().min() < 2:
+        print("\nNot enough examples of both classes for a stratified split.")
+        print("Dataset was saved, but model evaluation was skipped.")
+        return
 
-X_train = (X_train - mean) / std
-X_test = (X_test - mean) / std
+    X = data[FEATURES].to_numpy(dtype=float)
+    y = data["Label"].to_numpy(dtype=int)
 
-# ELM: random fixed input weights; learn output weights.
-hidden_neurons = 50
-input_size = X_train.shape[1]
-
-W = rng.normal(
-    0, 1, size=(input_size, hidden_neurons)
-)
-bias = rng.normal(size=hidden_neurons)
-
-def hidden_layer(X):
-    return np.tanh(X @ W + bias)
-
-start = time.perf_counter()
-H_train = hidden_layer(X_train)
-
-# Ridge-regularized least-squares output layer.
-regularization = 1e-2
-output_weights = np.linalg.solve(
-    H_train.T @ H_train
-    + regularization * np.eye(hidden_neurons),
-    H_train.T @ y_train
-)
-training_seconds = time.perf_counter() - start
-
-start = time.perf_counter()
-scores = hidden_layer(X_test) @ output_weights
-# Inspect ELM score distribution for each class
-print("\nELM score analysis")
-print("Positive test scores:")
-print(scores[y_test == 1])
-
-print("\nScore ranges:")
-if np.any(y_test == 0):
-    print("Negative:", scores[y_test == 0].min(),
-          "to", scores[y_test == 0].max())
-
-if np.any(y_test == 1):
-    print("Positive:", scores[y_test == 1].min(),
-          "to", scores[y_test == 1].max())
-
-# Try lower thresholds for exploratory analysis
-for threshold in [0.05, 0.10, 0.20, 0.30, 0.50]:
-    trial_predictions = (scores >= threshold).astype(int)
-
-    tp = np.sum((trial_predictions == 1) & (y_test == 1))
-    fp = np.sum((trial_predictions == 1) & (y_test == 0))
-    fn = np.sum((trial_predictions == 0) & (y_test == 1))
-
-    precision = tp / (tp + fp) if tp + fp else 0
-    recall = tp / (tp + fn) if tp + fn else 0
-
-    print(
-        f"Threshold={threshold:.2f} | "
-        f"TP={tp} FP={fp} FN={fn} | "
-        f"Precision={precision:.3f} Recall={recall:.3f}"
+    X_train, X_test, y_train, y_test = train_test_split(
+        X, y, test_size=0.30, random_state=42, stratify=y
     )
-predictions = (scores >= 0.5).astype(int)
-inference_seconds = time.perf_counter() - start
 
-# Basic metrics.
-tp = int(np.sum((predictions == 1) & (y_test == 1)))
-tn = int(np.sum((predictions == 0) & (y_test == 0)))
-fp = int(np.sum((predictions == 1) & (y_test == 0)))
-fn = int(np.sum((predictions == 0) & (y_test == 1)))
+    scaler = StandardScaler()
+    X_train = scaler.fit_transform(X_train)
+    X_test = scaler.transform(X_test)
 
-accuracy = (tp + tn) / len(y_test) if len(y_test) else 0
-precision = tp / (tp + fp) if tp + fp else 0
-recall = tp / (tp + fn) if tp + fn else 0
+    start = time.perf_counter()
+    scores = train_elm(X_train, y_train, X_test)
+    training_and_fit_time = time.perf_counter() - start
 
-print("\n========== ELM RESULTS ==========")
-print(f"Training samples: {len(train)}")
-print(f"Test samples: {len(test)}")
-print(f"Hidden neurons: {hidden_neurons}")
-print(f"Training time: {training_seconds:.6f} seconds")
-print(f"Total test inference time: {inference_seconds:.6f} seconds")
-print(
-    "Mean inference time: "
-    f"{inference_seconds / len(test) * 1000:.4f} ms/sample"
-)
-print(f"Accuracy:  {accuracy:.4f}")
-print(f"Precision: {precision:.4f}")
-print(f"Recall:    {recall:.4f}")
-print(f"TP={tp}, TN={tn}, FP={fp}, FN={fn}")
+    # ELM outputs are raw regression scores, not calibrated probabilities.
+    # A 0.5 cutoff is used only as a basic initial baseline.
+    predictions = (scores >= 0.5).astype(int)
 
-metrics = pd.DataFrame([{
-    "Model": "ELM",
-    "Hidden_Neurons": hidden_neurons,
-    "Train_Samples": len(train),
-    "Test_Samples": len(test),
-    "Training_Time_s": training_seconds,
-    "Mean_Inference_ms": inference_seconds / len(test) * 1000,
-    "Accuracy": accuracy,
-    "Precision": precision,
-    "Recall": recall,
-    "TP": tp, "TN": tn, "FP": fp, "FN": fn,
-}])
+    tn, fp, fn, tp = confusion_matrix(
+        y_test, predictions, labels=[0, 1]
+    ).ravel()
 
-metrics.to_csv(RESULTS / "elm_metrics.csv", index=False)
-print("\nSaved dataset: results/elm_dataset.csv")
-print("Saved metrics: results/elm_metrics.csv")
+    metrics = {
+        "Train_and_fit_time_s": training_and_fit_time,
+        "Accuracy": accuracy_score(y_test, predictions),
+        "Precision": precision_score(
+            y_test, predictions, zero_division=0
+        ),
+        "Recall": recall_score(y_test, predictions, zero_division=0),
+        "Average_Precision": average_precision_score(y_test, scores),
+        "TP": int(tp),
+        "TN": int(tn),
+        "FP": int(fp),
+        "FN": int(fn),
+        "Test_samples": len(y_test),
+    }
+
+    metrics_path = RESULTS_DIR / "elm_metrics.csv"
+    pd.DataFrame([metrics]).to_csv(metrics_path, index=False)
+
+    print("\nInitial ELM evaluation:")
+    for key, value in metrics.items():
+        print(f"{key}: {value}")
+
+    print("\nMetrics saved:", metrics_path)
+    print(
+        "\nIMPORTANT: Random row splitting can leak correlated samples "
+        "between train and test. Use recording-level validation before "
+        "reporting final performance."
+    )
+
+
+if __name__ == "__main__":
+    main()

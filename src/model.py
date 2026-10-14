@@ -50,6 +50,7 @@ class FittedModel:
         return scores
     def save(self,path,metadata):
         path=Path(path);path.parent.mkdir(parents=True,exist_ok=True)
+        self.target_definition=metadata.get('target',{'name':'future_low'})
         joblib.dump(self,path)
         m={**metadata,'version':self.version,'model':self.name,'features':self.features,'hyperparameters':self.config,'threshold':self.threshold,
            'score_semantics':'uncalibrated ridge score' if self.name=='ELM' else 'uncalibrated classifier probability (class weighting/prior shift)'}

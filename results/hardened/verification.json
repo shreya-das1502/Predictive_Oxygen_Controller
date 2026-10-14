@@ -1,0 +1,14 @@
+{
+  "historical_files_checked": 85,
+  "tests": 69,
+  "skipped": 0,
+  "target_runs": [
+    "future_low",
+    "new_onset"
+  ],
+  "broad_search_performed": false,
+  "historical_preserved": true,
+  "summary_sha256": "cadf8ce0c4123e47844d735b92ae148469a1dc3224cd2473f6dc9ab94fb9e695",
+  "before_after_metrics_sha256": "1642f22fa6469e568532d5f3fbe1d6762c2a68e925fd05a642167b0b390bf471",
+  "latency_comparison_sha256": "103b9bf79cbb7fd53877bf92ccc197aa03d0e6ccd711c91d1741cd25e8824ac0"
+}

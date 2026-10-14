@@ -1,0 +1,4 @@
+Historical snapshots verified: 85
+README inference example: {'time_s': 1.2, 'score': 0.20617046932439578, 'alert': True, 'threshold': 0.1716697414266575, 'model': 'Logistic', 'version': 'causal-pulse-v1', 'eligible': True, 'missing_features': 0}
+future_low hardening baseline/final metrics identical
+new_onset hardening baseline/final metrics identical

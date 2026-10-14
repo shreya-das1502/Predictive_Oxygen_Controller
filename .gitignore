@@ -10,3 +10,12 @@ results/validated/raw_pulses_*.csv
 results/validated/validation_oof_predictions.csv.gz
 results/validated/threshold_analysis.csv.gz
 results/validated/demo_replay.csv
+# Reproducible generated data for the separate target hardening runs.
+results/hardened/**/causal_dataset.csv
+results/hardened/**/models/*.joblib
+results/hardened/**/raw_pulses_*.csv
+results/hardened/**/*.csv.gz
+results/final/**/causal_dataset.csv
+results/final/**/raw_pulses_*.csv
+results/final/**/models/*.joblib
+results/final/**/*.csv.gz

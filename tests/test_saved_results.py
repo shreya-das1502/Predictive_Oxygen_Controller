@@ -13,7 +13,7 @@ from src.labeling import future_labels
 from src.dataset import load_csv
 from src.config import DATA_DIR
 
-@unittest.skipUnless((OUTPUT_DIR/'per_record_predictions.csv').exists(),'Run python -m src.run_experiments first for artifact integration checks')
+@unittest.skipUnless((OUTPUT_DIR/'causal_dataset.csv').exists() and len(list(OUTPUT_DIR.glob('raw_pulses_*.csv')))==30 and all((OUTPUT_DIR/'models'/f'{name}.joblib').exists() for name in MODEL_CONFIGS),'Historical integration requires optional local historical prepared data/pulse histories/model binaries')
 class SavedResultTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):

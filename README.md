@@ -1,71 +1,74 @@
 # Predictive Oxygen Controller
 
-A reproducible research comparison of causal pulse features for predicting whether **minimum observed SpO₂ in (t, t+30 seconds] is ≤94%**. This software returns research risk scores and alerts; it does not control oxygen delivery.
+Start with **`python -m src.check_project --audit`** from this directory. It verifies installed dependencies and inspects the local source data without training or overwriting results.
 
-The active pipeline repairs future waveform leakage, incomplete target horizons, recording selection and threshold validation in the original experiments. It compares a weighted ridge ELM, regularized logistic regression, Gaussian naive Bayes, and a shallow decision tree on identical held-out recording rows. Use the measured results in [MODEL_EVALUATION.md](docs/MODEL_EVALUATION.md); historical CSVs at the root of `results/` are not the authoritative evaluation.
+Read [FULL_PIPELINE_GUIDE.md](docs/FULL_PIPELINE_GUIDE.md) for the complete data-flow diagram, file map, commands, model equations, target definitions and interpretation. [FILE_CLEANUP.csv](docs/FILE_CLEANUP.csv) explains every cleanup decision; historical source is recoverable from [archive/](archive/README.md).
 
-## Run from the repository root
+This research pipeline compares a weighted ridge ELM, logistic regression, Gaussian naive Bayes and a shallow decision tree using causal PPG features and recording-wise validation. It emits scores/alerts and **does not actuate oxygen delivery**.
 
-The verified environment is Python 3.14.2; dependency versions are pinned in `requirements.txt`. To recreate it in your chosen virtual environment, run `python -m pip install -r requirements.txt`. Local data contain paired `data/bidmc_01_Signals.csv` / `bidmc_01_Numerics.csv` through record 30. No download is performed. Missing paired files cause an explicit error. Additional waveform files require corresponding numeric files.
+Two separate targets are evaluated:
+
+- `future_low`: minimum valid observed SpO₂ in `(t,t+30s]` ≤94%, including ongoing lows.
+- `new_onset`: the same complete valid future horizon, but current observed SpO₂ must be >94% and a qualifying >94 to ≤94 transition must occur. A single low reading qualifies; persistence and clinical validity are not assumed. Observed 91–92% episodes form a separately reported subset.
+
+## Reproduce the current evaluation
 
 ```bash
-# Validate raw data, regenerate causal prepared data, audit legacy labels
-python -m src.dataset
-
-# Run automated core and saved-artifact checks
+python -m src.check_project --audit
+python -m src.run_experiments --target future_low --output results/final/future_low
+python -m src.run_experiments --target new_onset --output results/final/new_onset
 python -m unittest discover -s tests -v
-
-# Complete all fixed-model grouped validation/held-out experiments and benchmarks/reports
-python -m src.run_experiments
-
-# Benchmark persisted models without training
-python -m src.benchmark_latency
-
-# Regenerate plots/reports from saved predictions, without refitting
-python -m src.reporting
-
-# Optional raw-stream demonstration using the saved full-data reference model
-python -m src.replay --record 12
+python -m src.check_project --links --verify-run results/final/new_onset
 ```
 
-The runner reuses prepared data only when raw and generation-code hashes match. `--rebuild` forces regeneration; `--output PATH` isolates a run. `--skip-benchmark` is for evaluation-only runs and makes no fresh latency claim. Runs replace only files in the selected authoritative output folder. There is no silent checkpoint resume or hyperparameter search. Native BLAS threads are limited to one for experiments/timing. Sensor acquisition and monitor latency are separate from computational timing.
+Full runs train fixed models, perform grouped validation, benchmark, generate reports and figures. They take minutes; there is no hyperparameter search. Native BLAS threads are limited to one inside fitting/benchmarking. Running targets sequentially avoids CPU competition during timing.
 
-## Causal and label contracts
+To regenerate reports and figures without repeating the evaluation:
 
-Raw waveform filtering uses forward-only third-order 0.5–5Hz Butterworth SOS, zero initial filter state. A local maximum is confirmed by its following sample (8ms at 125Hz), with 0.03 amplitude and 0.30s refractory criteria based only on available data. Amplitude uses the preceding trough; intervals use preceding peaks; intervals above 2s are counted as rejected. Features are timestamped at confirmation, not at an earlier peak. No waveform-wide scale or retrospective peak optimization is used. Waveform CSV times are rounded after 100s: 125Hz row-clock reconstruction is allowed only when all timestamps agree within 0.005001s. This preserves every acquisition row and rejects incompatible timing. Numeric timestamps retain their original coordinate; record 23 starts at -1s and is not independently rebased.
+```bash
+python -m src.target_reporting --output results/final/new_onset
+python -m src.figures --output results/final/new_onset
+```
 
-Ten ordered inputs: PPG_Amplitude, Pulse_Interval_s, Pulse_Rate_BPM, Amplitude_Slope, Rate_Mean_5, Rate_Std_10, Rate_Change_5, Amplitude_Mean_5, Amplitude_Std_10, Interval_Std_10. Windows use pulses, not seconds. Means use available history; sample standard deviations are zero for a singleton; five-pulse differences are zero before six pulses exist. A bounded ten-pulse buffer is reset per recording. History includes pulses with unavailable targets: dropping target rows never erases causal feature history. NaN measurements remain missing, with medians learned only on training rows; sklearn's entirely empty training columns use documented zero imputation. Infinity, missing column keys, inconsistent interval/rate, invalid ranges and unordered timestamps raise errors. Missingness is exposed in controller metadata.
+The figure command performs fixed diagnostic refits for block-permutation importance; it does not select features, tune models or change predictions. It verifies that diagnostic refits reproduce saved held-out scores.
 
-Labels use strictly future numeric samples ≤30 seconds ahead; require complete source coverage at 1Hz (maximum gap 1.01s), valid SpO₂ and no missing future observation. Incomplete tails and missing futures are unknown, never negative. Current saturation does not select primary rows. `spo2`, future minimum, time, recording ID and label are diagnostics/ground truth and never predictors. All thirty recordings participate. The broader target includes ongoing low saturation; a secondary current-SpO₂>94 subset and independently defined raw onset events assess impending detection. This distinction matters when interpreting pooled recall.
+Current artifacts are in [results/final/future_low/](results/final/future_low/) and [results/final/new_onset/](results/final/new_onset/). Each has `EVALUATION.md`, metrics, predictions, manifests, models and a `figures/INDEX.md` with PNG/PDF links and interpretations. Historical `results/validated/` and earlier `results/hardened/` evidence remain unchanged.
 
-## Validation and models
+Large prepared datasets, raw pulse tables, model binaries and compressed validation tables are local generated artifacts, ignored by Git. On a fresh checkout, run the two full commands above to regenerate them. Historical-only integration tests skip when their optional local historical artifacts are absent; final-run integration tests execute once final figures exist.
 
-The outer test is one entire recording. All other recordings generate three-fold GroupKFold OOF scores; the largest threshold achieving ≥92% timestamp recall is selected on those scores, then the model is refitted on outer-training data. Imputers and scalers are independently fitted in every inner/outer training set. The test recording does not select features, hyperparameters, weights or thresholds. ELM has 50 fixed random tanh units, ridge=1 and positive weight=5; output weights solve weighted ridge normal equations by Cholesky factorization. Logistic C=1 uses balanced weights; Gaussian NB has equal priors and variance smoothing 1e-6; tree depth=3, leaf minimum=50, balanced weights. All are fixed before evaluation, seed=42.
+## What to edit
 
-ELM scores are uncalibrated and need not lie in [0,1]. Classifier probabilities with changed class priors/weights are also not validated calibrated physiological risks. NaN marks undefined metrics; macro denominators are explicit. AP denotes average precision. Pooled AP across refits has score-comparability limitations. Alert episode rates and positive timestamp rates are separately defined in the evaluation report.
+- Targets, feature order and fixed parameters: [src/config.py](src/config.py).
+- Ground truth: [src/labeling.py](src/labeling.py).
+- Causal signal processing: [src/preprocessing.py](src/preprocessing.py).
+- Pulse/rolling features: [src/features.py](src/features.py).
+- ELM and baseline wrappers: [src/model.py](src/model.py).
+- Evaluation and threshold policy: [src/evaluation.py](src/evaluation.py).
+- Figure generation: [src/figures.py](src/figures.py).
 
-## Inference
+Leave raw data, saved predictions/manifests, and archived historical source untouched. Source/config/data changes invalidate prepared-data caches; edited cached artifacts also force regeneration. Run tests after changing behavior.
+
+## Inference example
+
+After generating `new_onset` models:
 
 ```python
 from src.controller import Controller
-
-controller = Controller.load('results/validated/models/Logistic.joblib')
-# Invoke for each NEW, strictly increasing pulse timestamp; reset controller for another record.
-result = controller.predict({
+c = Controller.load('results/final/new_onset/models/Logistic.joblib')
+result = c.predict({
     'time_s': 1.2, 'PPG_Amplitude': 0.2, 'Pulse_Interval_s': 0.8,
     'Pulse_Rate_BPM': 75.0, 'Amplitude_Slope': 0.0,
+    'spo2': 98.0, 'spo2_time_s': 1.0,
 })
-print(result)  # score, alert, validation-derived threshold, version, missingness
-# Or call controller.update_waveform(time_s, ppg) on every 125Hz input.
-# It returns None until a pulse is confirmed, then the same result contract.
+print(result)
 ```
 
-The saved full-data models are reproducible demonstration refits, each with a full-data grouped OOF threshold; these models were not used to produce held-out metrics. Logistic is the prespecified transparent demonstration default, not a claim that outer tests independently validate model selection. Load only locally trusted joblib files. Saved metadata includes target, threshold, hyperparameters, seed, feature order, training IDs, data hash and version.
+SpO₂ supplies eligibility, not a model input. Low/missing/stale current SpO₂ suppresses onset alerts while causal pulse history continues to update. `update_waveform()` provides the raw 125Hz stream interface. Only load locally trusted joblib artifacts.
 
-## Authoritative outputs
+## Interpretation
 
-`results/validated/` contains dataset/raw quality and preprocessing audits; independent legacy `label_audit.csv`; causal dataset and full pulse history; per-record predictions and metrics; pooled metrics and `model_comparison.csv`; validation metrics and compressed OOF predictions; selected operating points in `threshold_analysis.csv` and complete tradeoffs in `threshold_analysis.csv.gz`; event matches/summary; impending timestamp metrics; feature/score/record diagnostics and plots; exploratory uncertainty estimates; measured `latency_benchmark.csv` and environment; source/output hashes, grouped splits, run manifest; and trusted model binaries plus readable JSON metadata. Large generated data/OOF tables and binaries are ignored by Git but remain local and reproducible. No source files or historical results were deleted or overwritten.
+The models produce excessive false positives; high pooled future-low recall is partly driven by ongoing low saturation. Onset precision remains around 3%, and event sensitivity under nearly continuous alerts does not prove useful early warning. ELM speed does not establish detection superiority. See [FINAL_REPORT.md](docs/FINAL_REPORT.md) for current measured results and limitations, and [HARDENING_SUMMARY.md](docs/HARDENING_SUMMARY.md) for the preceding target-definition comparison.
 
-See [PROJECT_AUDIT.md](docs/PROJECT_AUDIT.md), [MODEL_EVALUATION.md](docs/MODEL_EVALUATION.md), and [LATENCY_REPORT.md](docs/LATENCY_REPORT.md). Original replaced scripts are preserved in `archive/legacy_src/`; other legacy scripts remain in place because of their imports and existing user changes. Use `python -m src...` for the maintained entry points; old experiment commands retain historical behavior.
+Only the 30 locally available BIDMC recordings are evaluated. Recording identity is not verified patient identity. CSV timing precision, missing numerics, unknown monitor delay, few onset-bearing recordings and unadjudicated one-reading excursions limit interpretation. Computational latency excludes physiological acquisition and is distinct from the prediction horizon.
 
-BIDMC source: [PhysioNet](https://physionet.org/content/bidmc/1.0.0/). Only 30 of the public 53 recordings are local. The available evidence is retrospective, with few prospective onsets, missing numeric measurements, chronic low saturation and unverified patient identities/sensor delay. Results support a demonstration and honest model comparison; they do not establish clinical benefit or safe oxygen actuation.
+Current figure hub: [PNG/PDF indices](results/validated/figures/INDEX.md). Final handoff: [FINAL_REPORT](docs/FINAL_REPORT.md).

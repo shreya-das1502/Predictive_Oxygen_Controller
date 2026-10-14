@@ -1,0 +1,33 @@
+Model,Metric,Value,Scope
+ELM,Recall,0.8902195608782435,pooled held-out timestamps
+ELM,Precision,0.0309185441941074,pooled held-out timestamps
+ELM,F1,0.0597614900174192,pooled held-out timestamps
+ELM,Specificity,0.1009711235449225,pooled held-out timestamps
+ELM,PR_AUC_AP,0.0239758420018797,pooled held-out timestamps
+ELM,Macro_Recall,0.9469002985809708,macro of defined per-recording values
+ELM,Macro_Precision,0.1060547366374891,macro of defined per-recording values
+ELM,Macro_F1,0.1207956926346351,macro of defined per-recording values
+Logistic,Recall,0.8862275449101796,pooled held-out timestamps
+Logistic,Precision,0.0282030108619704,pooled held-out timestamps
+Logistic,F1,0.0546663383403102,pooled held-out timestamps
+Logistic,Specificity,0.0160782043861341,pooled held-out timestamps
+Logistic,PR_AUC_AP,0.0335001273295969,pooled held-out timestamps
+Logistic,Macro_Recall,0.9269230769230768,macro of defined per-recording values
+Logistic,Macro_Precision,0.1046767546962085,macro of defined per-recording values
+Logistic,Macro_F1,0.1194108123603394,macro of defined per-recording values
+GaussianNB,Recall,0.9001996007984032,pooled held-out timestamps
+GaussianNB,Precision,0.0332375267153069,pooled held-out timestamps
+GaussianNB,F1,0.0641080312722103,pooled held-out timestamps
+GaussianNB,Specificity,0.1563444594507685,pooled held-out timestamps
+GaussianNB,PR_AUC_AP,0.0575949774108902,pooled held-out timestamps
+GaussianNB,Macro_Recall,0.8770321876704855,macro of defined per-recording values
+GaussianNB,Macro_Precision,0.1093556028972171,macro of defined per-recording values
+GaussianNB,Macro_F1,0.1259713962598343,macro of defined per-recording values
+Tree,Recall,1.0,pooled held-out timestamps
+Tree,Precision,0.031214953271028,pooled held-out timestamps
+Tree,F1,0.0605401486315026,pooled held-out timestamps
+Tree,Specificity,0.0,pooled held-out timestamps
+Tree,PR_AUC_AP,0.0395818484365353,pooled held-out timestamps
+Tree,Macro_Recall,1.0,macro of defined per-recording values
+Tree,Macro_Precision,0.1053378893362164,macro of defined per-recording values
+Tree,Macro_F1,0.1214640223082862,macro of defined per-recording values

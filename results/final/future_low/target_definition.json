@@ -1,0 +1,15 @@
+{
+  "name": "future_low",
+  "horizon_s": 30.0,
+  "threshold_spo2": 94.0,
+  "window": "(t,t+horizon]",
+  "complete_valid_future_required": true,
+  "maximum_numeric_gap_s": 1.01,
+  "current_spo2_eligibility": "unrestricted",
+  "event_definition": "first valid <=threshold reading immediately following valid >threshold; adjacent times <=maximum_numeric_gap_s; one reading suffices; no persistence or washout requirement",
+  "severe_subset": [
+    91.0,
+    92.0
+  ],
+  "interpretation": "observed monitor threshold crossing; not clinically adjudicated"
+}

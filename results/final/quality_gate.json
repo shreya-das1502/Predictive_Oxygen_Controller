@@ -1,0 +1,70 @@
+{
+  "status": "passed",
+  "tests": {
+    "command": "python -m unittest discover -s tests -v",
+    "count": 76,
+    "skipped": 0,
+    "failures": 0,
+    "errors": 0,
+    "seconds": 23.165,
+    "log": "test_results.txt"
+  },
+  "runs": [
+    {
+      "dependencies": {
+        "numpy": "2.5.3",
+        "pandas": "3.0.6",
+        "scipy": "1.18.1",
+        "scikit-learn": "1.9.1",
+        "matplotlib": "3.11.2",
+        "joblib": "1.6.0",
+        "threadpoolctl": "3.7.0"
+      },
+      "local_links_checked": 140,
+      "quality_gate": {
+        "target": "future_low",
+        "rows": 20157,
+        "models": 4,
+        "figures_png": 23,
+        "cache": "verified",
+        "figure_sources": "verified"
+      }
+    },
+    {
+      "dependencies": {
+        "numpy": "2.5.3",
+        "pandas": "3.0.6",
+        "scipy": "1.18.1",
+        "scikit-learn": "1.9.1",
+        "matplotlib": "3.11.2",
+        "joblib": "1.6.0",
+        "threadpoolctl": "3.7.0"
+      },
+      "local_links_checked": 140,
+      "quality_gate": {
+        "target": "new_onset",
+        "rows": 16050,
+        "models": 4,
+        "figures_png": 23,
+        "cache": "verified",
+        "figure_sources": "verified"
+      }
+    }
+  ],
+  "protected_historical_files_hash_verified": 85,
+  "before_after_metrics": "before_after_metrics.csv",
+  "readme_inference_and_separate_process_replay": "passed",
+  "source_and_results_archive_hashes": "passed",
+  "archived_source_restore_to_new_directory": "passed",
+  "deleted_bytecode_directories": [
+    "src/__pycache__",
+    "tests/__pycache__"
+  ],
+  "notes": [
+    "No broad model search",
+    "No raw data changed",
+    "Figures available through requested results/validated/figures hub",
+    "Timing is computational, not physiological acquisition latency"
+  ],
+  "final_local_links_checked": 141
+}

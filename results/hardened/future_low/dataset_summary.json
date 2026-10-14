@@ -1,0 +1,60 @@
+{
+  "rows": 20157,
+  "recordings": 30,
+  "prevalence": 0.2275636255395148,
+  "missing": {
+    "time_s": 0,
+    "peak_time_s": 0,
+    "PPG_Amplitude": 0,
+    "Pulse_Interval_s": 0,
+    "Pulse_Rate_BPM": 0,
+    "Amplitude_Slope": 0,
+    "Record": 0,
+    "pulse_row": 0,
+    "Label_Future_Low": 0,
+    "Label_New_Onset": 4107,
+    "Label": 0,
+    "Future_Min_SpO2_30s": 0,
+    "Target_Status": 0,
+    "spo2": 7,
+    "Rate_Mean_5": 0,
+    "Rate_Std_10": 0,
+    "Rate_Change_5": 0,
+    "Amplitude_Mean_5": 0,
+    "Amplitude_Std_10": 0,
+    "Interval_Std_10": 0,
+    "sample_id": 0
+  },
+  "duplicates": 0,
+  "zero_variance": [],
+  "unexpected_ranges": {
+    "negative_amplitude": 0,
+    "pulse_interval_outside_0_3_to_2": 0,
+    "pulse_rate_outside_30_to_200": 0
+  },
+  "all_feature_missing": {
+    "PPG_Amplitude": 0,
+    "Pulse_Interval_s": 0,
+    "Pulse_Rate_BPM": 0,
+    "Amplitude_Slope": 0,
+    "Rate_Mean_5": 0,
+    "Rate_Std_10": 0,
+    "Rate_Change_5": 0,
+    "Amplitude_Mean_5": 0,
+    "Amplitude_Std_10": 0,
+    "Interval_Std_10": 0
+  },
+  "all_feature_nonfinite": {
+    "PPG_Amplitude": 0,
+    "Pulse_Interval_s": 0,
+    "Pulse_Rate_BPM": 0,
+    "Amplitude_Slope": 0,
+    "Rate_Mean_5": 0,
+    "Rate_Std_10": 0,
+    "Rate_Change_5": 0,
+    "Amplitude_Mean_5": 0,
+    "Amplitude_Std_10": 0,
+    "Interval_Std_10": 0
+  },
+  "feature_zero_variance": []
+}

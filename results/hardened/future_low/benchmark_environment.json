@@ -1,0 +1,93 @@
+{
+  "python": "3.14.2",
+  "platform": "Linux-6.8.0-1064-azure-x86_64-with-glibc2.39",
+  "machine": "x86_64",
+  "cpu": "AMD EPYC 7763 64-Core Processor",
+  "logical_cpus": 2,
+  "dependencies": {
+    "numpy": "2.5.3",
+    "pandas": "3.0.6",
+    "scipy": "1.18.1",
+    "sklearn": "1.9.1",
+    "matplotlib": "3.11.2",
+    "joblib": "1.6.0",
+    "threadpoolctl": "3.7.0"
+  },
+  "threadpools": [
+    {
+      "user_api": "openmp",
+      "internal_api": "openmp",
+      "num_threads": 1,
+      "prefix": "libgomp",
+      "filepath": "/usr/local/python/3.14.2/lib/python3.14/site-packages/scikit_learn.libs/libgomp-e985bcbb.so.1.0.0",
+      "version": null
+    },
+    {
+      "user_api": "blas",
+      "internal_api": "openblas",
+      "num_threads": 1,
+      "prefix": "libscipy_openblas",
+      "filepath": "/usr/local/python/3.14.2/lib/python3.14/site-packages/scipy.libs/libscipy_openblas-5f890258.so",
+      "version": "0.3.31.dev",
+      "threading_layer": "pthreads",
+      "architecture": "Haswell"
+    },
+    {
+      "user_api": "blas",
+      "internal_api": "openblas",
+      "num_threads": 1,
+      "prefix": "libscipy_openblas",
+      "filepath": "/usr/local/python/3.14.2/lib/python3.14/site-packages/numpy.libs/libscipy_openblas64_-f48b354e.so",
+      "version": "0.3.34.106.0",
+      "threading_layer": "pthreads",
+      "architecture": "Haswell"
+    }
+  ],
+  "methodology": {
+    "warmup": 100,
+    "repetitions": 2000,
+    "timer": "perf_counter_ns",
+    "threads": 1,
+    "load_repetitions": 100,
+    "load_warmup": 5
+  },
+  "measured_at": "2026-10-14T10:07:49.874702+05:30",
+  "code_hashes": {
+    "/workspaces/Predictive_Oxygen_Controller/src/__init__.py": "b191440a2acf4f15994559cce5ed9113c0e192b3d783e549a4f62ced31e81a50",
+    "/workspaces/Predictive_Oxygen_Controller/src/advanced_experiment.py": "dbd3d43027529c36a286cbd5e12e3ae85fbd6938e5675777fd8cd36e956dcbea",
+    "/workspaces/Predictive_Oxygen_Controller/src/benchmark_latency.py": "483314118455bbc6222100d53a6c16dd05cddefe7590d9f7f7026d7561e27da5",
+    "/workspaces/Predictive_Oxygen_Controller/src/check_dropped_samples.py": "66b533ce6caf6a5781d05ba90c1ca13abb865cc645df63c666abc7b8483d80e0",
+    "/workspaces/Predictive_Oxygen_Controller/src/check_prediction_consistency.py": "89c3b6529b66d3dc8003c523dc385a66ba1c3915130a252cd95b83bc2db1d712",
+    "/workspaces/Predictive_Oxygen_Controller/src/check_records.py": "77326de3b7118b95d4cc29e1f279f1c34cf587f5e4c413b774042d4fec22927c",
+    "/workspaces/Predictive_Oxygen_Controller/src/compare_models.py": "0ef5dbd26ac484bca4019499c665ad69fc33ac4c0a993a712cb30d27ad1d7c09",
+    "/workspaces/Predictive_Oxygen_Controller/src/config.py": "a230a51e7a98c92022f9bf1e46af52923f4fbbda14be1fd991c1aaa67f3dd4a6",
+    "/workspaces/Predictive_Oxygen_Controller/src/controller.py": "bf98889552a3dd9b7a132d7fd54fad7e99820a5cfd814a90d8ba004584dddc1a",
+    "/workspaces/Predictive_Oxygen_Controller/src/conventional_experiment.py": "4d71b3a69e79c1dd11169ddc09e5e95139fa8789112f0872e83087be30106ca3",
+    "/workspaces/Predictive_Oxygen_Controller/src/dataset.py": "18a43c529ca3f0cd0f4661e748d52341d863975e1bf553b6b777d9d61fdac38a",
+    "/workspaces/Predictive_Oxygen_Controller/src/diagnose_advanced_results.py": "2081e8a279d0a4d303191a5c33e8de6c1f2fb03bb267025a06a14d35fc27389a",
+    "/workspaces/Predictive_Oxygen_Controller/src/diagnose_record_26.py": "d273155423c479028cebe40d8d2f4ffa471928db88e14a2ddfbdb8186d7df344",
+    "/workspaces/Predictive_Oxygen_Controller/src/diagnose_thresholds.py": "3ea5188fe3486c199a8730449fd4bc06916bde5342464ced8d542da2c61f0aea",
+    "/workspaces/Predictive_Oxygen_Controller/src/elm_experiment.py": "4da0b97ecd74820ac9ea95fa59d2b9d03eab657e9595526edb8c3c66476eddbf",
+    "/workspaces/Predictive_Oxygen_Controller/src/elm_threshold_check.py": "08f4f8a4199d7ce6029c5d4e6c64ab68536600107821cedaabe5abb6ec5c187c",
+    "/workspaces/Predictive_Oxygen_Controller/src/elm_threshold_sweep.py": "7f2683ab24c6b0abd8cbb00c4f7e06a847ca80ec6848e8c52c0e818175b6bc9d",
+    "/workspaces/Predictive_Oxygen_Controller/src/evaluation.py": "32822f82852386fbea1798b55d65817ab74d35d02288a9ebd316e374c018a7a8",
+    "/workspaces/Predictive_Oxygen_Controller/src/feature_audit.py": "02c72ed305ecd218975efe0deb1474a1e4cb4e559eadab2e5c83a7167ed4a633",
+    "/workspaces/Predictive_Oxygen_Controller/src/features.py": "cdcd865c481dd3534ec58c48c5f31d93f5eef98e40c32fad8a32fbae787c785b",
+    "/workspaces/Predictive_Oxygen_Controller/src/inspect_elm_dataset.py": "01661777ea73a33949c8e0b691789bb3d74fee91fc84a478bd9db3a143480f66",
+    "/workspaces/Predictive_Oxygen_Controller/src/inspect_elm_scores.py": "4c3861961a04afe50e9e0e29c7637829cc01815b2e44aa208d1c1aa8d10c4432",
+    "/workspaces/Predictive_Oxygen_Controller/src/inspect_events.py": "95ac2ef7be146e7f6b66f5f1ea43ea466a22c132b13c5afd829e77c67b37482e",
+    "/workspaces/Predictive_Oxygen_Controller/src/label_audit.py": "ae4a68c4d76f0097857b5232fa01df567e81d5159347fc43741377253328593d",
+    "/workspaces/Predictive_Oxygen_Controller/src/labeling.py": "513b2827c282549aa27e31b69f717a339a5ca211e22e6dd6f4ecdf84a5a072f9",
+    "/workspaces/Predictive_Oxygen_Controller/src/model.py": "0b1738710885a94330f42e0120cae45cef5a255405eb14396e68ec170ecd92c4",
+    "/workspaces/Predictive_Oxygen_Controller/src/preprocessing.py": "7fcac04cdb70cfdeac5c22e057775c929269c6225e1b4c4f72f16fefeb67756a",
+    "/workspaces/Predictive_Oxygen_Controller/src/provenance.py": "9edf820b3b4f48a1796726a62a268500fd1ae90cc3db6b83561e97d8a6ac2ccf",
+    "/workspaces/Predictive_Oxygen_Controller/src/recall_first_elm.py": "130cd239bf93e0e9bc10c3f59cd92afec07885783060e33a99868b5e9da9d0f5",
+    "/workspaces/Predictive_Oxygen_Controller/src/recording_aware_elm.py": "731ab0bf458f5298a9937da998c35db8df6288506299fa37658064df9d61e439",
+    "/workspaces/Predictive_Oxygen_Controller/src/recording_aware_elm_v2.py": "29bc9e58d59c992361bb295f30145169a35c8b2ee24705fd8a0653fe21cfbe59",
+    "/workspaces/Predictive_Oxygen_Controller/src/replay.py": "734f15bcdfaf738668fc0b5621de17d9e670201416cd4358e1c575cb6d80abdb",
+    "/workspaces/Predictive_Oxygen_Controller/src/reporting.py": "04d4f5994f6678969624fe6643453f2d5204c03f46424187cf477a885a056acb",
+    "/workspaces/Predictive_Oxygen_Controller/src/run_experiments.py": "3ce6f29a758351fea98ebae3c972f7aaae202d76ba4f322d6e1c212c5b262f9a",
+    "/workspaces/Predictive_Oxygen_Controller/src/target_reporting.py": "5b092f5fdddb35d55000a32d587b9f8234f668b098d956e80b6403fb12936697",
+    "/workspaces/Predictive_Oxygen_Controller/src/verify_labels.py": "ccb2a1fd20b4c1978d1b93962590eb5a47dabd6b4a7da5d114c36735d79afd75"
+  }
+}

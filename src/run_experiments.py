@@ -10,24 +10,26 @@ import numpy as np
 import pandas as pd
 from threadpoolctl import threadpool_limits
 from . import config
-from .dataset import build_dataset, validate_dataset
+from .dataset import validate_dataset
+from .provenance import load_prepared
 from .evaluation import outer_splits, grouped_oof, metrics, alarm_statistics
 from .model import FittedModel
 from .benchmark_latency import benchmark_all, environment
 
 
-def run(output=config.OUTPUT_DIR,rebuild=False,skip_benchmark=False):
-    output=Path(output);output.mkdir(parents=True,exist_ok=True)
+def run(output=None,rebuild=False,skip_benchmark=False,target='future_low'):
+    definition=config.target_definition(target)
+    output=Path(output) if output is not None else config.HARDENED_DIR / target
+    historical=config.OUTPUT_DIR.resolve()
+    if output.resolve()==historical or historical in output.resolve().parents:
+        raise ValueError('Historical results/validated is protected; select a new output directory')
+    output.mkdir(parents=True,exist_ok=True)
     begun=time.perf_counter()
     settings={k:getattr(config,k) for k in ['HORIZON','SPO2_THRESHOLD','MAX_NUMERIC_GAP','SEED','TARGET_RECALL','INNER_FOLDS','VERSION','FEATURES','MODEL_CONFIGS','TIMING','OUTPUT_FILES']}
     source_hashes={str(p):hashlib.sha256(p.read_bytes()).hexdigest() for p in sorted(config.DATA_DIR.glob('*.csv'))}
     code_hashes={str(p):hashlib.sha256(p.read_bytes()).hexdigest() for p in sorted((config.ROOT/'src').glob('*.py'))}
-    cache_path=output/'dataset_cache.json'
-    cache={'source_hashes':source_hashes,'code_hashes':{k:v for k,v in code_hashes.items() if Path(k).name in ['config.py','dataset.py','preprocessing.py','features.py','labeling.py']}}
-    if not rebuild and (output/'causal_dataset.csv').exists() and cache_path.exists() and json.loads(cache_path.read_text())==cache:
-        data=pd.read_csv(output/'causal_dataset.csv');print('Reusing prepared data with matching source/code hashes.',flush=True)
-    else:
-        data=build_dataset(output);cache_path.write_text(json.dumps(cache,indent=2))
+    data,cache_receipt,reused=load_prepared(output,target,rebuild)
+    print(f'Target={target}; prepared cache reused={reused}',flush=True)
     validate_dataset(data)
     X=data[config.FEATURES].to_numpy(float);y=data.Label.to_numpy(int);groups=data.Record.to_numpy(int)
     per=[];pred=[];thresholds=[];split_log=[];train_time={n:0.0 for n in config.MODEL_CONFIGS};validation=[];oof_parts=[]
@@ -44,8 +46,8 @@ def run(output=config.OUTPUT_DIR,rebuild=False,skip_benchmark=False):
                 model=FittedModel(name).fit(X[tr],y[tr]);train_time[name]+=time.perf_counter()-start
                 scores=model.score(X[te]);p=(scores>=threshold).astype(int)
                 frame=data.iloc[te][['sample_id','Record','pulse_row','time_s','peak_time_s','spo2','Future_Min_SpO2_30s','Label']].copy()
-                frame['Model']=name;frame['Score']=scores;frame['Threshold']=threshold;frame['Prediction']=p;pred.append(frame)
-                m={'Model':name,'Record':test_record,**metrics(y[te],scores,p),**alarm_statistics(frame),'Threshold':threshold}
+                frame['Target']=target;frame['Model']=name;frame['Score']=scores;frame['Threshold']=threshold;frame['Prediction']=p;pred.append(frame)
+                m={'Model':name,'Record':test_record,'Target':target,'Positive_Containing':bool(y[te].sum()),**metrics(y[te],scores,p),**alarm_statistics(frame),'Threshold':threshold}
                 per.append(m)
                 fold_meta['inner']=inner
                 print(f'[{fold}/{len(np.unique(groups))}] {test_record:02d} {name}: recall={m["Recall"]:.3f} precision={m["Precision"]:.3f} FP={m["FP"]}',flush=True)
@@ -74,9 +76,10 @@ def run(output=config.OUTPUT_DIR,rebuild=False,skip_benchmark=False):
                            'FP_Timestamps_Per_Hour':r.FP.sum()/r.Exposure_Hours.sum(),
                            'Training_And_Inner_Validation_s':train_time[name],
                            'Held_Out_Recordings':len(r),'Positive_Containing_Recordings':int((r.Positives>0).sum()),
+                           'Negative_Only_Recordings':int((r.Positives==0).sum()),'Target':target,'Metric_Scope':'pooled held-out timestamps; Macro_* over defined per-record values',
                            'Features':json.dumps(config.FEATURES),'Hyperparameters':json.dumps(config.MODEL_CONFIGS[name]),
-                           'Threshold_Strategy':'3-fold grouped OOF, largest threshold attaining recall>=0.92',
-                           'Limitations':'retrospective recording-wise CV; chronic lows included; few transition events; pooled scores from different refits are uncalibrated'})
+                           'Threshold_Strategy':config.threshold_strategy(),
+                           'Limitations':'retrospective recording-wise CV; target-specific eligibility; few transition events; pooled scores from different refits are uncalibrated'})
         pooled=pd.DataFrame(pooled);pooled.to_csv(output/'pooled_metrics.csv',index=False)
         # Predeclared demonstration default Logistic; do not choose it from outer outcomes.
         (output/'models').mkdir(exist_ok=True)
@@ -84,7 +87,7 @@ def run(output=config.OUTPUT_DIR,rebuild=False,skip_benchmark=False):
             threshold,scores,table,inner=grouped_oof(X,y,groups,name)
             model=FittedModel(name).fit(X,y);model.threshold=threshold
             model.save(output/'models'/f'{name}.joblib',{'seed':config.SEED,'training_records':sorted(map(int,np.unique(groups))),
-                       'target':{'horizon_s':config.HORIZON,'threshold_spo2':config.SPO2_THRESHOLD,'window':'(t,t+30]','complete_only':True},
+                       'target':definition,
                        'threshold_strategy':'full-data grouped OOF; demonstration refit, NOT independent test',
                        'validation_recall':float(metrics(y,scores,scores>=threshold)['Recall']),'inner_splits':inner,
                        'dataset_sha256':hashlib.sha256((output/'causal_dataset.csv').read_bytes()).hexdigest()})
@@ -94,21 +97,28 @@ def run(output=config.OUTPUT_DIR,rebuild=False,skip_benchmark=False):
         a=latency[latency.Component=='pulse_to_alert'][['Model','Median_ms','P95_ms','P99_ms']]
         comparison=comparison.merge(a,on='Model')
     comparison.to_csv(output/'model_comparison.csv',index=False)
-    manifest={'configuration':settings,'protocol':'leave-one-recording-out; inner 3-fold GroupKFold; no tuning',
+    manifest={'configuration':settings,'protocol':f'leave-one-recording-out; inner {config.INNER_FOLDS}-fold GroupKFold; no tuning',
+              'target_definition':definition,'threshold_selection':config.threshold_strategy(),
+              'dataset_sha256':hashlib.sha256((output/'causal_dataset.csv').read_bytes()).hexdigest(),
+              'dataset_cache_receipt':cache_receipt,'recording_splits':split_log,
+              'figure_generation':{'automatic':not skip_benchmark,'directory':'figures','generator':'src/figures.py'},
               'default_demo_model':'Logistic (prespecified)','environment':environment(),'source_hashes':source_hashes,'code_hashes':code_hashes,
               'git_status':subprocess.run(['git','status','--short'],capture_output=True,text=True).stdout,
               'run_seconds':time.perf_counter()-begun,'benchmark_completed':latency is not None,
               'completed_at':datetime.now(timezone(timedelta(hours=5,minutes=30))).isoformat(),
               'input_dataset':str(config.INPUT_DATASET),'output_directory':str(output.resolve())}
     (output/'run_manifest.json').write_text(json.dumps(manifest,indent=2))
-    from .reporting import generate_reports
-    generate_reports(output)
+    from .target_reporting import generate_target_report
+    generate_target_report(output)
+    if not skip_benchmark:
+        from .figures import generate_figures
+        generate_figures(output)
     print(comparison[['Model','Recall','Precision','F1','PR_AUC_AP','FP','FN']].to_string(index=False),flush=True)
     return comparison
 
 
 def main():
-    p=argparse.ArgumentParser();p.add_argument('--output',type=Path,default=config.OUTPUT_DIR);p.add_argument('--rebuild',action='store_true');p.add_argument('--skip-benchmark',action='store_true');a=p.parse_args()
-    try:run(a.output,a.rebuild,a.skip_benchmark)
+    p=argparse.ArgumentParser();p.add_argument('--output',type=Path);p.add_argument('--target',choices=config.TARGETS,default='future_low');p.add_argument('--rebuild',action='store_true');p.add_argument('--skip-benchmark',action='store_true');a=p.parse_args()
+    try:run(a.output,a.rebuild,a.skip_benchmark,a.target)
     except (ValueError,FileNotFoundError) as e:p.exit(2,f'Experiment prerequisite/error: {e}\n')
 if __name__=='__main__':main()

@@ -3,7 +3,7 @@ import numpy as np
 import pandas as pd
 from sklearn.model_selection import GroupKFold, LeaveOneGroupOut
 from sklearn.metrics import average_precision_score, roc_auc_score, matthews_corrcoef, precision_recall_curve
-from .config import FEATURES, TARGET_RECALL, INNER_FOLDS
+from .config import FEATURES, TARGET_RECALL, INNER_FOLDS, ALERT_GAP_SECONDS
 from .model import FittedModel
 
 
@@ -69,15 +69,15 @@ def metrics(y,scores,predictions):
 def alarm_statistics(group):
     """Alert episodes: positive runs, split at >2s gaps; not one alarm per pulse."""
     g=group.sort_values('time_s');t=g.time_s.to_numpy();p=g.Prediction.to_numpy(bool)
-    indices=np.flatnonzero(p & np.r_[True,(~p[:-1])|(np.diff(t)>2)])
+    indices=np.flatnonzero(p & np.r_[True,(~p[:-1])|(np.diff(t)>ALERT_GAP_SECONDS)])
     false=0;start=indices
     for i in start:
         j=i+1
-        while j<len(g) and p[j] and t[j]-t[j-1]<=2:j+=1
+        while j<len(g) and p[j] and t[j]-t[j-1]<=ALERT_GAP_SECONDS:j+=1
         # False episode has no positive future target anywhere during the run.
         false += int(not g.Label.iloc[i:j].eq(1).any())
     # Only observed evaluable time segments; missing-target gaps are not exposure.
-    duration=float(np.diff(t)[np.diff(t)<=2].sum()) if len(t)>1 else 0.0
+    duration=float(np.diff(t)[np.diff(t)<=ALERT_GAP_SECONDS].sum()) if len(t)>1 else 0.0
     return {'Alert_Episodes':len(start),'False_Alert_Episodes':false,'Exposure_Hours':duration/3600,
             'False_Alerts_Per_Hour':false/(duration/3600) if duration else np.nan,
             'FP_Timestamps_Per_Hour':int(((g.Label==0)&(g.Prediction==1)).sum())/(duration/3600) if duration else np.nan}

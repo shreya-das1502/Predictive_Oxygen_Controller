@@ -1,0 +1,9 @@
+Model,Subset,Eligible_Events,Detected,Sensitivity,Median_Lead_Time_s,Excluded_Events,Positive_Recordings
+ELM,all_qualifying_onsets,14,14,1.0,29.683999999999997,8,6
+ELM,91_92_episode_subset,3,3,1.0,9.783999999999992,4,3
+Logistic,all_qualifying_onsets,14,14,1.0,29.683999999999997,8,6
+Logistic,91_92_episode_subset,3,3,1.0,9.783999999999992,4,3
+GaussianNB,all_qualifying_onsets,14,14,1.0,29.683999999999997,8,6
+GaussianNB,91_92_episode_subset,3,3,1.0,9.783999999999992,4,3
+Tree,all_qualifying_onsets,14,14,1.0,29.683999999999997,8,6
+Tree,91_92_episode_subset,3,3,1.0,9.783999999999992,4,3

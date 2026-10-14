@@ -1,0 +1,21 @@
+{
+  "executed_successfully": [
+    "OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 MPLCONFIGDIR=/tmp/oxygen-matplotlib python -m src.run_experiments --target future_low --output results/final/future_low --skip-benchmark",
+    "python -m src.benchmark_latency --output results/final/future_low",
+    "python -m src.target_reporting --output results/final/future_low",
+    "python -m src.figures --output results/final/future_low",
+    "python -m src.check_project --links --verify-run results/final/future_low",
+    "OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 MPLCONFIGDIR=/tmp/oxygen-matplotlib python -m src.run_experiments --target new_onset --output results/final/new_onset --skip-benchmark",
+    "python -m src.benchmark_latency --output results/final/new_onset",
+    "python -m src.target_reporting --output results/final/new_onset",
+    "python -m src.figures --output results/final/new_onset",
+    "python -m src.check_project --links --verify-run results/final/new_onset",
+    "python -m unittest discover -s tests -v",
+    "python -m src.check_project --audit",
+    "python -m src.dataset --target new_onset --output /tmp/oxygen-dataset-command-check",
+    "python -m src.replay --target new_onset --model results/final/new_onset/models/Logistic.joblib --record 12 --output results/final/new_onset/demo_replay.csv",
+    "python archive/restore_legacy.py --output /tmp/oxygen-legacy-inspection",
+    "git diff --check"
+  ],
+  "note": "Execution sequence used separate fixed-model evaluations, benchmarks and plotting. Full runner without --skip-benchmark is documented but was not rerun as a single invocation during this final pass."
+}

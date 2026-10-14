@@ -1,2 +1,0 @@
-Training_and_test_inference_time_s,Accuracy,Precision,Recall,Average_Precision,TP,TN,FP,FN,Test_samples
-0.1566662120003457,0.9724985371562317,0.0,0.0,0.09117386292021448,0,4986,1,140,5127

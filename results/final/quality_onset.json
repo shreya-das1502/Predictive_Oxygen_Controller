@@ -1,0 +1,20 @@
+{
+  "dependencies": {
+    "numpy": "2.5.3",
+    "pandas": "3.0.6",
+    "scipy": "1.18.1",
+    "scikit-learn": "1.9.1",
+    "matplotlib": "3.11.2",
+    "joblib": "1.6.0",
+    "threadpoolctl": "3.7.0"
+  },
+  "local_links_checked": 140,
+  "quality_gate": {
+    "target": "new_onset",
+    "rows": 16050,
+    "models": 4,
+    "figures_png": 23,
+    "cache": "verified",
+    "figure_sources": "verified"
+  }
+}

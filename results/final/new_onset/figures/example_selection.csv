@@ -1,0 +1,5 @@
+Example,Record,Prediction_Time_s,Label,Prediction,Selection
+negative_and_false_positive,1,60.016,0,1,"earliest eligible match, or earliest qualifying severe episode"
+positive_and_true_positive,7,337.272,1,1,"earliest eligible match, or earliest qualifying severe episode"
+false_negative,7,350.896,1,0,"earliest eligible match, or earliest qualifying severe episode"
+observed_91_92_episode,12,195.408,1,1,"earliest eligible match, or earliest qualifying severe episode"

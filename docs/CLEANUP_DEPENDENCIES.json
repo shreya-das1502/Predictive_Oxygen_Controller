@@ -1,0 +1,635 @@
+{
+  "source_inspection": [
+    {
+      "file": "src/advanced_experiment.py",
+      "imports": [
+        "from pathlib import Path",
+        "import time",
+        "import numpy as np",
+        "import pandas as pd",
+        "from sklearn.preprocessing import StandardScaler",
+        "from sklearn.linear_model import LogisticRegression",
+        "from sklearn.ensemble import RandomForestClassifier",
+        "from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, average_precision_score, confusion_matrix"
+      ],
+      "references": [
+        {
+          "file": "docs/PROJECT_AUDIT.md",
+          "line": 7,
+          "text": "`main.py` plots one recording. `features.py` processes record 01 at import time, then `labeling.py` labels it at import time. `elm_experiment.py` independently extracts all raw records and creates the"
+        },
+        {
+          "file": "docs/LATENCY_REPORT.md",
+          "line": 88,
+          "text": "    \"/workspaces/Predictive_Oxygen_Controller/src/advanced_experiment.py\": \"dbd3d43027529c36a286cbd5e12e3ae85fbd6938e5675777fd8cd36e956dcbea\","
+        }
+      ],
+      "mentioned_artifacts": [
+        "advanced_dataset_cleaned.csv",
+        "advanced_model_comparison.csv",
+        "advanced_test_predictions.csv",
+        "elm_dataset.csv"
+      ],
+      "active_caller": false
+    },
+    {
+      "file": "src/check_dropped_samples.py",
+      "imports": [
+        "from pathlib import Path",
+        "import numpy as np",
+        "import pandas as pd"
+      ],
+      "references": [
+        {
+          "file": "docs/LATENCY_REPORT.md",
+          "line": 90,
+          "text": "    \"/workspaces/Predictive_Oxygen_Controller/src/check_dropped_samples.py\": \"66b533ce6caf6a5781d05ba90c1ca13abb865cc645df63c666abc7b8483d80e0\","
+        }
+      ],
+      "mentioned_artifacts": [
+        "results/elm_dataset.csv",
+        "results/recording_aware_elm_v2_predictions.csv"
+      ],
+      "active_caller": false
+    },
+    {
+      "file": "src/check_prediction_consistency.py",
+      "imports": [
+        "from pathlib import Path",
+        "import pandas as pd"
+      ],
+      "references": [
+        {
+          "file": "docs/LATENCY_REPORT.md",
+          "line": 91,
+          "text": "    \"/workspaces/Predictive_Oxygen_Controller/src/check_prediction_consistency.py\": \"89c3b6529b66d3dc8003c523dc385a66ba1c3915130a252cd95b83bc2db1d712\","
+        }
+      ],
+      "mentioned_artifacts": [
+        "results/elm_dataset.csv",
+        "results/recording_aware_elm_v2_predictions.csv"
+      ],
+      "active_caller": false
+    },
+    {
+      "file": "src/check_records.py",
+      "imports": [
+        "from pathlib import Path",
+        "import numpy as np",
+        "import pandas as pd"
+      ],
+      "references": [
+        {
+          "file": "docs/LATENCY_REPORT.md",
+          "line": 92,
+          "text": "    \"/workspaces/Predictive_Oxygen_Controller/src/check_records.py\": \"77326de3b7118b95d4cc29e1f279f1c34cf587f5e4c413b774042d4fec22927c\","
+        }
+      ],
+      "mentioned_artifacts": [
+        "_Numerics.csv"
+      ],
+      "active_caller": false
+    },
+    {
+      "file": "src/compare_models.py",
+      "imports": [
+        "from pathlib import Path",
+        "import time",
+        "import numpy as np",
+        "import pandas as pd",
+        "from sklearn.model_selection import train_test_split",
+        "from sklearn.preprocessing import StandardScaler",
+        "from sklearn.linear_model import LogisticRegression",
+        "from sklearn.metrics import accuracy_score, precision_score, recall_score, average_precision_score, confusion_matrix"
+      ],
+      "references": [
+        {
+          "file": "docs/PROJECT_AUDIT.md",
+          "line": 7,
+          "text": "`main.py` plots one recording. `features.py` processes record 01 at import time, then `labeling.py` labels it at import time. `elm_experiment.py` independently extracts all raw records and creates the"
+        },
+        {
+          "file": "docs/LATENCY_REPORT.md",
+          "line": 93,
+          "text": "    \"/workspaces/Predictive_Oxygen_Controller/src/compare_models.py\": \"0ef5dbd26ac484bca4019499c665ad69fc33ac4c0a993a712cb30d27ad1d7c09\","
+        }
+      ],
+      "mentioned_artifacts": [
+        "elm_dataset.csv",
+        "model_comparison.csv",
+        "results/elm_dataset.csv",
+        "results/model_comparison.csv"
+      ],
+      "active_caller": false
+    },
+    {
+      "file": "src/conventional_experiment.py",
+      "imports": [
+        "from pathlib import Path",
+        "import time",
+        "import numpy as np",
+        "import pandas as pd",
+        "from sklearn.model_selection import train_test_split",
+        "from sklearn.preprocessing import StandardScaler",
+        "from sklearn.linear_model import LogisticRegression",
+        "from sklearn.metrics import accuracy_score, precision_score, recall_score, average_precision_score, confusion_matrix",
+        "from elm_experiment import FEATURES"
+      ],
+      "references": [
+        {
+          "file": "docs/LATENCY_REPORT.md",
+          "line": 96,
+          "text": "    \"/workspaces/Predictive_Oxygen_Controller/src/conventional_experiment.py\": \"4d71b3a69e79c1dd11169ddc09e5e95139fa8789112f0872e83087be30106ca3\","
+        }
+      ],
+      "mentioned_artifacts": [
+        "elm_dataset.csv",
+        "logistic_metrics.csv"
+      ],
+      "active_caller": false
+    },
+    {
+      "file": "src/diagnose_advanced_results.py",
+      "imports": [
+        "from pathlib import Path",
+        "import numpy as np",
+        "import pandas as pd",
+        "from sklearn.metrics import average_precision_score, precision_score, recall_score, f1_score"
+      ],
+      "references": [
+        {
+          "file": "docs/LATENCY_REPORT.md",
+          "line": 98,
+          "text": "    \"/workspaces/Predictive_Oxygen_Controller/src/diagnose_advanced_results.py\": \"2081e8a279d0a4d303191a5c33e8de6c1f2fb03bb267025a06a14d35fc27389a\","
+        }
+      ],
+      "mentioned_artifacts": [
+        "advanced_model_comparison.csv",
+        "advanced_test_predictions.csv"
+      ],
+      "active_caller": false
+    },
+    {
+      "file": "src/diagnose_record_26.py",
+      "imports": [
+        "from pathlib import Path",
+        "import numpy as np",
+        "import pandas as pd"
+      ],
+      "references": [
+        {
+          "file": "docs/LATENCY_REPORT.md",
+          "line": 99,
+          "text": "    \"/workspaces/Predictive_Oxygen_Controller/src/diagnose_record_26.py\": \"d273155423c479028cebe40d8d2f4ffa471928db88e14a2ddfbdb8186d7df344\","
+        }
+      ],
+      "mentioned_artifacts": [
+        "recording_diagnostic_features.csv",
+        "recording_diagnostic_summary.csv",
+        "results/elm_dataset.csv",
+        "results/recording_diagnostic_features.csv",
+        "results/recording_diagnostic_summary.csv"
+      ],
+      "active_caller": false
+    },
+    {
+      "file": "src/diagnose_thresholds.py",
+      "imports": [
+        "from pathlib import Path",
+        "import numpy as np",
+        "import pandas as pd",
+        "from sklearn.metrics import average_precision_score, precision_score, recall_score, f1_score"
+      ],
+      "references": [
+        {
+          "file": "docs/LATENCY_REPORT.md",
+          "line": 100,
+          "text": "    \"/workspaces/Predictive_Oxygen_Controller/src/diagnose_thresholds.py\": \"3ea5188fe3486c199a8730449fd4bc06916bde5342464ced8d542da2c61f0aea\","
+        }
+      ],
+      "mentioned_artifacts": [
+        "advanced_dataset_cleaned.csv",
+        "advanced_test_predictions.csv"
+      ],
+      "active_caller": false
+    },
+    {
+      "file": "src/elm_experiment.py",
+      "imports": [
+        "from pathlib import Path",
+        "import time",
+        "import numpy as np",
+        "import pandas as pd",
+        "from scipy.signal import butter, sosfiltfilt, find_peaks",
+        "from sklearn.model_selection import train_test_split",
+        "from sklearn.preprocessing import StandardScaler",
+        "from sklearn.metrics import accuracy_score, precision_score, recall_score, average_precision_score, confusion_matrix"
+      ],
+      "references": [
+        {
+          "file": "src/conventional_experiment.py",
+          "line": 19,
+          "text": "from elm_experiment import FEATURES"
+        },
+        {
+          "file": "src/elm_threshold_sweep.py",
+          "line": 22,
+          "text": "from elm_experiment import FEATURES, fit_elm, predict_elm"
+        },
+        {
+          "file": "src/elm_threshold_check.py",
+          "line": 17,
+          "text": "from elm_experiment import FEATURES, fit_elm, predict_elm"
+        },
+        {
+          "file": "src/inspect_elm_dataset.py",
+          "line": 11,
+          "text": "        \"Run python src/elm_experiment.py first.\""
+        },
+        {
+          "file": "src/compare_models.py",
+          "line": 35,
+          "text": "        \"Run src/elm_experiment.py first to create \""
+        },
+        {
+          "file": "docs/PROJECT_AUDIT.md",
+          "line": 4,
+          "text": "There are 30 paired raw CSV recordings (01\u201330), an eight-column prepared `results/elm_dataset.csv`, 26 recording groups, and 17,089 rows with 466 positives. Historical counts for 07/12/17/26/29/30 exa"
+        },
+        {
+          "file": "docs/PROJECT_AUDIT.md",
+          "line": 7,
+          "text": "`main.py` plots one recording. `features.py` processes record 01 at import time, then `labeling.py` labels it at import time. `elm_experiment.py` independently extracts all raw records and creates the"
+        },
+        {
+          "file": "docs/PROJECT_AUDIT.md",
+          "line": 35,
+          "text": "Model training/validation has completed for 120 outer/model combinations using fixed configurations and three grouped inner folds each. No slow grid search was reintroduced. Old scripts/results remain"
+        },
+        {
+          "file": "docs/LATENCY_REPORT.md",
+          "line": 101,
+          "text": "    \"/workspaces/Predictive_Oxygen_Controller/src/elm_experiment.py\": \"4da0b97ecd74820ac9ea95fa59d2b9d03eab657e9595526edb8c3c66476eddbf\","
+        }
+      ],
+      "mentioned_artifacts": [
+        "_Numerics.csv",
+        "_Signals.csv",
+        "elm_dataset.csv",
+        "elm_metrics.csv"
+      ],
+      "active_caller": false
+    },
+    {
+      "file": "src/elm_threshold_check.py",
+      "imports": [
+        "from pathlib import Path",
+        "import numpy as np",
+        "import pandas as pd",
+        "from sklearn.model_selection import train_test_split",
+        "from sklearn.preprocessing import StandardScaler",
+        "from sklearn.metrics import accuracy_score, precision_score, recall_score, average_precision_score, confusion_matrix",
+        "from elm_experiment import FEATURES, fit_elm, predict_elm"
+      ],
+      "references": [
+        {
+          "file": "docs/LATENCY_REPORT.md",
+          "line": 102,
+          "text": "    \"/workspaces/Predictive_Oxygen_Controller/src/elm_threshold_check.py\": \"08f4f8a4199d7ce6029c5d4e6c64ab68536600107821cedaabe5abb6ec5c187c\","
+        }
+      ],
+      "mentioned_artifacts": [
+        "elm_dataset.csv"
+      ],
+      "active_caller": false
+    },
+    {
+      "file": "src/elm_threshold_sweep.py",
+      "imports": [
+        "from pathlib import Path",
+        "import sys",
+        "import numpy as np",
+        "import pandas as pd",
+        "from sklearn.model_selection import train_test_split",
+        "from sklearn.preprocessing import StandardScaler",
+        "from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, average_precision_score, confusion_matrix",
+        "from elm_experiment import FEATURES, fit_elm, predict_elm"
+      ],
+      "references": [
+        {
+          "file": "docs/LATENCY_REPORT.md",
+          "line": 103,
+          "text": "    \"/workspaces/Predictive_Oxygen_Controller/src/elm_threshold_sweep.py\": \"7f2683ab24c6b0abd8cbb00c4f7e06a847ca80ec6848e8c52c0e818175b6bc9d\","
+        }
+      ],
+      "mentioned_artifacts": [
+        "elm_dataset.csv",
+        "elm_threshold_sweep.csv"
+      ],
+      "active_caller": false
+    },
+    {
+      "file": "src/feature_audit.py",
+      "imports": [
+        "from pathlib import Path",
+        "import numpy as np",
+        "import pandas as pd"
+      ],
+      "references": [
+        {
+          "file": "docs/LATENCY_REPORT.md",
+          "line": 105,
+          "text": "    \"/workspaces/Predictive_Oxygen_Controller/src/feature_audit.py\": \"02c72ed305ecd218975efe0deb1474a1e4cb4e559eadab2e5c83a7167ed4a633\","
+        }
+      ],
+      "mentioned_artifacts": [
+        "advanced_dataset.csv",
+        "feature_audit.csv"
+      ],
+      "active_caller": false
+    },
+    {
+      "file": "src/inspect_elm_dataset.py",
+      "imports": [
+        "from pathlib import Path",
+        "import pandas as pd"
+      ],
+      "references": [
+        {
+          "file": "docs/LATENCY_REPORT.md",
+          "line": 107,
+          "text": "    \"/workspaces/Predictive_Oxygen_Controller/src/inspect_elm_dataset.py\": \"01661777ea73a33949c8e0b691789bb3d74fee91fc84a478bd9db3a143480f66\","
+        }
+      ],
+      "mentioned_artifacts": [
+        "elm_dataset.csv"
+      ],
+      "active_caller": false
+    },
+    {
+      "file": "src/inspect_elm_scores.py",
+      "imports": [
+        "from pathlib import Path",
+        "import numpy as np",
+        "import pandas as pd"
+      ],
+      "references": [
+        {
+          "file": "docs/LATENCY_REPORT.md",
+          "line": 108,
+          "text": "    \"/workspaces/Predictive_Oxygen_Controller/src/inspect_elm_scores.py\": \"4c3861961a04afe50e9e0e29c7637829cc01815b2e44aa208d1c1aa8d10c4432\","
+        }
+      ],
+      "mentioned_artifacts": [
+        "results/elm_score_diagnostics.csv",
+        "results/recording_aware_elm_v2_predictions.csv"
+      ],
+      "active_caller": false
+    },
+    {
+      "file": "src/inspect_events.py",
+      "imports": [
+        "from pathlib import Path",
+        "import pandas as pd",
+        "import numpy as np"
+      ],
+      "references": [
+        {
+          "file": "docs/PROJECT_AUDIT.md",
+          "line": 15,
+          "text": "The all-record builder uses strictly future `(t,t+30]` numeric observations and <=94%, but removes current SpO2 <=94 and accepts incomplete windows at the end. Thus records 04/08/09/22 disappear and 1"
+        },
+        {
+          "file": "docs/PROJECT_AUDIT.md",
+          "line": 35,
+          "text": "Model training/validation has completed for 120 outer/model combinations using fixed configurations and three grouped inner folds each. No slow grid search was reintroduced. Old scripts/results remain"
+        },
+        {
+          "file": "docs/LATENCY_REPORT.md",
+          "line": 109,
+          "text": "    \"/workspaces/Predictive_Oxygen_Controller/src/inspect_events.py\": \"95ac2ef7be146e7f6b66f5f1ea43ea466a22c132b13c5afd829e77c67b37482e\","
+        }
+      ],
+      "mentioned_artifacts": [
+        "_Numerics.csv",
+        "record_07_events.csv",
+        "results/record_07_events.csv"
+      ],
+      "active_caller": false
+    },
+    {
+      "file": "src/label_audit.py",
+      "imports": [
+        "from pathlib import Path",
+        "import numpy as np",
+        "import pandas as pd"
+      ],
+      "references": [
+        {
+          "file": "docs/LATENCY_REPORT.md",
+          "line": 110,
+          "text": "    \"/workspaces/Predictive_Oxygen_Controller/src/label_audit.py\": \"ae4a68c4d76f0097857b5232fa01df567e81d5159347fc43741377253328593d\","
+        }
+      ],
+      "mentioned_artifacts": [
+        "advanced_dataset.csv",
+        "label_audit.csv"
+      ],
+      "active_caller": false
+    },
+    {
+      "file": "src/recall_first_elm.py",
+      "imports": [
+        "from pathlib import Path",
+        "import time",
+        "import numpy as np",
+        "import pandas as pd",
+        "from sklearn.preprocessing import StandardScaler",
+        "from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, average_precision_score, confusion_matrix"
+      ],
+      "references": [
+        {
+          "file": "docs/LATENCY_REPORT.md",
+          "line": 114,
+          "text": "    \"/workspaces/Predictive_Oxygen_Controller/src/recall_first_elm.py\": \"130cd239bf93e0e9bc10c3f59cd92afec07885783060e33a99868b5e9da9d0f5\","
+        }
+      ],
+      "mentioned_artifacts": [
+        "elm_dataset.csv",
+        "recall_first_elm_search.csv",
+        "recall_first_elm_test_metrics.csv",
+        "recall_first_elm_test_predictions.csv"
+      ],
+      "active_caller": false
+    },
+    {
+      "file": "src/recording_aware_elm.py",
+      "imports": [
+        "from pathlib import Path",
+        "import itertools",
+        "import time",
+        "import numpy as np",
+        "import pandas as pd",
+        "from sklearn.preprocessing import StandardScaler",
+        "from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, average_precision_score, confusion_matrix"
+      ],
+      "references": [
+        {
+          "file": "docs/LATENCY_REPORT.md",
+          "line": 115,
+          "text": "    \"/workspaces/Predictive_Oxygen_Controller/src/recording_aware_elm.py\": \"731ab0bf458f5298a9937da998c35db8df6288506299fa37658064df9d61e439\","
+        }
+      ],
+      "mentioned_artifacts": [
+        "recording_aware_elm_predictions.csv",
+        "recording_aware_elm_results.csv",
+        "results/elm_dataset.csv"
+      ],
+      "active_caller": false
+    },
+    {
+      "file": "src/recording_aware_elm_v2.py",
+      "imports": [
+        "from pathlib import Path",
+        "import time",
+        "import warnings",
+        "import numpy as np",
+        "import pandas as pd",
+        "from sklearn.metrics import average_precision_score, confusion_matrix, f1_score, precision_recall_curve, precision_score, recall_score",
+        "from sklearn.preprocessing import StandardScaler"
+      ],
+      "references": [
+        {
+          "file": "src/inspect_elm_scores.py",
+          "line": 14,
+          "text": "            f\"{FILE} not found. Run recording_aware_elm_v2.py first.\""
+        },
+        {
+          "file": "docs/LATENCY_REPORT.md",
+          "line": 116,
+          "text": "    \"/workspaces/Predictive_Oxygen_Controller/src/recording_aware_elm_v2.py\": \"29bc9e58d59c992361bb295f30145169a35c8b2ee24705fd8a0653fe21cfbe59\","
+        }
+      ],
+      "mentioned_artifacts": [
+        "elm_dataset.csv",
+        "recording_aware_elm_v2_predictions.csv",
+        "recording_aware_elm_v2_predictions_checkpoint.csv",
+        "recording_aware_elm_v2_results.csv",
+        "recording_aware_elm_v2_results_checkpoint.csv"
+      ],
+      "active_caller": false
+    },
+    {
+      "file": "src/reporting.py",
+      "imports": [
+        "import argparse",
+        "import json",
+        "import os",
+        "from pathlib import Path",
+        "import matplotlib",
+        "import matplotlib.pyplot as plt",
+        "import numpy as np",
+        "import pandas as pd",
+        "from sklearn.metrics import precision_recall_curve",
+        "from .config import OUTPUT_DIR, DATA_DIR, ROOT, FEATURES, TARGET_RECALL, HORIZON, SPO2_THRESHOLD, MAX_NUMERIC_GAP",
+        "from .dataset import load_csv",
+        "from .evaluation import metrics, alarm_statistics",
+        "import gzip"
+      ],
+      "references": [
+        {
+          "file": "docs/HARDENING_SUMMARY.md",
+          "line": 22,
+          "text": "- src/target_reporting.py (new): separate target reports, pooled/macro and recording-class metrics, matched frozen references, score/PR diagnostics and raw-event matching; historical reports are not r"
+        },
+        {
+          "file": "docs/LATENCY_REPORT.md",
+          "line": 118,
+          "text": "    \"/workspaces/Predictive_Oxygen_Controller/src/reporting.py\": \"8019f3a8f70b94e2bcda7cf764b15840421a88253d228f6ce90a2a7401d62822\","
+        }
+      ],
+      "mentioned_artifacts": [
+        "_Numerics.csv",
+        "_diagnostic.png",
+        "_feature_distributions.csv",
+        "benchmark_environment.json",
+        "causal_dataset.csv",
+        "constant_references.csv",
+        "dataset_audit.csv",
+        "event_metrics.csv",
+        "event_summary.csv",
+        "feature_audit.csv",
+        "ground_truth_events.csv",
+        "impending_timestamp_metrics.csv",
+        "latency_benchmark.csv",
+        "model_comparison.csv",
+        "model_comparison.png",
+        "output_hashes.json",
+        "per_record_predictions.csv",
+        "per_recording_metrics.csv",
+        "pooled_metrics.csv",
+        "record_diagnostics.csv",
+        "record_feature_shift.csv",
+        "run_manifest.json",
+        "score_distributions.csv",
+        "threshold_analysis.csv",
+        "uncertainty.csv",
+        "validation_metrics.csv",
+        "validation_threshold_tradeoffs.png"
+      ],
+      "active_caller": false
+    },
+    {
+      "file": "src/verify_labels.py",
+      "imports": [
+        "from pathlib import Path",
+        "import numpy as np",
+        "import pandas as pd"
+      ],
+      "references": [
+        {
+          "file": "docs/LATENCY_REPORT.md",
+          "line": 120,
+          "text": "    \"/workspaces/Predictive_Oxygen_Controller/src/verify_labels.py\": \"ccb2a1fd20b4c1978d1b93962590eb5a47dabd6b4a7da5d114c36735d79afd75\""
+        }
+      ],
+      "mentioned_artifacts": [
+        "_Numerics.csv",
+        "advanced_dataset.csv",
+        "label_verification.csv"
+      ],
+      "active_caller": false
+    }
+  ],
+  "historical_output_archive": {
+    "results/PPG_Filtered_Comparison.png": "01a561b0fba813b7b2ad7056d1c19e3a3b3e1eb059b5a326920d5e38fa0fe96f",
+    "results/recording_aware_elm_results.csv": "7e4f048c87d34dc40ef866661fab2ad6fe6ee8bd67ddb3396fd2c982b821d560",
+    "results/advanced_dataset.csv": "427d3bee245e5d632005b6a118a313ef63145f52aa9452930e0b47e4e0f6f451",
+    "results/recall_first_elm_test_predictions.csv": "ae35ea82df4077c985de300621aa4460fa90c78fc1b75780064354a0025dfe64",
+    "results/recall_first_elm_search.csv": "b274312d463ce19cc83bdbee5935d0d5c973e3dab7d5700322a68e3ecd7114c0",
+    "results/label_audit.csv": "fc50722db298fd79356df852e77d591781a527b00187ac866d6f176b1278fb96",
+    "results/PPG_Peaks.png": "3f7819c303eca6cfb33565a575eb1b0155827be1d3acc22e6dd46c6ebd6f4b18",
+    "results/recording_diagnostic_summary.csv": "aa1a49aec62495555e08f95daa6b8f8c9778ed2ad4e9e973483bae49ab6e2192",
+    "results/record_07_events.csv": "729643742c98a86916b9ff136ef88082a2d962b13cce64841b08329e6e68f0ec",
+    "results/recording_aware_elm_predictions.csv": "578fb02805f74da69765cb15e7b491c79d8fa940e25ae01ac8f68c67c4d4151e",
+    "results/logistic_metrics.csv": "98d899eb7a7bc07d577b1b3209cc332314d7bc8c11f4c43e5664de8502c95042",
+    "results/labeled_record_01.csv": "d151a1714ec3a6adc937ba82d6143472e5dbe90736494d04a8c8980faebfa839",
+    "results/filtered_ppg.csv": "37ec1769d6dba59badc2959867142696c2b09e9a10136c1ff44c7e71f12da8ec",
+    "results/advanced_test_predictions.csv": "ba4b41f1fa222dff58ac62df88e3b73cdb572a7c9e0f9e475f6a0550d2a322c5",
+    "results/recall_first_elm_test_metrics.csv": "2fb038c9c04fd56d31ba61aceeee891b890bb636fb61b15fbd045927cc28548e",
+    "results/feature_audit.csv": "bb78cf61690cd6b8a13d976dd36ca8dfff1a068b2f03f978ee47c167b97f29ea",
+    "results/model_comparison.csv": "2bcac6cbb203bf0113c6570a7c594f416cbb707504e2b0322f6aa1774bc2ad78",
+    "results/elm_score_diagnostics.csv": "edc0bbca0abcc58ac6a16b9788eb1b9b9cc5780424cf02a8cc8f311cb746a247",
+    "results/label_verification.csv": "5341dd173da7dc40bd1cd5d91fa851a0cf4177434843faad011d980d006ade0d",
+    "results/elm_metrics.csv": "fa49d1bd762229a7357d125115e63d5cc89dec1fa013d7cec2dad56d90c37ff0",
+    "results/recording_diagnostic_features.csv": "e201b2ea606b51927b926f9f8365e4d148bd0eb3c400f84db690e0f6c9dc1d15",
+    "results/latency_benchmark.csv": "70f57147cc635e5a10c8cc419d9d51ee0098f14fc3d1879d428d776f5d41ebb1",
+    "results/elm_threshold_sweep.csv": "bd2e855d7a9559d5b6206a61a270511cced36621cfe28a19b15a971807b3b0b7",
+    "results/SpO2.png": "507d578fddc6370afd8fdad82bbf729932a2e519365cdf8cdb1ab874e3aade87",
+    "results/PPG.png": "8162d1c75c4d79e88721fbcfc811aa33293762c18059dda0cc7984ae9cb150b9",
+    "results/advanced_dataset_cleaned.csv": "5d7f976d25ab21b4c6ff649d886d3a209f88328651863ccdf13ddd4ca53d8cf2",
+    "results/advanced_model_comparison.csv": "5e0624062d48d5554613c29c0cbc6ed2ae4d3f9d2c5601931c513e3d37f80285",
+    "results/features_record_01.csv": "5274756f417ff1f6fcc2d196f9c422eda3403bbe1d1e45cbefb5e839842ec6ea"
+  },
+  "output_dependency_note": "Archived root outputs have no explicit current src/test path consumer. Generic metric basenames in active modules resolve under target output or results/validated, not these root files. Original derived data and v2 results/predictions remain in place."
+}

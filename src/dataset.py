@@ -6,7 +6,8 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 from .config import DATA_DIR, INPUT_DATASET, OUTPUT_DIR, BASE_FEATURES, FEATURES, HORIZON, SPO2_THRESHOLD, MAX_NUMERIC_GAP
-from .labeling import future_labels
+from .labeling import future_labels, onset_labels, desaturation_events
+from .config import HARDENED_DIR, TARGETS, target_definition
 from .preprocessing import extract_pulses, canonical_waveform_times
 from .features import add_features
 
@@ -63,9 +64,11 @@ def independent_label_audit(legacy, data_dir=DATA_DIR):
     return pd.DataFrame(rows)
 
 
-def build_dataset(output=OUTPUT_DIR, data_dir=DATA_DIR, legacy_path=INPUT_DATASET):
+def build_dataset(output=None, data_dir=DATA_DIR, legacy_path=INPUT_DATASET, target="future_low"):
+    target_definition(target)
+    output = HARDENED_DIR / target if output is None else output
     output=Path(output); output.mkdir(parents=True,exist_ok=True)
-    parts=[];audit=[];raw_quality=[];stages=[];sources={}
+    parts=[];audit=[];raw_quality=[];stages=[];sources={};events=[]
     pairs=sorted(data_dir.glob('bidmc_*_Signals.csv'))
     if not pairs:raise FileNotFoundError(f'No BIDMC waveform CSVs in {data_dir}')
     for path in pairs:
@@ -91,9 +94,15 @@ def build_dataset(output=OUTPUT_DIR, data_dir=DATA_DIR, legacy_path=INPUT_DATASE
             if np.isfinite(y):
                 expected=int(np.min(s[(nt>t)&(nt<=t+HORIZON)])<=SPO2_THRESHOLD)
                 if expected!=y:raise AssertionError('Independent label verification failed')
-        d['Label']=labels;d['Future_Min_SpO2_30s']=minimum;d['Target_Status']=reasons
+        d['Label_Future_Low']=labels
+        onset, current, onset_reasons=onset_labels(d.time_s,num['Time [s]'],num.SpO2)
+        d['Label_New_Onset']=onset
+        d['Label']=labels if target=='future_low' else onset
+        reasons=reasons if target=='future_low' else onset_reasons
+        d['Future_Min_SpO2_30s']=minimum;d['Target_Status']=reasons
+        events.extend({'Record':r,**e} for e in desaturation_events(num['Time [s]'],num.SpO2))
         # Current SpO2 is diagnostic only; backward join preserves original time coordinate.
-        d=pd.merge_asof(d,num[['Time [s]','SpO2']].rename(columns={'Time [s]':'time_s','SpO2':'spo2'}).astype({'time_s':float}),on='time_s',direction='backward',tolerance=1.01)
+        d=pd.merge_asof(d,num[['Time [s]','SpO2']].rename(columns={'Time [s]':'time_s','SpO2':'spo2'}).astype({'time_s':float}),on='time_s',direction='backward',tolerance=MAX_NUMERIC_GAP)
         # Compute features before label exclusions to retain all available causal history.
         d=add_features(d)
         d.to_csv(output/f'raw_pulses_{r:02d}.csv',index=False)
@@ -119,6 +128,8 @@ def build_dataset(output=OUTPUT_DIR, data_dir=DATA_DIR, legacy_path=INPUT_DATASE
     if result.empty:raise ValueError('No complete future targets remain; check numeric coverage and waveform pulse quality')
     validate_dataset(result);result.to_csv(output/'causal_dataset.csv',index=False)
     pd.DataFrame(audit).to_csv(output/'dataset_audit.csv',index=False)
+    pd.DataFrame(events,columns=['Record','Event_ID','Onset_s','End_s','Qualifying_Onset','Minimum_SpO2','Has_91_92','Status']).to_csv(output/'ground_truth_events.csv',index=False)
+    (output/'target_definition.json').write_text(json.dumps(target_definition(target),indent=2))
     pd.DataFrame(raw_quality).to_csv(output/'raw_data_quality.csv',index=False)
     pd.DataFrame(stages).to_csv(output/'preprocessing_stages.csv',index=False)
     quality=validate_dataset(result)
@@ -134,6 +145,6 @@ def build_dataset(output=OUTPUT_DIR, data_dir=DATA_DIR, legacy_path=INPUT_DATASE
 
 
 def main():
-    parser=argparse.ArgumentParser();parser.add_argument('--output',type=Path,default=OUTPUT_DIR);a=parser.parse_args()
-    d=build_dataset(a.output);print(json.dumps(validate_dataset(d),indent=2,default=int))
+    parser=argparse.ArgumentParser();parser.add_argument('--output',type=Path);parser.add_argument('--target',choices=TARGETS,default='future_low');a=parser.parse_args()
+    d=build_dataset(a.output,target=a.target);print(json.dumps(validate_dataset(d),indent=2,default=int))
 if __name__=='__main__':main()

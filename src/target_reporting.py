@@ -43,7 +43,7 @@ def evaluate_events(predictions, events, target):
             status = 'eligible'
             if not event['Qualifying_Onset']:
                 status = 'left_censored_or_unknown_prior'
-            elif onset - config.HORIZON < nt[0] or not valid.all() or np.diff(nt[prior]).max(initial=0) > config.MAX_NUMERIC_GAP:
+            elif onset - config.HORIZON < nt[0] or not valid.all() or np.diff(np.r_[onset - config.HORIZON, nt[prior], onset]).max(initial=0) > config.MAX_NUMERIC_GAP:
                 status = 'incomplete_raw_lead_in'
             q = group[(group.Record == r) & (group.time_s >= onset - config.HORIZON) & (group.time_s < onset)]
             if target == 'future_low':

@@ -1,0 +1,69 @@
+{
+  "status": "passed",
+  "tests": {
+    "count": 91,
+    "skipped": 0,
+    "failures": 0,
+    "errors": 0,
+    "seconds": 11.33,
+    "log_sha256": "82d39980c3e93cec359fb1e60c53ba5efc62b3a61b8928052e6c51e186979cd3"
+  },
+  "protected_existing_artifacts_unchanged": 529,
+  "raw_sources_unchanged": 60,
+  "independent_calculation_checks": 41,
+  "discrepancies": 0,
+  "boundary_checks": [
+    {
+      "Target": "future_low",
+      "Outer_Model_Folds": 120,
+      "Training_OOF_Rows": 2338212,
+      "Threshold_Recomputation": "passed",
+      "Split_Disjointness": "passed",
+      "No_SpO2_Feature": "passed"
+    },
+    {
+      "Target": "new_onset",
+      "Outer_Model_Folds": 104,
+      "Training_OOF_Rows": 1605000,
+      "Threshold_Recomputation": "passed",
+      "Split_Disjointness": "passed",
+      "No_SpO2_Feature": "passed"
+    }
+  ],
+  "identical_eligibility_across_all_models_baselines_and_methods": true,
+  "one_to_one_matching_no_duplicate_episode_credit": true,
+  "actual_saved_events_unchanged_after_boundary_correction": [
+    {
+      "target": "future_low",
+      "event_rows": 88,
+      "boundary_correction_changes_on_actual_data": 0
+    },
+    {
+      "target": "new_onset",
+      "event_rows": 88,
+      "boundary_correction_changes_on_actual_data": 0
+    }
+  ],
+  "local_documentation_links": 183,
+  "predictor_label_feature_config_source_hashes_match_saved_runs": true,
+  "final_manifest_inputs_outputs_and_code_verified": true,
+  "audit_source_hashes": {
+    "src/reliability_evaluation.py": "a7a08801683684070c52f8296cf2fac7957bb80464f3c55c19a04287fcc365d2",
+    "src/target_reporting.py": "1f884c01351a7da218b96272408cc61dd72e92eea69e1280f3f466a3611e68fc",
+    "tests/test_reliability.py": "ef52f1e5dafd4010823667a90bc6796f7f7b5313a8fafc45f8084329baf5b2ae",
+    "results/reliability/shared_alert_check.py": "3f136a4bdc7d4d8e6e04a9ea5a2b0ea2eb93b0722a83990e4d1d77d37363b2c5",
+    "results/reliability/verify_preservation.py": "43c67f4cc00cea8d00b656083c978f6048617e793d64a33dff9aceed8fdec6de",
+    "results/reliability/original_reference_check.py": "4744fbdea4926f0e7ea87cdad383e7e09e77c4f6fba685a1f2f444269d00cb47",
+    "results/reliability/boundary_checks.py": "4d4ef338407ccb0126a5572749a7f9dabfc5ada638d90e67e84baa6d9bcad7e2"
+  },
+  "executed_commands": [
+    "python -m src.reliability_evaluation --output results/reliability/final",
+    "PYTHONPATH=. python results/reliability/boundary_checks.py",
+    "python results/reliability/shared_alert_check.py",
+    "PYTHONPATH=. python results/reliability/original_reference_check.py",
+    "python -m unittest discover -s tests -v",
+    "python -m src.check_project --links",
+    "git diff --check"
+  ],
+  "no_model_training_or_threshold_changes": true
+}

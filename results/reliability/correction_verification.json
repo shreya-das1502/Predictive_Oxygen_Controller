@@ -1,0 +1,12 @@
+[
+  {
+    "target": "future_low",
+    "event_rows": 88,
+    "boundary_correction_changes_on_actual_data": 0
+  },
+  {
+    "target": "new_onset",
+    "event_rows": 88,
+    "boundary_correction_changes_on_actual_data": 0
+  }
+]

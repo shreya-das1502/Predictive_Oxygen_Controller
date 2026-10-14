@@ -72,3 +72,5 @@ The models produce excessive false positives; high pooled future-low recall is p
 Only the 30 locally available BIDMC recordings are evaluated. Recording identity is not verified patient identity. CSV timing precision, missing numerics, unknown monitor delay, few onset-bearing recordings and unadjudicated one-reading excursions limit interpretation. Computational latency excludes physiological acquisition and is distinct from the prediction horizon.
 
 Current figure hub: [PNG/PDF indices](results/validated/figures/INDEX.md). Final handoff: [FINAL_REPORT](docs/FINAL_REPORT.md).
+
+The [reliability audit](docs/RELIABILITY_AUDIT.md) independently verifies event lead times and false alarms, adds fixed-window one-to-one alarm matching and compares simple baselines without retraining. Reproduce with `python -m src.reliability_evaluation --output results/reliability/reproduction` (choose a new destination).

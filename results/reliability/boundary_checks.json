@@ -1,0 +1,18 @@
+[
+  {
+    "Target": "future_low",
+    "Outer_Model_Folds": 120,
+    "Training_OOF_Rows": 2338212,
+    "Threshold_Recomputation": "passed",
+    "Split_Disjointness": "passed",
+    "No_SpO2_Feature": "passed"
+  },
+  {
+    "Target": "new_onset",
+    "Outer_Model_Folds": 104,
+    "Training_OOF_Rows": 1605000,
+    "Threshold_Recomputation": "passed",
+    "Split_Disjointness": "passed",
+    "No_SpO2_Feature": "passed"
+  }
+]

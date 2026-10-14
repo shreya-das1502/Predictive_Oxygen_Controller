@@ -1,0 +1,6 @@
+{
+  "protocol_sha256": "bee2526494d80727a01d30c0053b7d9f7771f3967796c3f8c9efb1a8c701db71",
+  "selected_thresholds_sha256": "4164f59e66f45bebfaae356dfc5ee6c02cfb1f79f6d82b44ad2f36523cd2eea6",
+  "phase": "ALL selections completed before reading outer held-out prediction values",
+  "rows": 672
+}

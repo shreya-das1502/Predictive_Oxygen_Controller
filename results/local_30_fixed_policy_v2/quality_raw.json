@@ -1,0 +1,193 @@
+{
+  "dependencies": {
+    "numpy": "2.5.3",
+    "pandas": "3.0.6",
+    "scipy": "1.18.1",
+    "scikit-learn": "1.9.1",
+    "matplotlib": "3.11.2",
+    "joblib": "1.6.0",
+    "threadpoolctl": "3.7.0"
+  },
+  "raw_recordings": [
+    {
+      "Record": 1,
+      "Numeric_Rows": 481,
+      "Missing_SpO2": 13,
+      "Observed_Low_Readings": 0
+    },
+    {
+      "Record": 2,
+      "Numeric_Rows": 481,
+      "Missing_SpO2": 0,
+      "Observed_Low_Readings": 0
+    },
+    {
+      "Record": 3,
+      "Numeric_Rows": 481,
+      "Missing_SpO2": 0,
+      "Observed_Low_Readings": 0
+    },
+    {
+      "Record": 4,
+      "Numeric_Rows": 481,
+      "Missing_SpO2": 0,
+      "Observed_Low_Readings": 481
+    },
+    {
+      "Record": 5,
+      "Numeric_Rows": 481,
+      "Missing_SpO2": 6,
+      "Observed_Low_Readings": 0
+    },
+    {
+      "Record": 6,
+      "Numeric_Rows": 481,
+      "Missing_SpO2": 0,
+      "Observed_Low_Readings": 0
+    },
+    {
+      "Record": 7,
+      "Numeric_Rows": 481,
+      "Missing_SpO2": 0,
+      "Observed_Low_Readings": 1
+    },
+    {
+      "Record": 8,
+      "Numeric_Rows": 481,
+      "Missing_SpO2": 0,
+      "Observed_Low_Readings": 481
+    },
+    {
+      "Record": 9,
+      "Numeric_Rows": 481,
+      "Missing_SpO2": 0,
+      "Observed_Low_Readings": 481
+    },
+    {
+      "Record": 10,
+      "Numeric_Rows": 481,
+      "Missing_SpO2": 0,
+      "Observed_Low_Readings": 0
+    },
+    {
+      "Record": 11,
+      "Numeric_Rows": 481,
+      "Missing_SpO2": 0,
+      "Observed_Low_Readings": 0
+    },
+    {
+      "Record": 12,
+      "Numeric_Rows": 481,
+      "Missing_SpO2": 0,
+      "Observed_Low_Readings": 3
+    },
+    {
+      "Record": 13,
+      "Numeric_Rows": 481,
+      "Missing_SpO2": 0,
+      "Observed_Low_Readings": 0
+    },
+    {
+      "Record": 14,
+      "Numeric_Rows": 481,
+      "Missing_SpO2": 0,
+      "Observed_Low_Readings": 0
+    },
+    {
+      "Record": 15,
+      "Numeric_Rows": 481,
+      "Missing_SpO2": 0,
+      "Observed_Low_Readings": 0
+    },
+    {
+      "Record": 16,
+      "Numeric_Rows": 481,
+      "Missing_SpO2": 0,
+      "Observed_Low_Readings": 0
+    },
+    {
+      "Record": 17,
+      "Numeric_Rows": 481,
+      "Missing_SpO2": 0,
+      "Observed_Low_Readings": 444
+    },
+    {
+      "Record": 18,
+      "Numeric_Rows": 481,
+      "Missing_SpO2": 0,
+      "Observed_Low_Readings": 0
+    },
+    {
+      "Record": 19,
+      "Numeric_Rows": 481,
+      "Missing_SpO2": 102,
+      "Observed_Low_Readings": 0
+    },
+    {
+      "Record": 20,
+      "Numeric_Rows": 481,
+      "Missing_SpO2": 0,
+      "Observed_Low_Readings": 0
+    },
+    {
+      "Record": 21,
+      "Numeric_Rows": 481,
+      "Missing_SpO2": 0,
+      "Observed_Low_Readings": 0
+    },
+    {
+      "Record": 22,
+      "Numeric_Rows": 481,
+      "Missing_SpO2": 0,
+      "Observed_Low_Readings": 481
+    },
+    {
+      "Record": 23,
+      "Numeric_Rows": 481,
+      "Missing_SpO2": 0,
+      "Observed_Low_Readings": 0
+    },
+    {
+      "Record": 24,
+      "Numeric_Rows": 481,
+      "Missing_SpO2": 0,
+      "Observed_Low_Readings": 0
+    },
+    {
+      "Record": 25,
+      "Numeric_Rows": 481,
+      "Missing_SpO2": 1,
+      "Observed_Low_Readings": 0
+    },
+    {
+      "Record": 26,
+      "Numeric_Rows": 481,
+      "Missing_SpO2": 0,
+      "Observed_Low_Readings": 89
+    },
+    {
+      "Record": 27,
+      "Numeric_Rows": 481,
+      "Missing_SpO2": 0,
+      "Observed_Low_Readings": 0
+    },
+    {
+      "Record": 28,
+      "Numeric_Rows": 481,
+      "Missing_SpO2": 0,
+      "Observed_Low_Readings": 0
+    },
+    {
+      "Record": 29,
+      "Numeric_Rows": 481,
+      "Missing_SpO2": 0,
+      "Observed_Low_Readings": 474
+    },
+    {
+      "Record": 30,
+      "Numeric_Rows": 481,
+      "Missing_SpO2": 0,
+      "Observed_Low_Readings": 41
+    }
+  ]
+}

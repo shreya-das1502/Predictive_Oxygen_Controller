@@ -1,0 +1,326 @@
+{
+  "status": "passed",
+  "tests": {
+    "command": "OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python -m unittest discover -s tests -v",
+    "count": 126,
+    "skipped": 0,
+    "failures": 0,
+    "errors": 0,
+    "seconds": 62.226
+  },
+  "experiment_quality_gate": {
+    "status": "passed",
+    "selected_policies": 672,
+    "recording_rows": 8640,
+    "event_rows": 3168,
+    "summary_rows": 288,
+    "protected_files": 682
+  },
+  "project_quality_gates": {
+    "future": {
+      "dependencies": {
+        "numpy": "2.5.3",
+        "pandas": "3.0.6",
+        "scipy": "1.18.1",
+        "scikit-learn": "1.9.1",
+        "matplotlib": "3.11.2",
+        "joblib": "1.6.0",
+        "threadpoolctl": "3.7.0"
+      },
+      "local_links_checked": 246,
+      "quality_gate": {
+        "target": "future_low",
+        "rows": 20157,
+        "models": 4,
+        "figures_png": 23,
+        "cache": "verified",
+        "figure_sources": "verified"
+      }
+    },
+    "onset": {
+      "dependencies": {
+        "numpy": "2.5.3",
+        "pandas": "3.0.6",
+        "scipy": "1.18.1",
+        "scikit-learn": "1.9.1",
+        "matplotlib": "3.11.2",
+        "joblib": "1.6.0",
+        "threadpoolctl": "3.7.0"
+      },
+      "local_links_checked": 246,
+      "quality_gate": {
+        "target": "new_onset",
+        "rows": 16050,
+        "models": 4,
+        "figures_png": 23,
+        "cache": "verified",
+        "figure_sources": "verified"
+      }
+    },
+    "raw": {
+      "dependencies": {
+        "numpy": "2.5.3",
+        "pandas": "3.0.6",
+        "scipy": "1.18.1",
+        "scikit-learn": "1.9.1",
+        "matplotlib": "3.11.2",
+        "joblib": "1.6.0",
+        "threadpoolctl": "3.7.0"
+      },
+      "raw_recordings": [
+        {
+          "Record": 1,
+          "Numeric_Rows": 481,
+          "Missing_SpO2": 13,
+          "Observed_Low_Readings": 0
+        },
+        {
+          "Record": 2,
+          "Numeric_Rows": 481,
+          "Missing_SpO2": 0,
+          "Observed_Low_Readings": 0
+        },
+        {
+          "Record": 3,
+          "Numeric_Rows": 481,
+          "Missing_SpO2": 0,
+          "Observed_Low_Readings": 0
+        },
+        {
+          "Record": 4,
+          "Numeric_Rows": 481,
+          "Missing_SpO2": 0,
+          "Observed_Low_Readings": 481
+        },
+        {
+          "Record": 5,
+          "Numeric_Rows": 481,
+          "Missing_SpO2": 6,
+          "Observed_Low_Readings": 0
+        },
+        {
+          "Record": 6,
+          "Numeric_Rows": 481,
+          "Missing_SpO2": 0,
+          "Observed_Low_Readings": 0
+        },
+        {
+          "Record": 7,
+          "Numeric_Rows": 481,
+          "Missing_SpO2": 0,
+          "Observed_Low_Readings": 1
+        },
+        {
+          "Record": 8,
+          "Numeric_Rows": 481,
+          "Missing_SpO2": 0,
+          "Observed_Low_Readings": 481
+        },
+        {
+          "Record": 9,
+          "Numeric_Rows": 481,
+          "Missing_SpO2": 0,
+          "Observed_Low_Readings": 481
+        },
+        {
+          "Record": 10,
+          "Numeric_Rows": 481,
+          "Missing_SpO2": 0,
+          "Observed_Low_Readings": 0
+        },
+        {
+          "Record": 11,
+          "Numeric_Rows": 481,
+          "Missing_SpO2": 0,
+          "Observed_Low_Readings": 0
+        },
+        {
+          "Record": 12,
+          "Numeric_Rows": 481,
+          "Missing_SpO2": 0,
+          "Observed_Low_Readings": 3
+        },
+        {
+          "Record": 13,
+          "Numeric_Rows": 481,
+          "Missing_SpO2": 0,
+          "Observed_Low_Readings": 0
+        },
+        {
+          "Record": 14,
+          "Numeric_Rows": 481,
+          "Missing_SpO2": 0,
+          "Observed_Low_Readings": 0
+        },
+        {
+          "Record": 15,
+          "Numeric_Rows": 481,
+          "Missing_SpO2": 0,
+          "Observed_Low_Readings": 0
+        },
+        {
+          "Record": 16,
+          "Numeric_Rows": 481,
+          "Missing_SpO2": 0,
+          "Observed_Low_Readings": 0
+        },
+        {
+          "Record": 17,
+          "Numeric_Rows": 481,
+          "Missing_SpO2": 0,
+          "Observed_Low_Readings": 444
+        },
+        {
+          "Record": 18,
+          "Numeric_Rows": 481,
+          "Missing_SpO2": 0,
+          "Observed_Low_Readings": 0
+        },
+        {
+          "Record": 19,
+          "Numeric_Rows": 481,
+          "Missing_SpO2": 102,
+          "Observed_Low_Readings": 0
+        },
+        {
+          "Record": 20,
+          "Numeric_Rows": 481,
+          "Missing_SpO2": 0,
+          "Observed_Low_Readings": 0
+        },
+        {
+          "Record": 21,
+          "Numeric_Rows": 481,
+          "Missing_SpO2": 0,
+          "Observed_Low_Readings": 0
+        },
+        {
+          "Record": 22,
+          "Numeric_Rows": 481,
+          "Missing_SpO2": 0,
+          "Observed_Low_Readings": 481
+        },
+        {
+          "Record": 23,
+          "Numeric_Rows": 481,
+          "Missing_SpO2": 0,
+          "Observed_Low_Readings": 0
+        },
+        {
+          "Record": 24,
+          "Numeric_Rows": 481,
+          "Missing_SpO2": 0,
+          "Observed_Low_Readings": 0
+        },
+        {
+          "Record": 25,
+          "Numeric_Rows": 481,
+          "Missing_SpO2": 1,
+          "Observed_Low_Readings": 0
+        },
+        {
+          "Record": 26,
+          "Numeric_Rows": 481,
+          "Missing_SpO2": 0,
+          "Observed_Low_Readings": 89
+        },
+        {
+          "Record": 27,
+          "Numeric_Rows": 481,
+          "Missing_SpO2": 0,
+          "Observed_Low_Readings": 0
+        },
+        {
+          "Record": 28,
+          "Numeric_Rows": 481,
+          "Missing_SpO2": 0,
+          "Observed_Low_Readings": 0
+        },
+        {
+          "Record": 29,
+          "Numeric_Rows": 481,
+          "Missing_SpO2": 0,
+          "Observed_Low_Readings": 474
+        },
+        {
+          "Record": 30,
+          "Numeric_Rows": 481,
+          "Missing_SpO2": 0,
+          "Observed_Low_Readings": 41
+        }
+      ]
+    }
+  },
+  "local_documentation_links": 246,
+  "frozen_thresholds_and_candidate_tables_byte_identical_between_runs": true,
+  "raw_source_csv_count": 60,
+  "new_recordings": 0,
+  "models_refitted": false,
+  "old_thresholds_or_configs_changed": false,
+  "all_learned_models_detected_events": 0,
+  "budgets": [
+    1,
+    5,
+    10
+  ],
+  "active_fraction_cap": 0.05,
+  "primary_clinical_budget": null,
+  "files_added_this_pass": [
+    "src/alarm_budget_experiment.py",
+    "tests/test_alarm_budget.py",
+    "docs/ALARM_BUDGET_EXPERIMENT.md",
+    "results/alarm_budget_experiment/"
+  ],
+  "existing_files_changed_this_pass": [],
+  "executed_commands": [
+    {
+      "command": "OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python -m src.alarm_budget_experiment --output results/alarm_budget_experiment/run01",
+      "status": "stopped after selection; empty event-table schema handling fixed in new code"
+    },
+    {
+      "command": "OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python -m src.alarm_budget_experiment --output results/alarm_budget_experiment/run02 --selection-source results/alarm_budget_experiment/run01",
+      "status": "passed"
+    },
+    {
+      "command": "OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python -m unittest discover -s tests -v",
+      "status": "126 passed; no skips"
+    },
+    {
+      "command": "OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python -m src.alarm_budget_experiment --output results/alarm_budget_experiment/run02 --verify",
+      "status": "passed"
+    },
+    {
+      "command": "OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python -m src.check_project --links --verify-run results/final/future_low",
+      "status": "passed"
+    },
+    {
+      "command": "OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python -m src.check_project --links --verify-run results/final/new_onset",
+      "status": "passed"
+    },
+    {
+      "command": "OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python -m src.check_project --audit",
+      "status": "passed"
+    },
+    {
+      "command": "git diff --check",
+      "status": "passed"
+    }
+  ],
+  "final_source_test_report_hashes": {
+    "src/alarm_budget_experiment.py": "6f016f4f2e8f489af139258a07e8cc835d072e96513fc0a932db1704e145d480",
+    "tests/test_alarm_budget.py": "2b4ac7351d0e8be118c1616b621dd023d73c9d881d1da22986078f00220c4e70",
+    "docs/ALARM_BUDGET_EXPERIMENT.md": "c786be016bb616e583379c1ccc05419e10d86f89bc58c8d979785e2f2ef09a0b"
+  },
+  "final_supplementary_artifact_hashes": {
+    "quality_future.json": "9f0d6fa38e6e576ba7a3e6474a78a2400e358bdb3b9511407506b0ab03aeef7c",
+    "README.md": "52e39b5fa76bd8862494bd860dd922b5bf61530000cf8e284250b9ff421680be",
+    "preservation.json": "30effa3343e76762b74b353e3092455fddf98719fc870c4c4a8ccad437702c27",
+    "quality_onset.json": "f6e9a0aea974ce7ce0482e5bfb5e2a082b691ef2a15a80fb080c60846fb3ff96",
+    "quality_raw.json": "8e67f08301539d07b80b02bc7b10131dba7d9f7921017426e988ca24b0667bfd",
+    "protocol.json": "bee2526494d80727a01d30c0053b7d9f7771f3967796c3f8c9efb1a8c701db71",
+    "AUDIT.md": "6efcac6adc6d77f1bea52a0365a724be9b0ea2031ecba22ab1c50694684615a6",
+    "test_results.txt": "12cd7980a7daa3c0826f27b19480f4f9550ba547f4d0ec68e1e0b05719cf52cf",
+    "run01_execution.log": "d116c54381241007c374b878604bd568fc9f39922bb1257e65817c8880e1084f",
+    "run02_execution.log": "684275d84449050926a9433d16aaa540fa671f091d4718d831c89d3880fac772"
+  }
+}

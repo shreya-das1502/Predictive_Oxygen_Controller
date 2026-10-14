@@ -1,0 +1,8 @@
+{
+  "status": "passed",
+  "recordings": 30,
+  "protected_files": 662,
+  "event_recording_rows": 3840,
+  "summary_rows": 128,
+  "bootstrap_repetitions": 2000
+}

@@ -1,0 +1,42 @@
+{
+  "protocol_sha256": "bee2526494d80727a01d30c0053b7d9f7771f3967796c3f8c9efb1a8c701db71",
+  "inputs": {
+    "results/alarm_budget_experiment/run01/selected_thresholds.csv": "4164f59e66f45bebfaae356dfc5ee6c02cfb1f79f6d82b44ad2f36523cd2eea6",
+    "results/alarm_budget_experiment/run01/training_candidate_metrics.csv": "14bf61b34e7c81cefa1b2d91ad0947dfbe09f1e6b7766b565175ed24d68e3fab",
+    "results/alarm_budget_experiment/run01/selection_complete.json": "8deb48fd23bc2c3fbe4cbd06d3f1a3c6d8dfd7402ead0cfc88191a65e88d4b95",
+    "results/final/future_low/run_manifest.json": "3e0f0bfd0f1161192fb795ea4408dde5fb84d4bf4de0da4d1fd75a774481bbb2",
+    "results/final/future_low/causal_dataset.csv": "64d0d63805e1b64a451e5e56cba7b9eb3f76b385b862faf7698b2cc68a8e1d4d",
+    "results/final/future_low/validation_oof_predictions.csv.gz": "55a3935b8d1b0170b03028010dcb36e284e8820c4f6a671b9a00b14c075b17d8",
+    "results/final/future_low/per_record_predictions.csv": "cee135bf6f8edfd596bb553eef46dc60dd863ef0170d931fcc4e95ddcd09d92e",
+    "results/final/new_onset/run_manifest.json": "13f39a601292c8ed3ef31e894820e68d42b8b7a76928027972fbbcf0a036140a",
+    "results/final/new_onset/causal_dataset.csv": "31d4abc5930cd0de1746c6b66954cdbbe66b0a87a055fa2dcd52d6b6dd188dc9",
+    "results/final/new_onset/validation_oof_predictions.csv.gz": "f312322d843ec30022e2872a01c3ef5eeab9d039e11e304c0c6ec0c443a97212",
+    "results/final/new_onset/per_record_predictions.csv": "f670812a6b353195a3ca27709387c25687389d7a743bd59274b27cf8e86dd544"
+  },
+  "code_hashes": {
+    "src/alarm_budget_experiment.py": "6f016f4f2e8f489af139258a07e8cc835d072e96513fc0a932db1704e145d480",
+    "src/reliability_evaluation.py": "a7a08801683684070c52f8296cf2fac7957bb80464f3c55c19a04287fcc365d2",
+    "src/local_30_evaluation.py": "e3f9b1cf83da3e8480490eb22ef4df28c5585a1a2eda69deb1526d1169b223f5"
+  },
+  "models_refitted": false,
+  "threshold_only_nested_score_reuse": true,
+  "rows_selected": 672,
+  "patient_independence": "unverified",
+  "outputs": {
+    "bootstrap_intervals.csv": "6c8dd7b664875989ead52c944cba4e1354281edfed955b6f0b5ad11af4e5bbff",
+    "summary.csv": "62b378a599d02e2ae18df049c93767756201c6b788d472648c3c44acd0c8805b",
+    "per_recording.csv": "5879f9a0f90c18a8748487243de43ea737e3b751263e5a114e07fc87e2965fec",
+    "outer_predictions.csv.gz": "f5653b8e1c9fbe6fc0bc0079a461f5013580253a80a7148e4ec7883c2ed4a942",
+    "outer_constraint_status.csv": "b9b0a6f4b985b7e73824161f43df6b1233541be0d33bd79e039f53b6b8ac0555",
+    "selection_complete.json": "8deb48fd23bc2c3fbe4cbd06d3f1a3c6d8dfd7402ead0cfc88191a65e88d4b95",
+    "bootstrap_weights.csv.gz": "9604967ace380f3ad56d1b1536ca293cd2894c5f2e11eee45c2f700fa99fdf58",
+    "paired_bootstrap.csv": "a4ea8339752f8fbf3c3d7098f24f25694b4f63e7d54483eba1863063f54ff554",
+    "event_matches.csv": "7ef4a5063cfd6bf3a4ef3bc84ad307d806a1ed10cc9d6f40b6c75c0be8d127fc",
+    "lead_times.csv": "b7b367b38f61144b72fdb29560b57c7b26eba0dcaf3f50096a7eef85b5ca7794",
+    "alarm_starts.csv": "c80fa8e9eaba20608325fe04560ba8d81597cbd80cbaa807ee42455e4264dbd1",
+    "raw_events.csv": "c76aa4884f3fc4947a4a0d2c65b39f21072def20b6bf38eddc9a6ad412849792",
+    "training_candidate_metrics.csv": "14bf61b34e7c81cefa1b2d91ad0947dfbe09f1e6b7766b565175ed24d68e3fab",
+    "selected_thresholds.csv": "4164f59e66f45bebfaae356dfc5ee6c02cfb1f79f6d82b44ad2f36523cd2eea6",
+    "splits.json": "25f7979a31310def0af27510fb65c65fb85fceba6dc07f94be71b956fd5d4191"
+  }
+}

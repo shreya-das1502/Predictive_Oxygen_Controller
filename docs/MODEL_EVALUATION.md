@@ -1,5 +1,7 @@
 # Measured model evaluation
 
+> **Historical evidence — earlier recall-oriented operating policy.** Numerical results and original headings below are retained. “Genuine pre-onset detection” is historical wording: reusable positive timestamps and clipped-window leads do not establish newly starting warnings. The [reliability audit](RELIABILITY_AUDIT.md) explains that limitation; [FINAL_REPORT.md](FINAL_REPORT.md) reconciles the stages and [ALARM_BUDGET_EXPERIMENT.md](ALARM_BUDGET_EXPERIMENT.md) reports the final negative result. Do not present these earlier metrics as final alarm-budget performance, patient-independent validation, clinical readiness or proven model superiority.
+
 | Model | Recall | Precision | Specificity | F1 | PR_AUC_AP | Macro_Recall | Macro_F1 | FP | FN | False_Alerts_Per_Hour | Alert_Fraction |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | ELM | 0.9649 | 0.2390 | 0.0949 | 0.3831 | 0.2559 | 0.9371 | 0.2396 | 14093 | 161 | 140.6868 | 0.9187 |

@@ -1,6 +1,8 @@
 # Full pipeline guide
 
-Read the root README first. The first command is `python -m src.check_project --audit`. It is a fast read-only environment/source audit. Current output is **results/final/{future_low,new_onset}/**. The historical `validated` and `hardened` runs remain evidence, not alternate active pipelines.
+**Study-stage notice:** the core training diagram and recall-oriented metrics below document the earlier pipeline. The final planned evaluation is the [alarm-budget experiment](ALARM_BUDGET_EXPERIMENT.md), summarized and reconciled in [FINAL_REPORT.md](FINAL_REPORT.md). It uses training-only threshold selection on the saved nested scores, audited one-to-one alarm-start matching and separate outputs in `results/alarm_budget_experiment/run02/`. All four learned models detected 0/14 eligible 30-second events (0/15 at shorter tested windows) under all tested budgets. Research assumptions of 1/5/10 false starts per evaluable hour and a 5% active cap are not clinical standards; some outer constraints failed. Historical diagrams/figures and 14/14 reusable-positive sensitivity are not final-budget performance or proof of early warning.
+
+Read the root README first. The first command is `python -m src.check_project --audit`. It is a fast read-only environment/source audit. Earlier recall-policy output is **results/final/{future_low,new_onset}/**. The historical `validated` and `hardened` runs remain evidence, not alternate active pipelines.
 
 ## Data flow and leakage boundaries
 
@@ -84,6 +86,8 @@ The outer loop holds out a whole recording. Three inner GroupKFold fits produce 
 Pooled metrics aggregate timestamp counts. Macro metrics average defined recording metrics, with explicit denominator counts. Recall is undefined on negative-only recordings, specificity on all-positive recordings, and precision when there are no alerts. NaN does not silently become zero. AP is average precision, not trapezoidal PR area. Pooled score curves combine different refits; per-record metrics are also needed. Recording groups are not proof of independent patient identity.
 
 ## Event and alarm metrics
+
+This subsection retains the historical reusable-positive and false-target-run definitions. For the final one-to-one start metric, strict exposure, false-start rates and time-weighted active fraction, use the final reports linked above; the definitions are not interchangeable.
 
 Event sensitivity counts qualifying observed onsets with a complete valid RAW 30s lead-in and at least one eligible prediction opportunity in `[onset-30,onset)`. An alert at onset is too late. First alert determines lead time, and available opportunity coverage is saved. Some recurring onsets follow brief recoveries, so eligible lead time can be much less than 30s. Nearby events may share an alert: this is not one-to-one event precision. The historical 13-event dense-coverage denominator differs from the current 14-opportunity denominator; that change is not improved detection.
 

@@ -1,0 +1,14 @@
+test_event_cache_separates_record_target_window_decisions (test_ml_checkpoint.CheckpointTests.test_event_cache_separates_record_target_window_decisions) ... ok
+test_metric_cache_matches_original_and_separates_labels_scores_decisions (test_ml_checkpoint.CheckpointTests.test_metric_cache_matches_original_and_separates_labels_scores_decisions) ... ok
+test_exact_threshold_and_unrelaxed_training_constraints (test_ml_recovery.RecoveryTests.test_exact_threshold_and_unrelaxed_training_constraints) ... ok
+test_recovered_scores_require_exact_row_identity (test_ml_recovery.RecoveryTests.test_recovered_scores_require_exact_row_identity) ... ok
+test_context_is_prefix_causal_and_record_reset (test_ml_research.ImprovementTests.test_context_is_prefix_causal_and_record_reset) ... ok
+test_grouped_transforms_and_calibration_reference_is_fit_only (test_ml_research.ImprovementTests.test_grouped_transforms_and_calibration_reference_is_fit_only) ... ok
+test_negative_rank_ties_and_domain (test_ml_research.ImprovementTests.test_negative_rank_ties_and_domain) ... ok
+test_outer_event_poison_cannot_change_training_selection (test_ml_research.ImprovementTests.test_outer_event_poison_cannot_change_training_selection) ... ok
+test_preservation_fails_closed (test_ml_research.ImprovementTests.test_preservation_fails_closed) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 18.725s
+
+OK

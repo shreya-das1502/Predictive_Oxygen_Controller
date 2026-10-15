@@ -1,0 +1,62 @@
+[
+  {
+    "receipt": "results/hardened/historical_preservation.json",
+    "checked_files": 85,
+    "discrepancies": [
+      {
+        "path": "docs/MODEL_EVALUATION.md",
+        "expected": "ecb841126b8afe0d4f9c687c78ea87ee5d5765e7db92fdb9f1f30c12df71f2a4",
+        "current": "c3a84b03fa47c3282128a5a2a14bb278cd56df82172d68a59e4a626033800ffd",
+        "expected_equals_git_head": true
+      }
+    ]
+  },
+  {
+    "receipt": "results/local_30_fixed_policy_v2/preservation.json",
+    "checked_files": 662,
+    "discrepancies": [
+      {
+        "path": "docs/FULL_PIPELINE_GUIDE.md",
+        "expected": "02838962cb11fd2c422390b4c1999e8a55976c5c714f2c0b3e31a79c041c8485",
+        "current": "c9285e989c2ad636fcf637193cd0a9625bc95192acd71e884bb877ccd7af65a4",
+        "expected_equals_git_head": true
+      },
+      {
+        "path": "docs/FINAL_REPORT.md",
+        "expected": "2f2d91429a73d93559944f0fe452445316007d1ad44c18613cb62dd51b9871e3",
+        "current": "a17ddeab1181fe57e3b8dfbbc739388a79d35124d08ad8ee7f8a1f6aa84f4a21",
+        "expected_equals_git_head": true
+      },
+      {
+        "path": "docs/MODEL_EVALUATION.md",
+        "expected": "ecb841126b8afe0d4f9c687c78ea87ee5d5765e7db92fdb9f1f30c12df71f2a4",
+        "current": "c3a84b03fa47c3282128a5a2a14bb278cd56df82172d68a59e4a626033800ffd",
+        "expected_equals_git_head": true
+      }
+    ]
+  },
+  {
+    "receipt": "results/alarm_budget_experiment/preservation.json",
+    "checked_files": 682,
+    "discrepancies": [
+      {
+        "path": "docs/FULL_PIPELINE_GUIDE.md",
+        "expected": "02838962cb11fd2c422390b4c1999e8a55976c5c714f2c0b3e31a79c041c8485",
+        "current": "c9285e989c2ad636fcf637193cd0a9625bc95192acd71e884bb877ccd7af65a4",
+        "expected_equals_git_head": true
+      },
+      {
+        "path": "docs/FINAL_REPORT.md",
+        "expected": "2f2d91429a73d93559944f0fe452445316007d1ad44c18613cb62dd51b9871e3",
+        "current": "a17ddeab1181fe57e3b8dfbbc739388a79d35124d08ad8ee7f8a1f6aa84f4a21",
+        "expected_equals_git_head": true
+      },
+      {
+        "path": "docs/MODEL_EVALUATION.md",
+        "expected": "ecb841126b8afe0d4f9c687c78ea87ee5d5765e7db92fdb9f1f30c12df71f2a4",
+        "current": "c3a84b03fa47c3282128a5a2a14bb278cd56df82172d68a59e4a626033800ffd",
+        "expected_equals_git_head": true
+      }
+    ]
+  }
+]

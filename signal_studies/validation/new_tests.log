@@ -1,0 +1,11 @@
+test_controller_error_step (tests.test_signal_studies.SignalStudyTests.test_controller_error_step) ... ok
+test_dc_rejection_and_pole_stability (tests.test_signal_studies.SignalStudyTests.test_dc_rejection_and_pole_stability) ... ok
+test_full_artifact_reproducibility_and_output_guard (tests.test_signal_studies.SignalStudyTests.test_full_artifact_reproducibility_and_output_guard) ... ok
+test_known_finite_infinite_and_undefined_margins (tests.test_signal_studies.SignalStudyTests.test_known_finite_infinite_and_undefined_margins) ... ok
+test_known_first_order_metrics_and_never_settles (tests.test_signal_studies.SignalStudyTests.test_known_first_order_metrics_and_never_settles) ... ok
+test_synthetic_and_filter_rejection (tests.test_signal_studies.SignalStudyTests.test_synthetic_and_filter_rejection) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 15.277s
+
+OK

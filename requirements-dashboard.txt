@@ -1,0 +1,3 @@
+# Optional UI dependencies; install the research requirements first.
+streamlit==1.66.0
+plotly==6.9.0

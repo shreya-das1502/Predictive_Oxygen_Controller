@@ -1,0 +1,8 @@
+test_event_cache_separates_record_target_window_decisions (test_ml_checkpoint.CheckpointTests.test_event_cache_separates_record_target_window_decisions) ... ok
+test_interrupted_condition_resumes_without_duplicates_and_rejects_corruption (test_ml_checkpoint.CheckpointTests.test_interrupted_condition_resumes_without_duplicates_and_rejects_corruption) ... ok
+test_metric_cache_matches_original_and_separates_labels_scores_decisions (test_ml_checkpoint.CheckpointTests.test_metric_cache_matches_original_and_separates_labels_scores_decisions) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 8.381s
+
+OK

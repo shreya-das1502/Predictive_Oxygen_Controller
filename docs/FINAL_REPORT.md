@@ -1,6 +1,10 @@
 # Final implementation and verification report
 
-The existing causal pipeline was hardened and evaluated with four fixed models; no broad search was performed. Historical targets/results remain separate. The current models produce excessive false alerts and do not establish useful clinical prediction or ELM superiority.
+## Final submission summary
+
+The final planned study used only the **30 local recordings**. Under the frozen alarm-budget sensitivity analysis, **none of the four learned models detected an eligible event**: 0/15 at 5, 10 and 15 seconds and 0/14 at 30 seconds, for both original training targets and all tested budgets. The research assumptions were **1, 5 and 10 false alarm starts per evaluable hour with a 5% alarm-active-time cap**; they are not clinically validated limits. Some held-out recordings violated constraints met during training-only threshold selection. The selected policy did not demonstrate useful early warning or proven model superiority.
+
+This report preserves the earlier implementation, numerical results and validation record below, explicitly labeled historical. The **Final evaluation: alarm-budget experiment** section reconciles the earlier 14/14 result with the final 0/14 result and provides the final discussion/conclusion. Full methods, per-recording/event outputs and uncertainty are in [ALARM_BUDGET_EXPERIMENT.md](ALARM_BUDGET_EXPERIMENT.md). No clinical validation, patient-independent validation or automated oxygen-delivery capability is established.
 
 ## Dataset reconciliation and targets
 
@@ -10,9 +14,9 @@ The archived legacy builder (`src/elm_experiment.py` in `archive/legacy_sources.
 
 The current [label implementation](../src/labeling.py) requires complete valid numeric coverage over `(t,t+30s]` and maximum numeric gap 1.01 s. `future_low` is minimum observed SpO₂ ≤94%, including ongoing lows. `new_onset` additionally requires a fresh current reading >94% and an adjacent valid >94%→≤94% transition within that horizon. One low sample qualifies; no sustained-event or clinical episode definition is implied. This yields 16,050 rows, 501 positives, 26 recordings and six positive-containing recordings. Of the future-low rows, 4,107 are ineligible for onset: 4100 have current SpO₂ ≤94% and 7 lack current SpO₂. On fully valid currently normal windows the two labels agree. Pulse times changed, so the remaining legacy/current difference cannot be assigned a one-to-one row waterfall.
 
-## Evaluation and measured results
+## Historical recall-oriented evaluation and measured results
 
-Fresh evaluations rebuilt both datasets (`cache_reused=false`). Each outer test recording is excluded from fitting and three-fold grouped training-only OOF threshold selection. Median imputation/scaling are fitted inside each training fold. All models see identical eligible held-out rows within each target. The threshold policy remains the largest training-OOF threshold meeting 92% timestamp recall; it was not adjusted using these test results. Positive-containing and negative-only recordings, pooled metrics and defined-value macro metrics are reported separately.
+Fresh evaluations rebuilt both datasets (`cache_reused=false`). Each outer test recording is excluded from fitting and three-fold grouped training-only OOF threshold selection. Median imputation/scaling are fitted inside each training fold. All models see identical eligible held-out rows within each target. For these historical results, the threshold policy was the largest training-OOF threshold meeting 92% timestamp recall; it was not adjusted using these test results. Positive-containing and negative-only recordings, pooled metrics and defined-value macro metrics are reported separately.
 
 Numbers below are pooled held-out timestamps. AP is average precision, not trapezoidal PR area. FP/FN count timestamps rather than distinct episodes.
 
@@ -38,9 +42,11 @@ The historical approximately 96.5% recall/3% precision conflated populations: cu
 
 On onset, ELM alerts on 89.88% of eligible timestamps. Logistic alerts on 98.09%, GaussianNB on 84.54%, and the tree always alerts. GaussianNB has better pooled AP than ELM; no overall ELM superiority is supported. Low false-episode counts can arise from one very long continuous alert: interpret episodes/hour alongside alert fraction and specificity. Exposure covers eligible pulse segments, not all wall-clock recording duration. Record 26 accounts for 37 ELM false negatives, record 30 for 17, record 7 for one; record 12 has none. Detailed score/threshold timelines are plotted for 12/26/30.
 
+### Historical reusable-positive event metric
+
 All models detect 14/14 eligible observed onsets and 3/3 eligible 91–92% episodes; the severe-subset median lead is 9.784 s. An always-alert reference also detects all of them, and many observed transitions lack eligible prior opportunities. These small-denominator overlap-based event results do not demonstrate useful anticipation. The event tables document excluded events and opportunity rules.
 
-## Actual latency
+## Historical computational latency (unchanged)
 
 The fresh benchmarks were executed sequentially. The following pulse-to-alert computational measurements include rolling feature updates, the model path, eligibility and thresholding (starting from an already extracted pulse). Separate feature, transform/model, threshold, per-waveform-sample replay, pulse-producing update and warm model-loading measurements, raw timing samples, environment and repetitions are saved per target. P99 is reported only with at least 1,000 repetitions; 100 model-load repetitions support median/P95 only.
 
@@ -57,7 +63,7 @@ The fresh benchmarks were executed sequentially. The following pulse-to-alert co
 
 Timing varies on this shared host, including slower future-low ELM timings. These measurements exclude physiological sensor averaging, waiting for samples/pulses and the 30-second prediction horizon. They are not a real-time or hardware guarantee.
 
-## Changes, cleanup and artifacts
+## Historical implementation, cleanup and artifacts
 
 - Targets/configuration/cache: [labeling](../src/labeling.py), [config](../src/config.py), [dataset](../src/dataset.py), [provenance](../src/provenance.py). Cache identities cover relevant preprocessing/features/labels/config/source fingerprints; artifact hashes detect edited prepared outputs.
 - Evaluation/runtime: [evaluation](../src/evaluation.py), [runner](../src/run_experiments.py), [model](../src/model.py), [controller](../src/controller.py), [replay](../src/replay.py), [target reports](../src/target_reporting.py). Manifests record targets, features, seeds, parameters, fingerprints, thresholds and recording splits. Full-data demo models are separate from held-out predictions.
@@ -68,9 +74,9 @@ Timing varies on this shared host, including slower future-low ELM timings. Thes
 
 [Future-low run](../results/final/future_low/) and [onset run](../results/final/new_onset/) contain `EVALUATION.md`, predictions, comparison/per-record tables, `run_manifest.json`, `dataset_cache.json`, `models/`, event diagnostics and latency samples. Large local prepared data/model files are Git-ignored and regenerate from the documented commands.
 
-## Reproduction and verification
+## Historical reproduction and verification
 
-The complete pipeline diagram, module-by-module mapping and commands are in [FULL_PIPELINE_GUIDE](FULL_PIPELINE_GUIDE.md). Start with the environment/raw-data inspection:
+The commands and test counts in this section record the earlier implementation pass, not this documentation review or the final operating policy. Do not rerun generation commands against preserved result directories; use a new directory and the final experiment report for final-policy reproduction. The complete pipeline diagram, module-by-module mapping and commands are in [FULL_PIPELINE_GUIDE](FULL_PIPELINE_GUIDE.md). Start with the environment/raw-data inspection:
 
 ```bash
 python -m src.check_project --audit
@@ -85,3 +91,74 @@ python -m src.figures --output results/final/new_onset
 For this pass, both fixed-model evaluations were actually executed with `--skip-benchmark`, then both latency commands, target-report commands and figure commands were executed separately. This avoided concurrent training during timing. Dataset CLI output was checked against the final onset dataset hash; an archived-source restore into a new temporary directory succeeded; the saved Logistic onset model was loaded in a separate replay process for record 12 (748 pulse outputs). No package installation, data download, broad search, clinical validation or hardware deployment was performed.
 
 The full suite executed **76 tests in 23.165 seconds, all passed with zero skips**. Both saved-run gates passed, 141 local links resolved, all 85 protected historical files matched their hashes, and source/result archives restored or hash-verified successfully. The README inference example and separate saved-model replay executed successfully. Final test and consistency results are recorded in [quality_gate.json](../results/final/quality_gate.json). Remaining limitations include only 30 short recordings, few onset/severe events, rounded waveform timestamps, single-reading threshold events, no validated signal-quality gate, highly correlated pulse features, uncalibrated pooled scores across refits, and excessive alerts. Future research should prespecify an operational false-alarm objective and validate on additional recordings before considering deployment; this pass stops before that model-selection work.
+
+## Final evaluation: alarm-budget experiment
+
+### Methods and reconciliation of 14/14 with 0/14
+
+The final experiment retained the same fixed ELM, logistic regression, GaussianNB and shallow-tree configurations, features, target labels and outer leave-one-recording-out score fits. Preprocessing, imputation, scaling and model fitting had occurred within the relevant training folds. New fold-specific thresholds were selected solely from each outer-training partition's grouped inner OOF scores. No held-out outcomes selected thresholds, models or budgets. All selections were frozen before new outer evaluation; historical model files and thresholds were retained separately.
+
+There was no clinically defensible primary budget available from these recordings. The prespecified **1, 5 and 10 false alarm starts per evaluable hour** and **5% active-time cap** are research sensitivity assumptions, not clinical tolerances. Within each outer-training partition, the fixed candidate grid maximized 30-second one-to-one event detections subject to both constraints; ties favored fewer off-event starts, less active time and a higher threshold. All budgets were reported without choosing one from outer performance. Training feasibility is not a guarantee of constraint attainment on a held-out recording.
+
+The apparent change from 14/14 to 0/14 involves **both a matching-rule distinction and a different operating policy**. The earlier 14/14 counted any positive timestamp inside a pre-onset window, even if the alarm was already active; nearby events could share alerts. It did not mean 14 newly starting alarms or useful early warning. The intermediate audit applied one-to-one alarm-start matching while keeping the original recall-selected thresholds. The final experiment retained that audited matching rule and changed only threshold selection to the frozen alarm-budget policy. For the onset-trained models at the same 14 eligible 30-second events:
+
+| Stage | Training-only threshold objective | Event matching | ELM | Logistic | GaussianNB | Tree |
+| --- | --- | --- | --- | --- | --- | --- |
+| Earlier historical result | At least 92% OOF timestamp recall | Any positive in window; reuse permitted | 14/14 | 14/14 | 14/14 | 14/14 |
+| Audited fixed-policy result | Same recall-selected thresholds | One-to-one actual alarm starts | 13/14 | 9/14 | 9/14 | 8/14 |
+| Final alarm-budget experiment | Event detections subject to research budget and active cap | Same audited one-to-one actual alarm starts | 0/14 | 0/14 | 0/14 | 0/14 |
+
+The final row holds at all three budgets and for both target training populations; the intermediate row explicitly refers to onset-trained models. The original `future_low` target still includes ongoing lows in training; the final alarm policy evaluates both fitted target models on the same current-normal population. This is not a silent label change or a claim that historical numerical results were wrong. See the [reliability audit](RELIABILITY_AUDIT.md), [local-30 fixed-policy evaluation](LOCAL_30_RECORDING_EVALUATION.md) and [final experiment report](ALARM_BUDGET_EXPERIMENT.md) for the preserved stages and their denominators.
+
+### Metric terminology and denominators
+
+| Quantity | Definition and interpretation |
+| --- | --- |
+| Timestamp-level precision/recall | TP/(TP+FP) and TP/(TP+FN) over eligible pulse decisions. Overlapping positive timestamps are not distinct events. Historical classification tables above retain their original target populations and thresholds. |
+| Event sensitivity | Detected eligible onsets / eligible onsets under the stated window and matching rule. Final matching assigns each actual alarm start and event at most once. |
+| Historical false episodes/hour | Positive decision runs containing no positive future-target timestamp, divided by historical evaluable exposure. A long run with one positive target is not a false episode under that definition, despite many false-positive timestamps. |
+| Final false alarm starts/hour | New alarm starts with no qualifying observed onset in `(start,start+W]`, divided by strict current-normal evaluable hours. This is not the historical false-episode metric; redundant/unmatched starts are also recorded separately. |
+| Alarm-active fraction | Left-held positive-decision duration divided by permitted inter-pulse exposure. It is time-weighted, not the fraction of pulses that alert. |
+| Pulse alert fraction | Positive decisions / eligible pulse decisions. The earlier 89.88% ELM and 98.09% logistic values refer to pulse counts at recall-selected thresholds, not active duration or final-budget thresholds. |
+| Lead time | Onset time minus an actual matched alarm-start time. Median/IQR condition on correctly matched events; final learned-model leads are undefined because none was detected. |
+
+Final exposure is **10,329.032 seconds (2.869176 evaluable hours)** per model/target, including negative-only recordings' eligible time. Four entirely-low recordings have no current-normal opportunities; they remain zero-exposure rows in the full 30-record roster, not performance-based exclusions. Invalid/missing/current-low gaps are not counted as eligible exposure. Historical false-episode rates use their original exposure conventions and must not be substituted for final false-start rates.
+
+An alarm already active before `[onset−W,onset)` is not restarted at its left boundary. An alarm exactly at onset is too late. The 5/10/15/30-second windows are look-back intervals, not guarantees of at least that much warning. Budgets were selected against the 30-second false-start definition; shorter-window rates and held-out rates need not satisfy it.
+
+### Final results
+
+All four learned models missed every eligible event: **15/15 missed at each of 5, 10 and 15 seconds; 14/14 missed at 30 seconds**, across both target populations and all tested budgets. None detected any of the **three severe-interest events** at 30 seconds either. These events contain observed 91/92 readings; they are not clinically adjudicated severe events. The onset-trained model outcomes at 30 seconds are reproduced below without changing the saved results:
+
+| Research budget (starts/h) | Model | Detected/eligible | Off-event starts | Exposure (s) | False starts/h | Active fraction |
+| --- | --- | --- | --- | --- | --- | --- |
+| 1 | ELM | 0/14 | 0 | 10329.032 | 0.0000 | 0.000000 |
+| 1 | GaussianNB | 0/14 | 0 | 10329.032 | 0.0000 | 0.000000 |
+| 1 | Logistic | 0/14 | 0 | 10329.032 | 0.0000 | 0.000000 |
+| 1 | Tree | 0/14 | 57 | 10329.032 | 19.8663 | 0.008912 |
+| 5 | ELM | 0/14 | 0 | 10329.032 | 0.0000 | 0.000000 |
+| 5 | GaussianNB | 0/14 | 1 | 10329.032 | 0.3485 | 0.000116 |
+| 5 | Logistic | 0/14 | 4 | 10329.032 | 1.3941 | 0.001342 |
+| 5 | Tree | 0/14 | 57 | 10329.032 | 19.8663 | 0.008912 |
+| 10 | ELM | 0/14 | 0 | 10329.032 | 0.0000 | 0.000000 |
+| 10 | GaussianNB | 0/14 | 3 | 10329.032 | 1.0456 | 0.000200 |
+| 10 | Logistic | 0/14 | 14 | 10329.032 | 4.8795 | 0.003478 |
+| 10 | Tree | 0/14 | 57 | 10329.032 | 19.8663 | 0.008912 |
+
+The onset tree produced 57 off-event starts, about 19.87/hour, despite zero alerts under its training-selected thresholds. Some individual held-out recordings violated the training-selected start budget and one tree test recording violated the active cap. Thus common training constraints did not produce identical achieved outer-test burdens. There was no post-test threshold correction. Per-record violations, both target results and all windows remain in the [final experiment outputs](../results/alarm_budget_experiment/run02/).
+
+Always-alert detected 8/14 under the final matching rule because state/coverage gaps can restart its alarms; its active fraction is 100%, so it violates the cap and is not a fair common-burden comparator. Never-alert meets the constraints by detecting nothing. Neither reference supports an early-warning superiority claim.
+
+### Final discussion, limitations and conclusion
+
+The selected policy did **not demonstrate useful early warning**. Mostly silent or false-only outer predictions, and failures to transfer some training constraints, are the actual findings. This conclusion is limited to the current fixed models and finite-grid threshold procedure; it does not establish that every possible detector or threshold would fail. No additional model, feature or budget tuning followed the result.
+
+Inference is limited by **30 recordings**, only **14 eligible events at 30 seconds** from six event-containing recordings, **three severe-interest events**, retrospectively and repeatedly examined data, uncertain monitor delay, single-reading threshold events and no clinical validation. Patient-to-recording linkage is unverified: held-out-recording evaluation is not proven unseen-patient evaluation. Paired recording-bootstrap intervals condition on the saved fits/policies and do not establish patient independence or full training-procedure uncertainty. A degenerate [0,0] empirical sensitivity interval after zero observed detections is not proof that population sensitivity is exactly zero.
+
+**Final academic and presentation conclusion:** this is an offline, reproducible comparison with a negative operating-policy result. High historical timestamp recall, reusable-positive 14/14 sensitivity, clipped-window lead times and sub-millisecond computational timing do not demonstrate clinically reliable anticipation, oxygen-delivery capability or proven model superiority. Every presentation of the earlier metrics must identify its target, threshold objective, matching rule and exposure denominator. Earlier figures describe their saved recall-policy runs and should not be presented as alarm-budget results. The full [ALARM_BUDGET_EXPERIMENT.md](ALARM_BUDGET_EXPERIMENT.md) is the definitive final experiment account; earlier reports, numerical tables and result artifacts remain preserved. The final planned experiment used no additional data and establishes no clinical readiness.
+
+### Documentation consistency review
+
+This documentation-only review checked 259 local links, verified the three-stage reconciliation and 12 displayed final-budget rows against the saved summaries, and checked all 96 learned-model target/budget/window combinations. All pre-existing numerical table rows were retained; the other 722 files in the pre-edit snapshot, including data, source, tests and experiment results, remained unchanged. The alarm-budget, reliability-audit and local-30 reports were retained byte-for-byte. Earlier experiment test counts above are historical execution records, not new model-test results from this review.
+
+Historical preservation receipts include pre-review hashes of this report, the guide and the older model report. Those receipts were deliberately retained rather than rewritten; strict document-byte preservation checks will flag the authorized documentation revisions. The experimental artifacts and numerical results were not regenerated.

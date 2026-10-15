@@ -1,0 +1,65 @@
+{
+  "study": "bode",
+  "python": "3.14.2",
+  "numpy": "2.5.3",
+  "scipy": "1.18.1",
+  "matplotlib": "3.11.2",
+  "controllers": {
+    "P": {
+      "kp": 2.0
+    },
+    "PI": {
+      "kp": 2.0,
+      "ki": 8.0
+    },
+    "PID": {
+      "kp": 2.0,
+      "ki": 8.0,
+      "kd": 0.08,
+      "tau_d": 0.01
+    }
+  },
+  "plant_num": [
+    1.0
+  ],
+  "plant_den": [
+    0.01,
+    0.25,
+    1.0
+  ],
+  "waveform": {
+    "fs_hz": 125,
+    "duration_s": 40,
+    "fundamental_hz": 1.2,
+    "harmonic_amplitudes": [
+      0.3,
+      0.09,
+      0.03
+    ],
+    "harmonic_phase_rad": [
+      0,
+      -0.5,
+      -1
+    ],
+    "initial_offset": 0.4,
+    "step_increment": 0.6,
+    "step_time_s": 20,
+    "filter": "existing WaveformState SOS; zero initial state"
+  },
+  "control": {
+    "model": "continuous-time; no sampling delay",
+    "output_grid_s": 0.002,
+    "duration_s": 20,
+    "reference": 1,
+    "input_step": 0.3,
+    "step_time_s": 10,
+    "initial_state": "zero",
+    "settling_fraction": 0.02,
+    "minimum_hold_s": 1
+  },
+  "source_sha256": {
+    "signal_studies/run.py": "10d068b8ce113bfd3993928a167e1eaf29bdafe3ca1262443a58d64971d1f999",
+    "signal_studies/core.py": "58717c2b6cdb0fdbadb13b7b8a48c0ff5a5f48aefdc887b3bd3987bcec01bd79",
+    "src/preprocessing.py": "7fcac04cdb70cfdeac5c22e057775c929269c6225e1b4c4f72f16fefeb67756a"
+  }
+}

@@ -1,0 +1,4 @@
+Target,Horizon_s,FeatureSet,ScoreSpace,Model,Budget,Window_s,Subset,Detected,Eligible_Events,Missed_Events,Off_Event_Alarm_Starts,Exposure_s,Alarm_Active_s,Sensitivity,False_Alarm_Starts_Per_Hour,Alarm_Active_Fraction
+new_onset,10,base10,negative_rank,GaussianNB,10.0,10,all,1,15,14,4,10329.032,3.896000000000022,0.06666666666666667,1.3941287044129596,0.00037718926613839734
+new_onset,15,base10,negative_rank,GaussianNB,10.0,15,all,1,15,14,2,10329.032,2.528000000000027,0.06666666666666667,0.6970643522064798,0.00024474703921916667
+new_onset,30,base10,negative_rank,GaussianNB,10.0,30,all,1,14,13,4,10329.032,5.216000000000016,0.07142857142857142,1.3941287044129596,0.0005049843973762514

@@ -1,0 +1,19 @@
+{
+  "context": {
+    "Target": "new_onset",
+    "Horizon_s": 30,
+    "FeatureSet": "context18",
+    "ScoreSpace": "raw",
+    "Model": "Logistic",
+    "Trained_Horizon_s": 30,
+    "Evaluation_Split": "outer_LORO",
+    "Threshold_Method": "inner3_GroupKFold_budget"
+  },
+  "files": {
+    "per.csv": "804fb8da983131d42b763944d6eecfdfb76f4d92f3ca5c63dc2cdcd6a1cbaaf4",
+    "summary.csv": "a2f6fcfcc94d35605dcbcc01a2aa79d974036d53feb46b43a32b2b2b232e8270",
+    "events.csv": "a7bad5da508f2ade41218988e3c3247a2b08ee2d2689244e734df699a32fd81f",
+    "predictions.csv.gz": "13b2717fc08d1c63fdde678cc30101d78bc0fed212ffe1707c6c3541b4280bb2",
+    "times.csv": "36a33777f3461aec4b659c7dfb3f1dfe4ed15e056c570f972de8095f124cb3dd"
+  }
+}

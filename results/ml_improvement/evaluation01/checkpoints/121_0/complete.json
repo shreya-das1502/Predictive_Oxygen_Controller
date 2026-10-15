@@ -1,0 +1,19 @@
+{
+  "context": {
+    "Target": "new_onset",
+    "Horizon_s": 10,
+    "FeatureSet": "frozen30",
+    "ScoreSpace": "raw",
+    "Model": "GaussianNB",
+    "Trained_Horizon_s": 30,
+    "Evaluation_Split": "outer_LORO",
+    "Threshold_Method": "frozen_original_30s_training_OOF"
+  },
+  "files": {
+    "per.csv": "acb3a8c8d8835e845e9b3fff93064a6fa482fa2306a139bffc87a918ca8c8dbf",
+    "summary.csv": "361a83e087d94ee3463feae9f67f3686393d11ec80a74bd02b8b6b92872009e7",
+    "events.csv": "59ac9be4e0b73e1d1e2c5e33e4786e12ecf2578a04d959cb7ba76e8be8468b47",
+    "predictions.csv.gz": "b353a86687874d40d0c0b8f0a759b0f551ecf2c9f007e238a8875a2ff4a10b6a",
+    "times.csv": "c336d59f699973da419421b837c5e16e506343ee9a585b51f5494f8c8b8c284b"
+  }
+}

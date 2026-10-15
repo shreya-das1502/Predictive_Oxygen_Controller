@@ -1,0 +1,32 @@
+{
+  "source_directory": "/workspaces/Predictive_Oxygen_Controller/results/ml_improvement/run01",
+  "source_files": {
+    "labels_new_onset_30_base10.csv.gz": "4f4b69b5d27842ed4d0c7e8f2acb37fd56540e30e40884b22eb1ad6288ac9dae",
+    "baseline_checks.json": "e6a04c831e0501952c385ca7aaac8a409ac60ff8d035b56493a61f0e02aae8ed",
+    "labels_new_onset_15_base10.csv.gz": "e3ba406044b89486a16d00a83821d24020f69033fbb71a65552e434ed969f04d",
+    "labels_new_onset_30_context18.csv.gz": "86ef4ae32585f9efaafb79d044f43da0d98d361b4e0b5a54a766e66afb0f134b",
+    "baseline_event_summary.csv": "c8103c9185c108ce08c6a1cafaad9db34345a97d9db503697797991a8db99097",
+    "outer_scores_unlabeled.csv.gz": "c1fb891c61072047eeeb90306e076095b92865f9b96a8010356c2151bf2ba76e",
+    "labels_future_low_15_base10.csv.gz": "1fe95a500673152e41fc7905ab0a9f2e62ce348e318a563eae54eafec37b0ef7",
+    "baseline_complete.json": "f24030e5e04da3043e813ac74f72260203fe418fa3293d7d3c06b8ba3bbfd42e",
+    "training_candidates.csv.gz": "742c9f21079ba4ec74e5d6ab191426613939587200759460ad2f64b4f2670a7c",
+    "labels_future_low_10_base10.csv.gz": "e724461e91bfccf2b6316e0853d6f77359357cc95742b3fef79dfa5aab9f2cc7",
+    "labels_new_onset_5_base10.csv.gz": "8f91e6cf0a14e64faf0e32cf55d71dbf7df4f45106c1aabafe9050867446a997",
+    "labels_new_onset_10_base10.csv.gz": "6d185c2012cd8ac499cce0f30df9f20e54b14b49c9691291a5f3654c2bdd7f29",
+    "preservation.json": "e3562c8db0e8f900d9649659fe3fd1d9879195e3a9fdd1560aa2aeca395691e9",
+    "baseline_selection_diagnostics.csv": "041a52db6dc3fad2e768c8f4a9801d7b9e2893a1b495b918e408b6ac098ae115",
+    "labels_future_low_30_context18.csv.gz": "5a18036761372f5b74630635ee4694e9e672cf1a8c5896b3594065f07f744266",
+    "labels_future_low_30_base10.csv.gz": "65423f9761ace28a7454d90727e9294b4e590cba33f866da9ce6b64f5469c82a",
+    "ML_IMPROVEMENT_BASELINE.md": "55089e819a768578e490b1048688e68855c7463973ca1e9cfe0ba441a87c3c20",
+    "protocol.json": "8f4a44e18fcafd17f4e189724d4ee0b921da228c58bddb93e21a616ec6b36103",
+    "baseline_timestamp_metrics.csv": "d7ab2191075ca089d1b74ebc8a8e193c237d32cf515a97303d178fa75bce5bae",
+    "baseline_dataset.csv": "541c5f346402a10cd2304a85b2408dacc04c48c019046731184097ea8da5f248",
+    "labels_future_low_5_base10.csv.gz": "8e8bea4cb973830fcca0088933eb6fc7aa11817db2e35b5d997f43681f8b656f",
+    "raw_events.csv": "c76aa4884f3fc4947a4a0d2c65b39f21072def20b6bf38eddc9a6ad412849792"
+  },
+  "reused_model_groups": 1074,
+  "new_model_groups": 46,
+  "latency_only_outer_refits": 40,
+  "lost_hash_limitation": "Reconstructed split membership is not a recovered execution trace. No unavailable fit hash is invented.",
+  "recovery_code_sha256": "d258612dc5e1a37abd290e629fe5f0db08b072e0fb1eead2cc57ea11f54a4e72"
+}

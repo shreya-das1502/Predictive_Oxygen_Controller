@@ -1,0 +1,9 @@
+{
+  "status": "passed",
+  "selected_cutoffs": 6720,
+  "candidate_groups": 2240,
+  "candidate_rows": 184784,
+  "silent_training_policies": 6020,
+  "method": "Independent Python tuple ordering of serialized training candidates; exact threshold hex; original budget and 5% cap; held-out membership exclusion",
+  "limitation": "This checks saved candidate selection, not recovery of lost execution-time OOF hashes."
+}

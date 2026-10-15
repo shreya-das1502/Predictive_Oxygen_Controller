@@ -1,0 +1,11 @@
+{
+  "existing_files_checked": 737,
+  "changed_or_missing": [],
+  "full_suite": {
+    "total": 149,
+    "passed": 146,
+    "failures": 1,
+    "errors": 2,
+    "skipped": 0
+  }
+}

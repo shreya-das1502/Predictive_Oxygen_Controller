@@ -1,0 +1,19 @@
+{
+  "context": {
+    "Target": "future_low",
+    "Horizon_s": 15,
+    "FeatureSet": "fixed_baseline",
+    "ScoreSpace": "binary",
+    "Model": "Pulse_Rate_GT100",
+    "Trained_Horizon_s": 0,
+    "Evaluation_Split": "fixed_recording_baseline",
+    "Threshold_Method": "fixed_binary"
+  },
+  "files": {
+    "per.csv": "e13ee01933c4f6b46f505490830695b00163c8a9a2cda14edca66159f42b4dd6",
+    "summary.csv": "e66fbddc6c8b975c6845bf1590db965dc5b963f1567eac3f7522e280ea8cdd16",
+    "events.csv": "c51d63faf3c0166a4d2996c58e87c229fe5b8ea61c00185b17d66714cefdcd7d",
+    "predictions.csv.gz": "0e176e77e97536abf981c5b7d6ccb0dff1df5c3722cd284d57267ec43cb3f251",
+    "times.csv": "465063260f9217958886fa009574fac684e615f9d6295e9476a0a28efe490103"
+  }
+}

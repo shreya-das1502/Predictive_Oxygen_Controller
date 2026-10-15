@@ -1,0 +1,4 @@
+controller,gain_margin,gain_margin_db,phase_margin_deg,gain_crossover_rad_s,phase_crossover_rad_s,gain_crossover_count,phase_crossover_count,closed_loop_stable,largest_pole_real_part,open_loop_num,open_loop_den
+P,inf,inf,101.05597993916851,7.85152230419467,,1,0,True,-12.499999999999996,[2.0],"[0.01, 0.25, 1.0]"
+PI,inf,inf,71.5578649338102,8.746532888678308,,1,0,True,-3.58330791249369,"[2.0, 8.0]","[0.01, 0.25, 1.0, 0.0]"
+PID,inf,inf,90.1116163196213,8.211821376738856,,1,0,True,-5.325031566148387,"[0.1, 2.08, 8.0]","[0.0001, 0.0125, 0.26, 1.0, 0.0]"

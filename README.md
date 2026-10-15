@@ -1,5 +1,7 @@
 # Predictive Oxygen Controller
 
+**Final study outcome:** on the 30 local recordings, the final alarm-budget policy detected 0/15 eligible events at 5/10/15 seconds and 0/14 at 30 seconds for all four learned models. The tested 1/5/10 false-starts-per-evaluable-hour budgets and 5% active-time cap are research assumptions, not clinically validated limits. Some held-out constraints were violated. No useful early warning, proven model superiority or clinical readiness was demonstrated; patient independence is unverified. Read the [final evaluation and historical reconciliation](docs/FINAL_REPORT.md) and [alarm-budget experiment](docs/ALARM_BUDGET_EXPERIMENT.md) before using earlier metrics or figures.
+
 Start with **`python -m src.check_project --audit`** from this directory. It verifies installed dependencies and inspects the local source data without training or overwriting results.
 
 Read [FULL_PIPELINE_GUIDE.md](docs/FULL_PIPELINE_GUIDE.md) for the complete data-flow diagram, file map, commands, model equations, target definitions and interpretation. [FILE_CLEANUP.csv](docs/FILE_CLEANUP.csv) explains every cleanup decision; historical source is recoverable from [archive/](archive/README.md).
@@ -11,7 +13,7 @@ Two separate targets are evaluated:
 - `future_low`: minimum valid observed SpO₂ in `(t,t+30s]` ≤94%, including ongoing lows.
 - `new_onset`: the same complete valid future horizon, but current observed SpO₂ must be >94% and a qualifying >94 to ≤94 transition must occur. A single low reading qualifies; persistence and clinical validity are not assumed. Observed 91–92% episodes form a separately reported subset.
 
-## Reproduce the current evaluation
+## Reproduce the earlier recall-oriented evaluation
 
 ```bash
 python -m src.check_project --audit
@@ -32,7 +34,7 @@ python -m src.figures --output results/final/new_onset
 
 The figure command performs fixed diagnostic refits for block-permutation importance; it does not select features, tune models or change predictions. It verifies that diagnostic refits reproduce saved held-out scores.
 
-Current artifacts are in [results/final/future_low/](results/final/future_low/) and [results/final/new_onset/](results/final/new_onset/). Each has `EVALUATION.md`, metrics, predictions, manifests, models and a `figures/INDEX.md` with PNG/PDF links and interpretations. Historical `results/validated/` and earlier `results/hardened/` evidence remain unchanged.
+Earlier recall-oriented artifacts are in [results/final/future_low/](results/final/future_low/) and [results/final/new_onset/](results/final/new_onset/). Each has `EVALUATION.md`, metrics, predictions, manifests, models and a `figures/INDEX.md` with PNG/PDF links and interpretations. Historical `results/validated/` and earlier `results/hardened/` evidence remain unchanged.
 
 Large prepared datasets, raw pulse tables, model binaries and compressed validation tables are local generated artifacts, ignored by Git. On a fresh checkout, run the two full commands above to regenerate them. Historical-only integration tests skip when their optional local historical artifacts are absent; final-run integration tests execute once final figures exist.
 
@@ -67,7 +69,7 @@ SpO₂ supplies eligibility, not a model input. Low/missing/stale current SpO₂
 
 ## Interpretation
 
-The models produce excessive false positives; high pooled future-low recall is partly driven by ongoing low saturation. Onset precision remains around 3%, and event sensitivity under nearly continuous alerts does not prove useful early warning. ELM speed does not establish detection superiority. See [FINAL_REPORT.md](docs/FINAL_REPORT.md) for current measured results and limitations, and [HARDENING_SUMMARY.md](docs/HARDENING_SUMMARY.md) for the preceding target-definition comparison.
+At the earlier recall-oriented thresholds, the models produce excessive false positives; high pooled future-low recall is partly driven by ongoing low saturation. Historical onset precision is around 3%, and event sensitivity under nearly continuous alerts does not prove useful early warning. ELM speed does not establish detection superiority. See [FINAL_REPORT.md](docs/FINAL_REPORT.md) for current measured results and limitations, and [HARDENING_SUMMARY.md](docs/HARDENING_SUMMARY.md) for the preceding target-definition comparison.
 
 Only the 30 locally available BIDMC recordings are evaluated. Recording identity is not verified patient identity. CSV timing precision, missing numerics, unknown monitor delay, few onset-bearing recordings and unadjudicated one-reading excursions limit interpretation. Computational latency excludes physiological acquisition and is distinct from the prediction horizon.
 

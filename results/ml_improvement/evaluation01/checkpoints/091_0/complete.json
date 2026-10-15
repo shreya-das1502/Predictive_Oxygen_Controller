@@ -1,0 +1,19 @@
+{
+  "context": {
+    "Target": "new_onset",
+    "Horizon_s": 15,
+    "FeatureSet": "base10",
+    "ScoreSpace": "negative_rank",
+    "Model": "GaussianNB",
+    "Trained_Horizon_s": 15,
+    "Evaluation_Split": "outer_LORO",
+    "Threshold_Method": "inner3_GroupKFold_budget"
+  },
+  "files": {
+    "per.csv": "0170f716c08b40990a31d3663a44b1e10d5691e3d5964888b09f9ff0156cbae3",
+    "summary.csv": "1de1ad4a055320058a107802e04c658079c0c6beb4645a591ce07b8f7dc0d28b",
+    "events.csv": "b05b3704f0c0c6da2dfdbc9815313e024c6576b9e2e68a43a523d4a2f0a15363",
+    "predictions.csv.gz": "26afe894f80fc2ae0ef55372703864075e38f7b164de5a6824d5bc4e10877331",
+    "times.csv": "0e0c676394185cc6792a5a3ca0ba0f3ddad5db41d1762f91080d91595d099583"
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "status": "paused_by_user",
+  "process_exit_code": 130,
+  "complete_model_fold_groups": 1120,
+  "reused_model_fold_groups": 1074,
+  "newly_completed_model_fold_groups": 46,
+  "evaluation_conditions_saved": 144,
+  "event_per_recording_rows": 103680,
+  "provisional_event_aggregate_rows": 3456,
+  "primary_learned_conditions": 240,
+  "detecting_primary_conditions": 3,
+  "prior_timestamp_summary_rows_matched": 620,
+  "protected_files_unchanged": 765,
+  "frozen_source_hashes_verified": 7,
+  "condition_checkpoint_hashes_verified": 144,
+  "provisional_alert_timestamps_checked": 3,
+  "tests": {
+    "total": 159,
+    "passed": 156,
+    "failures": 1,
+    "errors": 2,
+    "skips": 0,
+    "seconds": 220.373
+  },
+  "pending": [
+    "recording-bootstrap summaries",
+    "paired comparisons",
+    "latency measurements",
+    "figures",
+    "final manifest/read-only verification",
+    "final ML report",
+    "final link checks"
+  ],
+  "command": "MPLCONFIGDIR=/tmp/oxygen-ml-mpl OPENBLAS_NUM_THREADS=1 PYTHONDONTWRITEBYTECODE=1 python -u -m ml_research.complete_evaluation --source results/ml_improvement/recovery02 --output results/ml_improvement/evaluation01",
+  "limitation": "Checkpoint aggregates are read-only recomputations from saved per-record tables, not finalized validated experimental conclusions."
+}

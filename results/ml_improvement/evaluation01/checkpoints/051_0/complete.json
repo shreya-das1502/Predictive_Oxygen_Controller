@@ -1,0 +1,19 @@
+{
+  "context": {
+    "Target": "future_low",
+    "Horizon_s": 10,
+    "FeatureSet": "frozen30",
+    "ScoreSpace": "raw",
+    "Model": "Tree",
+    "Trained_Horizon_s": 30,
+    "Evaluation_Split": "outer_LORO",
+    "Threshold_Method": "frozen_original_30s_training_OOF"
+  },
+  "files": {
+    "per.csv": "6fc6cc851fc7501cea04e685d89c2f98516498a52afa60f043520e348c3b240f",
+    "summary.csv": "73ca5762d59627c4557416c4963a0298fbc2f0316fdaee8a6a4336f5ee493e80",
+    "events.csv": "013ed18b75577e418e70597416d6b07ea3c32899ad3d72b80759653f4a6dd954",
+    "predictions.csv.gz": "ec4408c2ba77735aaf12edb072f3f0c18ceb388e149e2abe2c8174f5b4684d01",
+    "times.csv": "6bf62bb1ca1bdcadb6f56b6578899b61d84aaf57315e1fbd04128ccd2342a54b"
+  }
+}

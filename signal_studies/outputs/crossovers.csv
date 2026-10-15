@@ -1,0 +1,4 @@
+controller,kind,frequency_rad_s
+P,gain,7.85152230419467
+PI,gain,8.746532888678308
+PID,gain,8.211821376738856

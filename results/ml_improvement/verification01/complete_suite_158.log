@@ -1,0 +1,246 @@
+Matplotlib is building the font cache; this may take a moment.
+test_inputs_outputs_and_preservation_verified (test_alarm_budget.AlarmBudgetArtifactTests.test_inputs_outputs_and_preservation_verified) ... ERROR
+test_saved_exposure_alarm_runs_and_false_starts_recompute (test_alarm_budget.AlarmBudgetArtifactTests.test_saved_exposure_alarm_runs_and_false_starts_recompute) ... ok
+test_saved_outer_decisions_are_exact_threshold_comparisons (test_alarm_budget.AlarmBudgetArtifactTests.test_saved_outer_decisions_are_exact_threshold_comparisons) ... ok
+test_thresholds_selected_before_outer_evaluation_are_unchanged (test_alarm_budget.AlarmBudgetArtifactTests.test_thresholds_selected_before_outer_evaluation_are_unchanged) ... ok
+test_train_winners_follow_fixed_objective_without_test_metrics (test_alarm_budget.AlarmBudgetArtifactTests.test_train_winners_follow_fixed_objective_without_test_metrics) ... ok
+test_active_cap_rejects_continuous_alert_with_low_start_rate (test_alarm_budget.AlarmBudgetTests.test_active_cap_rejects_continuous_alert_with_low_start_rate) ... ok
+test_actual_outer_test_rows_cannot_select_budget (test_alarm_budget.AlarmBudgetTests.test_actual_outer_test_rows_cannot_select_budget) ... ok
+test_array_matching_exactly_matches_audited_one_to_one_rule (test_alarm_budget.AlarmBudgetTests.test_array_matching_exactly_matches_audited_one_to_one_rule) ... ok
+test_fixed_seed_paired_record_bootstrap (test_alarm_budget.AlarmBudgetTests.test_fixed_seed_paired_record_bootstrap) ... ok
+test_grouped_inner_partition_rejects_overlap (test_alarm_budget.AlarmBudgetTests.test_grouped_inner_partition_rejects_overlap) ... ok
+test_missing_numeric_and_hidden_low_edges_not_exposure (test_alarm_budget.AlarmBudgetTests.test_missing_numeric_and_hidden_low_edges_not_exposure) ... ok
+test_missing_or_duplicate_oof_rows_rejected (test_alarm_budget.AlarmBudgetTests.test_missing_or_duplicate_oof_rows_rejected) ... ok
+test_no_training_alert_candidate_is_strictly_above_max (test_alarm_budget.AlarmBudgetTests.test_no_training_alert_candidate_is_strictly_above_max) ... ok
+test_nonmonotonic_false_alarm_counts_evaluated_explicitly (test_alarm_budget.AlarmBudgetTests.test_nonmonotonic_false_alarm_counts_evaluated_explicitly) ... ok
+test_record_boundaries_split_positive_runs (test_alarm_budget.AlarmBudgetTests.test_record_boundaries_split_positive_runs) ... ok
+test_selector_has_no_outer_outcomes_and_repeats_exactly (test_alarm_budget.AlarmBudgetTests.test_selector_has_no_outer_outcomes_and_repeats_exactly) ... ok
+test_test_raw_data_or_events_rejected (test_alarm_budget.AlarmBudgetTests.test_test_raw_data_or_events_rejected) ... ok
+test_ties_prefer_less_burden_activity_then_higher_threshold (test_alarm_budget.AlarmBudgetTests.test_ties_prefer_less_burden_activity_then_higher_threshold) ... ok
+test_wrong_outer_fit_oof_scores_rejected (test_alarm_budget.AlarmBudgetTests.test_wrong_outer_fit_oof_scores_rejected) ... ok
+test_zero_event_record_retains_matching_schema (test_alarm_budget.AlarmBudgetTests.test_zero_event_record_retains_matching_schema) ... ok
+test_actual_denominators_and_policy_separation (test_dashboard.DashboardTests.test_actual_denominators_and_policy_separation) ... ok
+test_chronology_prefix_and_independent_reset (test_dashboard.DashboardTests.test_chronology_prefix_and_independent_reset) ... ok
+test_current_prediction_expires (test_dashboard.DashboardTests.test_current_prediction_expires) ... ok
+test_future_label_columns_removed (test_dashboard.DashboardTests.test_future_label_columns_removed) ... ok
+test_missing_waveform_and_stale_numeric (test_dashboard.DashboardTests.test_missing_waveform_and_stale_numeric) ... ok
+test_no_future_numeric_or_waveform_to_controller (test_dashboard.DashboardTests.test_no_future_numeric_or_waveform_to_controller) ... ok
+test_predictions_and_verification_separated (test_dashboard.DashboardTests.test_predictions_and_verification_separated) ... ok
+test_real_model_outputs_do_not_depend_on_future_samples (test_dashboard.DashboardTests.test_real_model_outputs_do_not_depend_on_future_samples) ... ok
+test_selection_and_availability (test_dashboard.DashboardTests.test_selection_and_availability) ... ok
+test_explicit_statuses_not_clinical_normality (test_dashboard_presentation.PresentationTests.test_explicit_statuses_not_clinical_normality) ... ok
+test_meaningful_chart_and_border_contrast (test_dashboard_presentation.PresentationTests.test_meaningful_chart_and_border_contrast) ... ok
+test_missing_values_and_targets_remain_separate (test_dashboard_presentation.PresentationTests.test_missing_values_and_targets_remain_separate) ... ok
+test_solid_text_pair_contrast_and_light_theme (test_dashboard_presentation.PresentationTests.test_solid_text_pair_contrast_and_light_theme) ... ok
+test_demo_reset_model_selection_and_record_switch_isolation (test_dashboard_ui.DashboardUITests.test_demo_reset_model_selection_and_record_switch_isolation) ... 2026-10-15 19:35:41.372 WARNING streamlit.runtime.scriptrunner_utils.script_run_context: Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+2026-10-15 19:35:47.317 The widget with key "b1" was created with a default value but also had its value set via the Session State API.
+Stack (most recent call last):
+  File "/usr/local/python/3.14.2/lib/python3.14/threading.py", line 1044, in _bootstrap
+    self._bootstrap_inner()
+  File "/usr/local/python/3.14.2/lib/python3.14/threading.py", line 1082, in _bootstrap_inner
+    self._context.run(self.run)
+  File "/usr/local/python/3.14.2/lib/python3.14/threading.py", line 1024, in run
+    self._target(*self._args, **self._kwargs)
+  File "/usr/local/python/3.14.2/lib/python3.14/site-packages/streamlit/testing/v1/local_script_runner.py", line 144, in _run_script_thread
+    super()._run_script_thread()
+  File "/usr/local/python/3.14.2/lib/python3.14/site-packages/streamlit/runtime/scriptrunner/script_runner.py", line 436, in _run_script_thread
+    self._run_script(request.rerun_data)
+  File "/usr/local/python/3.14.2/lib/python3.14/site-packages/streamlit/runtime/scriptrunner/script_runner.py", line 949, in _run_script
+    ) = exec_func_with_error_handling(code_to_exec, ctx)
+  File "/usr/local/python/3.14.2/lib/python3.14/site-packages/streamlit/runtime/scriptrunner/exec_code.py", line 136, in exec_func_with_error_handling
+    result = func()
+  File "/usr/local/python/3.14.2/lib/python3.14/site-packages/streamlit/runtime/scriptrunner/script_runner.py", line 924, in code_to_exec
+    exec(code, module.__dict__)  # noqa: S102
+  File "/workspaces/Predictive_Oxygen_Controller/dashboard/app.py", line 312, in <module>
+    workspace()
+  File "/usr/local/python/3.14.2/lib/python3.14/site-packages/streamlit/runtime/fragment.py", line 802, in wrap
+    return wrapped_fragment()
+  File "/usr/local/python/3.14.2/lib/python3.14/site-packages/streamlit/runtime/fragment.py", line 769, in wrapped_fragment
+    result = non_optional_func(*args, **kwargs)
+  File "/workspaces/Predictive_Oxygen_Controller/dashboard/app.py", line 308, in workspace
+    recording_card(1)
+  File "/workspaces/Predictive_Oxygen_Controller/dashboard/app.py", line 121, in recording_card
+    st.selectbox('Existing research budget (false starts/hour)',[1,5,10],index=1,key=f'b{case}',disabled=mode != MODES[0],help='Loads an already saved policy, not a clinical limit. Demo mode uses its own saved cutoff, so this control is disabled.')
+  File "/usr/local/python/3.14.2/lib/python3.14/site-packages/streamlit/runtime/metrics_util.py", line 725, in wrapped_func
+    result = non_optional_func(*args, **kwargs)
+  File "/usr/local/python/3.14.2/lib/python3.14/site-packages/streamlit/elements/widgets/selectbox.py", line 635, in selectbox
+    return self._selectbox(
+  File "/usr/local/python/3.14.2/lib/python3.14/site-packages/streamlit/elements/widgets/selectbox.py", line 684, in _selectbox
+    check_widget_policies(
+  File "/usr/local/python/3.14.2/lib/python3.14/site-packages/streamlit/elements/lib/policies.py", line 146, in check_widget_policies
+    check_session_state_rules(
+  File "/usr/local/python/3.14.2/lib/python3.14/site-packages/streamlit/elements/lib/policies.py", line 90, in check_session_state_rules
+    _LOGGER.warning(
+ok
+test_navigation_plain_labels_and_missing_artifact (test_dashboard_ui.DashboardUITests.test_navigation_plain_labels_and_missing_artifact) ... 2026-10-15 19:35:49.737 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+ok
+test_previous_next_and_available_record_filter (test_dashboard_ui.DashboardUITests.test_previous_next_and_available_record_filter) ... 2026-10-15 19:35:51.684 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+ok
+test_recording_selector_updates_entire_single_recording_view (test_dashboard_ui.DashboardUITests.test_recording_selector_updates_entire_single_recording_view) ... 2026-10-15 19:35:53.135 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+2026-10-15 19:35:55.691 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+2026-10-15 19:35:55.691 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+2026-10-15 19:35:55.692 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+2026-10-15 19:35:55.692 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+ok
+test_active_relative_imports_resolve_after_cleanup (test_figures_cleanup.CleanupAndFigureTests.test_active_relative_imports_resolve_after_cleanup) ... ok
+test_archive_preserves_exact_source_and_restores_safely (test_figures_cleanup.CleanupAndFigureTests.test_archive_preserves_exact_source_and_restores_safely) ... ok
+test_pinned_dependencies_installed (test_figures_cleanup.CleanupAndFigureTests.test_pinned_dependencies_installed) ... ok
+test_plotted_metric_values_are_exact_csv_values (test_figures_cleanup.CleanupAndFigureTests.test_plotted_metric_values_are_exact_csv_values) ... ok
+test_saved_raw_timings_reproduce_summary (test_figures_cleanup.CleanupAndFigureTests.test_saved_raw_timings_reproduce_summary) ... ok
+test_both_runs_figures_metrics_and_cache_agree (test_figures_cleanup.FinalArtifactTests.test_both_runs_figures_metrics_and_cache_agree) ... ok
+test_documentation_local_links_exist (test_figures_cleanup.FinalArtifactTests.test_documentation_local_links_exist) ... ok
+test_all_recordings_are_retained_and_counts_match_audit (test_local_30.Local30ArtifactTests.test_all_recordings_are_retained_and_counts_match_audit) ... ok
+test_event_matching_and_cluster_draws_are_auditable (test_local_30.Local30ArtifactTests.test_event_matching_and_cluster_draws_are_auditable) ... ok
+test_outputs_and_protected_files_are_unchanged (test_local_30.Local30ArtifactTests.test_outputs_and_protected_files_are_unchanged) ... ERROR
+test_exact_recording_split_partition (test_local_30.Local30UnitTests.test_exact_recording_split_partition) ... ok
+test_inner_overlap_and_missing_validation_rejected (test_local_30.Local30UnitTests.test_inner_overlap_and_missing_validation_rejected) ... ok
+test_low_between_normal_endpoints_is_not_evaluable_exposure (test_local_30.Local30UnitTests.test_low_between_normal_endpoints_is_not_evaluable_exposure) ... ok
+test_missing_oof_rows_and_wrong_training_labels_rejected (test_local_30.Local30UnitTests.test_missing_oof_rows_and_wrong_training_labels_rejected) ... ok
+test_one_alarm_cannot_match_twice_and_onset_alert_is_late (test_local_30.Local30UnitTests.test_one_alarm_cannot_match_twice_and_onset_alert_is_late) ... ok
+test_outer_record_cannot_enter_training (test_local_30.Local30UnitTests.test_outer_record_cannot_enter_training) ... ok
+test_record_bootstrap_keeps_all_records_and_is_paired_reproducible (test_local_30.Local30UnitTests.test_record_bootstrap_keeps_all_records_and_is_paired_reproducible) ... ok
+test_test_informed_threshold_not_accepted (test_local_30.Local30UnitTests.test_test_informed_threshold_not_accepted) ... ok
+test_threshold_cannot_contain_outer_test_rows (test_local_30.Local30UnitTests.test_threshold_cannot_contain_outer_test_rows) ... ok
+test_threshold_does_not_access_held_out_labels (test_local_30.Local30UnitTests.test_threshold_does_not_access_held_out_labels) ... ok
+test_undefined_intervals_report_valid_replicate_count (test_local_30.Local30UnitTests.test_undefined_intervals_report_valid_replicate_count) ... ok
+test_zero_event_recording_keeps_exposure_and_undefined_sensitivity (test_local_30.Local30UnitTests.test_zero_event_recording_keeps_exposure_and_undefined_sensitivity) ... ok
+test_event_cache_separates_record_target_window_decisions (test_ml_checkpoint.CheckpointTests.test_event_cache_separates_record_target_window_decisions) ... ok
+test_metric_cache_matches_original_and_separates_labels_scores_decisions (test_ml_checkpoint.CheckpointTests.test_metric_cache_matches_original_and_separates_labels_scores_decisions) ... ok
+test_exact_threshold_and_unrelaxed_training_constraints (test_ml_recovery.RecoveryTests.test_exact_threshold_and_unrelaxed_training_constraints) ... ok
+test_recovered_scores_require_exact_row_identity (test_ml_recovery.RecoveryTests.test_recovered_scores_require_exact_row_identity) ... ok
+test_context_is_prefix_causal_and_record_reset (test_ml_research.ImprovementTests.test_context_is_prefix_causal_and_record_reset) ... ok
+test_grouped_transforms_and_calibration_reference_is_fit_only (test_ml_research.ImprovementTests.test_grouped_transforms_and_calibration_reference_is_fit_only) ... ok
+test_negative_rank_ties_and_domain (test_ml_research.ImprovementTests.test_negative_rank_ties_and_domain) ... ok
+test_outer_event_poison_cannot_change_training_selection (test_ml_research.ImprovementTests.test_outer_event_poison_cannot_change_training_selection) ... ok
+test_preservation_fails_closed (test_ml_research.ImprovementTests.test_preservation_fails_closed) ... ok
+test_bad_timestamps_rejected (test_pipeline.FeatureTests.test_bad_timestamps_rejected) ... ok
+test_empty_data (test_pipeline.FeatureTests.test_empty_data) ... ok
+test_feature_causal_prefix_and_no_ground_truth (test_pipeline.FeatureTests.test_feature_causal_prefix_and_no_ground_truth) ... ok
+test_invalid_waveform_input (test_pipeline.FeatureTests.test_invalid_waveform_input) ... ok
+test_missing_features_retained (test_pipeline.FeatureTests.test_missing_features_retained) ... ok
+test_no_initial_rows_lost (test_pipeline.FeatureTests.test_no_initial_rows_lost) ... ok
+test_rolling_no_boundary_cross (test_pipeline.FeatureTests.test_rolling_no_boundary_cross) ... ok
+test_rounded_clock_recovers_without_deletion (test_pipeline.FeatureTests.test_rounded_clock_recovers_without_deletion) ... ok
+test_schema_validation (test_pipeline.FeatureTests.test_schema_validation) ... ok
+test_streaming_feature_equivalence_order (test_pipeline.FeatureTests.test_streaming_feature_equivalence_order) ... ok
+test_waveform_streaming_and_prefix (test_pipeline.FeatureTests.test_waveform_streaming_and_prefix) ... ok
+test_benchmark_does_not_fit (test_pipeline.InferenceTests.test_benchmark_does_not_fit) ... ok
+test_explicit_invalid_inputs (test_pipeline.InferenceTests.test_explicit_invalid_inputs) ... ok
+test_missing_policy_exposed (test_pipeline.InferenceTests.test_missing_policy_exposed) ... ok
+test_single_new_sample_deterministic_replay (test_pipeline.InferenceTests.test_single_new_sample_deterministic_replay) ... ok
+test_boundaries_independent (test_pipeline.LabelTests.test_boundaries_independent) ... ok
+test_empty_sources (test_pipeline.LabelTests.test_empty_sources) ... ok
+test_exact_time_horizon_irregular_rows (test_pipeline.LabelTests.test_exact_time_horizon_irregular_rows) ... ok
+test_gap_unknown (test_pipeline.LabelTests.test_gap_unknown) ... ok
+test_incomplete_tail_not_negative (test_pipeline.LabelTests.test_incomplete_tail_not_negative) ... ok
+test_invalid_numeric_timestamps (test_pipeline.LabelTests.test_invalid_numeric_timestamps) ... ok
+test_missing_measurements_unknown (test_pipeline.LabelTests.test_missing_measurements_unknown) ... ok
+test_strict_future_current_excluded (test_pipeline.LabelTests.test_strict_future_current_excluded) ... ok
+test_elm_shape_finite_reproducible (test_pipeline.ModelTests.test_elm_shape_finite_reproducible) ... ok
+test_ill_conditioned_features (test_pipeline.ModelTests.test_ill_conditioned_features) ... ok
+test_missing_imputation_train_only (test_pipeline.ModelTests.test_missing_imputation_train_only) ... ok
+test_persist_clean_python_process (test_pipeline.ModelTests.test_persist_clean_python_process) ... ok
+test_training_only_transformations (test_pipeline.ModelTests.test_training_only_transformations) ... ok
+test_weighted_ridge_solution (test_pipeline.ModelTests.test_weighted_ridge_solution) ... ok
+test_alarm_episode_not_timestamp (test_pipeline.ValidationTests.test_alarm_episode_not_timestamp) ... ok
+test_metrics_undefined_not_zero (test_pipeline.ValidationTests.test_metrics_undefined_not_zero) ... ok
+test_oof_disjoint_and_complete (test_pipeline.ValidationTests.test_oof_disjoint_and_complete) ... ok
+test_outer_disjoint_and_complete (test_pipeline.ValidationTests.test_outer_disjoint_and_complete) ... ok
+test_outer_labels_do_not_affect_threshold (test_pipeline.ValidationTests.test_outer_labels_do_not_affect_threshold) ... ok
+test_threshold_ties_and_prespecified_goal (test_pipeline.ValidationTests.test_threshold_ties_and_prespecified_goal) ... ok
+test_independent_recomputations_match_saved_results (test_reliability.ReliabilityArtifactTests.test_independent_recomputations_match_saved_results) ... ok
+test_no_duplicate_primary_event_credit (test_reliability.ReliabilityArtifactTests.test_no_duplicate_primary_event_credit) ... ok
+test_duplicate_rows_rejected (test_reliability.ReliabilityTests.test_duplicate_rows_rejected) ... ok
+test_eligibility_identical_for_all_predictions (test_reliability.ReliabilityTests.test_eligibility_identical_for_all_predictions) ... ok
+test_empty_singleton_and_never_alert (test_reliability.ReliabilityTests.test_empty_singleton_and_never_alert) ... ok
+test_event_cannot_take_multiple_alarms (test_reliability.ReliabilityTests.test_event_cannot_take_multiple_alarms) ... ok
+test_existing_alarm_not_reset_at_window_start (test_reliability.ReliabilityTests.test_existing_alarm_not_reset_at_window_start) ... ok
+test_half_open_alert_boundary_and_exact_lead (test_reliability.ReliabilityTests.test_half_open_alert_boundary_and_exact_lead) ... ok
+test_hidden_low_invalid_or_gap_does_not_bridge_exposure (test_reliability.ReliabilityTests.test_hidden_low_invalid_or_gap_does_not_bridge_exposure) ... ok
+test_independent_false_runs_and_exposure (test_reliability.ReliabilityTests.test_independent_false_runs_and_exposure) ... ok
+test_missing_invalid_and_gapped_lead_in (test_reliability.ReliabilityTests.test_missing_invalid_and_gapped_lead_in) ... ok
+test_off_event_false_alarms_distinguish_redundancy (test_reliability.ReliabilityTests.test_off_event_false_alarms_distinguish_redundancy) ... ok
+test_raw_boundary_gap_and_complete_horizon (test_reliability.ReliabilityTests.test_raw_boundary_gap_and_complete_horizon) ... ok
+test_raw_onset_left_censoring_and_unknown_prior (test_reliability.ReliabilityTests.test_raw_onset_left_censoring_and_unknown_prior) ... ok
+test_shared_alarm_cannot_credit_two_events (test_reliability.ReliabilityTests.test_shared_alarm_cannot_credit_two_events) ... ok
+test_all_recording_and_inner_split_provenance (test_saved_results.SavedResultTests.test_all_recording_and_inner_split_provenance) ... ok
+test_current_feature_code_matches_all_saved_pulse_history (test_saved_results.SavedResultTests.test_current_feature_code_matches_all_saved_pulse_history) ... ok
+test_current_label_code_matches_all_saved_targets (test_saved_results.SavedResultTests.test_current_label_code_matches_all_saved_targets) ... ok
+test_every_model_same_rows_once (test_saved_results.SavedResultTests.test_every_model_same_rows_once) ... ok
+test_no_initial_feature_rows_or_positives_lost (test_saved_results.SavedResultTests.test_no_initial_feature_rows_or_positives_lost) ... ok
+test_saved_all_model_replay_parity (test_saved_results.SavedResultTests.test_saved_all_model_replay_parity) ... ok
+test_saved_pooled_counts_recompute (test_saved_results.SavedResultTests.test_saved_pooled_counts_recompute) ... ok
+test_source_files_unchanged (test_saved_results.SavedResultTests.test_source_files_unchanged) ... ok
+test_validation_targets_separate_from_test (test_saved_results.SavedResultTests.test_validation_targets_separate_from_test) ... ok
+test_controller_error_step (test_signal_studies.SignalStudyTests.test_controller_error_step) ... ok
+test_dc_rejection_and_pole_stability (test_signal_studies.SignalStudyTests.test_dc_rejection_and_pole_stability) ... ok
+test_full_artifact_reproducibility_and_output_guard (test_signal_studies.SignalStudyTests.test_full_artifact_reproducibility_and_output_guard) ... ok
+test_known_finite_infinite_and_undefined_margins (test_signal_studies.SignalStudyTests.test_known_finite_infinite_and_undefined_margins) ... ok
+test_known_first_order_metrics_and_never_settles (test_signal_studies.SignalStudyTests.test_known_first_order_metrics_and_never_settles) ... ok
+test_synthetic_and_filter_rejection (test_signal_studies.SignalStudyTests.test_synthetic_and_filter_rejection) ... ok
+test_corrupted_or_missing_artifact_cannot_hit_cache (test_target_hardening.CacheTests.test_corrupted_or_missing_artifact_cannot_hit_cache) ... ok
+test_every_generation_dependency_invalidates (test_target_hardening.CacheTests.test_every_generation_dependency_invalidates) ... ok
+test_historical_run_directory_protected (test_target_hardening.CacheTests.test_historical_run_directory_protected) ... ok
+test_repeated_load_reuses_receipt_without_rebuilding (test_target_hardening.CacheTests.test_repeated_load_reuses_receipt_without_rebuilding) ... ok
+test_source_target_and_feature_order_invalidate (test_target_hardening.CacheTests.test_source_target_and_feature_order_invalidate) ... ok
+test_onset_opportunity_and_no_lookahead_at_onset (test_target_hardening.EventMatchingTests.test_onset_opportunity_and_no_lookahead_at_onset) ... ok
+test_91_92_is_observed_episode_subset (test_target_hardening.OnsetTests.test_91_92_is_observed_episode_subset) ... ok
+test_empty_and_invalid_inputs (test_target_hardening.OnsetTests.test_empty_and_invalid_inputs) ... ok
+test_future_low_preserved_and_ongoing_low_ineligible (test_target_hardening.OnsetTests.test_future_low_preserved_and_ongoing_low_ineligible) ... ok
+test_horizon_includes_right_endpoint_and_excludes_current (test_target_hardening.OnsetTests.test_horizon_includes_right_endpoint_and_excludes_current) ... ok
+test_independent_expected_crossings (test_target_hardening.OnsetTests.test_independent_expected_crossings) ... ok
+test_left_censored_low_not_an_onset (test_target_hardening.OnsetTests.test_left_censored_low_not_an_onset) ... ok
+test_missing_current_or_future_is_unknown (test_target_hardening.OnsetTests.test_missing_current_or_future_is_unknown) ... ok
+test_missing_prior_and_time_gap_do_not_invent_crossing (test_target_hardening.OnsetTests.test_missing_prior_and_time_gap_do_not_invent_crossing) ... ok
+test_strict_current_age_and_record_boundary (test_target_hardening.OnsetTests.test_strict_current_age_and_record_boundary) ... ok
+test_current_receipts_hit_without_regeneration (test_target_hardening.SavedTargetTests.test_current_receipts_hit_without_regeneration) ... ok
+test_future_low_predictions_unchanged (test_target_hardening.SavedTargetTests.test_future_low_predictions_unchanged) ... ok
+test_historical_outputs_preserved (test_target_hardening.SavedTargetTests.test_historical_outputs_preserved) ... FAIL
+test_onset_artifact_replay_matches_eligible_batch_scores (test_target_hardening.SavedTargetTests.test_onset_artifact_replay_matches_eligible_batch_scores) ... ok
+test_onset_eligibility_and_expected_equivalence_on_normal_state (test_target_hardening.SavedTargetTests.test_onset_eligibility_and_expected_equivalence_on_normal_state) ... ok
+test_targets_have_identical_rows_across_models_and_no_split_leakage (test_target_hardening.SavedTargetTests.test_targets_have_identical_rows_across_models_and_no_split_leakage) ... ok
+test_eligibility_gates_low_missing_stale_future_current (test_target_hardening.TargetInferenceTests.test_eligibility_gates_low_missing_stale_future_current) ... ok
+test_every_inner_transform_only_sees_inner_training (test_target_hardening.TargetInferenceTests.test_every_inner_transform_only_sees_inner_training) ... ok
+test_ineligible_rows_still_update_history (test_target_hardening.TargetInferenceTests.test_ineligible_rows_still_update_history) ... ok
+test_target_metadata_persists_with_model (test_target_hardening.TargetInferenceTests.test_target_metadata_persists_with_model) ... ok
+
+======================================================================
+ERROR: test_inputs_outputs_and_preservation_verified (test_alarm_budget.AlarmBudgetArtifactTests.test_inputs_outputs_and_preservation_verified)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspaces/Predictive_Oxygen_Controller/tests/test_alarm_budget.py", line 103, in test_inputs_outputs_and_preservation_verified
+    def test_inputs_outputs_and_preservation_verified(self):self.assertEqual(verify(ROOT/'run02')['status'],'passed')
+                                                                             ~~~~~~^^^^^^^^^^^^^^
+  File "/workspaces/Predictive_Oxygen_Controller/src/alarm_budget_experiment.py", line 303, in verify
+    if digest(config.ROOT/name)!=want:raise ValueError('Historical artifact changed: '+name)
+                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: Historical artifact changed: docs/FULL_PIPELINE_GUIDE.md
+
+======================================================================
+ERROR: test_outputs_and_protected_files_are_unchanged (test_local_30.Local30ArtifactTests.test_outputs_and_protected_files_are_unchanged)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspaces/Predictive_Oxygen_Controller/tests/test_local_30.py", line 99, in test_outputs_and_protected_files_are_unchanged
+    def test_outputs_and_protected_files_are_unchanged(self):self.assertEqual(verify_output(DEFAULT_OUTPUT)['status'],'passed')
+                                                                              ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "/workspaces/Predictive_Oxygen_Controller/src/local_30_evaluation.py", line 126, in verify_output
+    if digest(config.ROOT/p)!=want:raise ValueError('Protected file changed: '+p)
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: Protected file changed: docs/FULL_PIPELINE_GUIDE.md
+
+======================================================================
+FAIL: test_historical_outputs_preserved (test_target_hardening.SavedTargetTests.test_historical_outputs_preserved)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspaces/Predictive_Oxygen_Controller/tests/test_target_hardening.py", line 193, in test_historical_outputs_preserved
+    for path,digest in snapshots.items():self.assertEqual(fingerprint(path),digest,path)
+                                         ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'c3a84b03fa47c3282128a5a2a14bb278cd56df82172d68a59e4a626033800ffd' != 'ecb841126b8afe0d4f9c687c78ea87ee5d5765e7db92fdb9f1f30c12df71f2a4'
+- c3a84b03fa47c3282128a5a2a14bb278cd56df82172d68a59e4a626033800ffd
++ ecb841126b8afe0d4f9c687c78ea87ee5d5765e7db92fdb9f1f30c12df71f2a4
+ : docs/MODEL_EVALUATION.md
+
+----------------------------------------------------------------------
+Ran 158 tests in 247.540s
+
+FAILED (failures=1, errors=2)

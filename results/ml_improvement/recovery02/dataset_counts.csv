@@ -1,0 +1,11 @@
+Target,Horizon_s,FeatureSet,Rows,Positives,Recordings,Positive_Recordings
+future_low,5,base10,20157,4185,30,10
+future_low,10,base10,20157,4300,30,10
+future_low,15,base10,20157,4396,30,10
+future_low,30,base10,20157,4587,30,10
+future_low,30,context18,20157,4587,30,10
+new_onset,5,base10,16050,110,26,6
+new_onset,10,base10,16050,223,26,6
+new_onset,15,base10,16050,317,26,6
+new_onset,30,base10,16050,501,26,6
+new_onset,30,context18,16050,501,26,6

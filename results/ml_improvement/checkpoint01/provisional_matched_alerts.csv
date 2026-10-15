@@ -1,0 +1,4 @@
+Record,Event_ID,Onset_s,End_s,Qualifying_Onset,Minimum_SpO2,Has_91_92,Window_s,Evaluation_Status,Opportunities,Available_Lead_Time_s,Method,Detected,First_Alert_s,Lead_Time_s,Alarm_ID,Target,Horizon_s,FeatureSet,ScoreSpace,Model,Trained_Horizon_s,Evaluation_Split,Threshold_Method,Budget
+7,367,367,367,True,94,False,10,eligible,15,9.824000000000012,episode_start_one_to_one,True,357.176,9.824000000000012,1.0,new_onset,10,base10,negative_rank,GaussianNB,10,outer_LORO,inner3_GroupKFold_budget,10.0
+7,367,367,367,True,94,False,15,eligible,25,14.463999999999999,episode_start_one_to_one,True,357.176,9.824000000000012,1.0,new_onset,15,base10,negative_rank,GaussianNB,15,outer_LORO,inner3_GroupKFold_budget,10.0
+7,367,367,367,True,94,False,30,eligible,49,29.72800000000001,episode_start_one_to_one,True,353.56,13.439999999999998,2.0,new_onset,30,base10,negative_rank,GaussianNB,30,outer_LORO,inner3_GroupKFold_budget,10.0

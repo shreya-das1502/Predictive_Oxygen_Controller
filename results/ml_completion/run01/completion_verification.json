@@ -1,0 +1,8 @@
+{
+  "status": "verified_with_documented_historical_contract_failures",
+  "baseline_files": 1775,
+  "unchanged_baseline_files": 1767,
+  "authorized_changes": 8,
+  "authenticated_outputs": 956,
+  "historical_contracts_modified": false
+}

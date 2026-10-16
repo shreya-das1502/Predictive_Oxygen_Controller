@@ -1,0 +1,6 @@
+{
+  "phase": "ALL selections frozen before new held-out outcome evaluation; recovered training-only grids",
+  "thresholds_sha256": "a997a5502680ce67437906873b459f12ceaa7e1720fe7ec8895bf1f3c66dc606",
+  "protocol_sha256": "8f4a44e18fcafd17f4e189724d4ee0b921da228c58bddb93e21a616ec6b36103",
+  "outer_unlabeled_sha256": "bc9ae76b31bfa8a33542d92cd14a9c631349e0e89911fae545307e56cd052c50"
+}

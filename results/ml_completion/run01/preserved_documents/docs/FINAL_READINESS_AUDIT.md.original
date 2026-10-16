@@ -1,0 +1,216 @@
+# Final readiness audit — demo, submission and result validity
+
+## 1. Executive verdict
+
+**Overall: READY WITH LIMITATIONS for an honest retrospective research demonstration; NOT READY for an unqualified final submission or a useful oxygen early-warning/control claim.** The implementation and completed historical evaluation are credible local academic work. The strongest result is a negative alarm-policy finding. A local browser rehearsal and submission scope/wording corrections remain necessary. This audit created only this report and [FINAL_READINESS_CHECKLIST.md](FINAL_READINESS_CHECKLIST.md); it did not resume the paused ML experiments or change underlying files.
+
+| Claim/readiness area | Verdict | Evidence and qualification |
+| --- | --- | --- |
+| Academic ML implementation | Ready with limitations | Causal features, four fixed families, grouped fitting and authenticated saved outputs exist. |
+| Completed historical experimental evaluation | Ready with limitations | Saved scores/decisions, manifests and pooled/per-record counts agree; small, repeatedly examined recording cohort. |
+| Dashboard demo | Ready with limitations — DEMO AFTER MINOR FIXES | 17 dashboard tests pass; real-server bind blocked here and browser visuals NOT VERIFIED. Rehearse locally. |
+| Submission as currently packaged | Not ready — submit after scope/documentation corrections | Incomplete newer study, stale evidence inventory and red preservation checks need explicit disposition. |
+| Useful early warning under tested final constraints | Not ready / not demonstrated | All four learned policies detect 0/14 at W30 and 0/15 at shorter windows. |
+| Predictive feedforward oxygen control | Not demonstrated | No validated oxygen plant, risk-to-dose mapping or joint ML/controller experiment. |
+| Clinical readiness | Not ready | No patient-independent or clinical validation; no demonstrated treatment utility. |
+
+“Verified” below means checked against current local code/artifacts. “Interpretation” identifies an assessment rather than a measured result. NOT VERIFIED is not a pass.
+
+## 2. Repository and artifact inventory
+
+At the first audit inspection README and three reports were modified, with dashboard, signal studies and ML research files untracked. After the user interruption, current HEAD is `49c11a04fa7a806981e385b0de0366ba2741486f` (`Twelfth`) and the working tree was clean before these deliverables; that external commit is not an audit edit. No `AGENTS.md` was found by the repository-parent search.
+
+- Entrypoints: [dashboard/app.py](../dashboard/app.py); `python -m src.check_project`; the fitting runner [src/run_experiments.py](../src/run_experiments.py); separate read-only verification options in the local-30/alarm-budget tools. No training runner was invoked.
+- Data: all 30 local `data/bidmc_XX_Signals.csv` / `Numerics.csv` pairs are available to the backend. Waveforms use PLETH; numeric SpO2 supplies outcomes. Recording IDs are verified local identifiers, not verified patient IDs. External provenance/license/redistribution compliance was NOT VERIFIED in this offline audit; include the proper BIDMC dataset citation/terms in the submission package.
+- Completed recall-policy evidence: [results/final/future_low](../results/final/future_low/) and [results/final/new_onset](../results/final/new_onset/), each with datasets, models/JSON metadata, OOF/held-out predictions, cache receipts, manifests and 23 PNG figures plus PDFs/source tables.
+- Completed event-policy evidence: [results/alarm_budget_experiment/run02](../results/alarm_budget_experiment/run02/) and its [frozen protocol](../results/alarm_budget_experiment/protocol.json). Historical audited comparisons remain in [results/reliability/final](../results/reliability/final/) and [results/local_30_fixed_policy_v2](../results/local_30_fixed_policy_v2/).
+- Paused work: [results/ml_improvement/evaluation01](../results/ml_improvement/evaluation01/), 144 saved condition checkpoints and timestamp/per-record event tables; [checkpoint receipt](../results/ml_improvement/checkpoint01/progress.json). `event_summary.csv`, `latency.csv`, `manifest.json`, `verification.json` and `docs/ML_IMPROVEMENT_REPORT.md` are absent for this newer study. Its completed fits are not a finalized research report.
+- Separate simulations: [signal_studies/REPORT.md](../signal_studies/REPORT.md), source and saved CSV/PNG outputs. They illustrate conditioning/control mathematics, not oxygen delivery.
+- Reproducibility gap: README explicitly says large models, data and compressed tables are locally generated/Git-ignored. A fresh clone alone does not guarantee a working offline demo. Verify the actual professor-demo machine's local artifacts; do not download or regenerate during presentation.
+
+## 3. Targets, causal availability and data accounting
+
+[Labeling](../src/labeling.py) and [configuration](../src/config.py) confirm:
+
+- `future_low`: minimum valid SpO2 in **(t,t+30] <=94%**, including ongoing lows. Future values generate retrospective labels only. Complete valid coverage is required, no numeric gaps over 1.01 s, valid SpO2 in (0,100]; invalid/incomplete labels remain unavailable rather than negative.
+- `new_onset`: additionally requires the latest valid current reading, age <=1.01 s, to be >94%; an adjacent valid >94 to <=94 crossing qualifies. One reading suffices. Initial/unknown-prior lows are censored; missing readings/gaps split events. This is not adjudicated sustained clinical desaturation. The descriptive severe-interest subset contains observed exact 91/92 readings, not a separately trained clinical-severity predictor.
+- Current/future SpO2, labels and record IDs are excluded from the ten predictor features in `config.FEATURES`. Current SpO2 is an explicit eligibility gate, not a feature. Full-record retrospective eligibility is nevertheless unavailable prospectively; saved-mode playback is not evidence of an online deployment's coverage.
+- [Preprocessing](../src/preprocessing.py): forward 0.5–5 Hz Butterworth at 125 Hz, past trough amplitude, local maximum confirmed by the following 8 ms sample and timestamped at confirmation. Rounded exported clocks are validated against row-clock reconstruction, not deduplicated. [Features](../src/features.py) use past/current pulse history, reset by recording, before target exclusions. Pulse validity ranges and dashboard missingness checks are not validated SQI or beat annotations.
+- Saved populations: 20,157 future-low rows / 4,587 positives / 30 nonempty recordings; 16,050 onset rows / 501 positives / 26 nonempty recordings, six positive-containing groups. Four all-low records (04/08/09/22) have no onset opportunities and zero event exposure; they remain in the 30-record roster. Sources: target `causal_dataset.csv`, `dataset_summary.json`, and [LOCAL_30_RECORDING_EVALUATION.md](LOCAL_30_RECORDING_EVALUATION.md).
+
+Overlapping future windows create correlated labels; pulse rows are not independent events. No verified causal-feature implementation defect was identified by these checks. Unknown monitor delay, pulse errors and one-reading events remain scientific limitations.
+
+## 4. Splits, thresholds and leakage
+
+[run_experiments.py](../src/run_experiments.py), [evaluation.py](../src/evaluation.py) and [model.py](../src/model.py) implement outer leave-one-recording-out, inner three-fold GroupKFold on outer-training records, and train-only median imputation/scaling/model fitting. Recall-policy thresholds maximize the cutoff attaining >=92% training-OOF timestamp recall. Saved held-out rows have the same sample IDs per model with no within-model duplicates; decisions equal `Score >= Threshold` for both completed targets and all 577,800 final-budget prediction rows.
+
+The final budget selector in [alarm_budget_experiment.py](../src/alarm_budget_experiment.py) receives only outer-training OOF scores/events/exposure, applies its frozen candidate grid and 1/5/10 start budgets with 5% active cap, then transfers the selected cutoff to the outer record. Training feasibility does not guarantee outer feasibility. Targeted leakage/threshold tests passed; original recording/inner splits and caches passed both saved-run gates. [provenance.py](../src/provenance.py) hashes config, dataset, features, labeling, preprocessing, provenance and source data, addressing the former stale-cache risk.
+
+**Patient independence is unverified.** Group IDs are recordings, not a verified patient linkage. The cohort has been repeatedly examined. The code shows fixed families/settings and no outer-outcome threshold selection in these completed workflows; this audit cannot prove absence of every earlier human development choice. Outer predictions must not select a winner and then be called fresh confirmation. Selecting models/policies prospectively would require middle recording-grouped assessment entirely inside outer training; even that remains exploratory on this reused cohort. Recording bootstrap intervals do not establish patient-level independence.
+
+## 5. Model comparison: historical timestamp policy
+
+These are pooled held-out **timestamp** results from each target's `results/final/<target>/model_comparison.csv`, not final-budget event sensitivity. AP means average precision. Models share eligible held-out rows within each target; the two targets have different populations.
+
+| Target | Model | Recall | Precision | Specificity | AP | Macro AP | FP | FN |
+| --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| future_low | ELM | 0.964901 | 0.238998 | 0.094862 | 0.255929 | 0.238516 | 14093 | 161 |
+| future_low | Logistic | 0.931982 | 0.219602 | 0.024277 | 0.240296 | 0.288180 | 15192 | 312 |
+| future_low | GaussianNB | 0.982123 | 0.225667 | 0.007193 | 0.196267 | 0.207492 | 15458 | 82 |
+| future_low | Tree | 0.894920 | 0.214629 | 0.035260 | 0.189493 | 0.217649 | 15021 | 482 |
+| new_onset | ELM | 0.890220 | 0.030919 | 0.100971 | 0.023976 | 0.257175 | 13979 | 55 |
+| new_onset | Logistic | 0.886228 | 0.028203 | 0.016078 | 0.033500 | 0.329108 | 15299 | 57 |
+| new_onset | GaussianNB | 0.900200 | 0.033238 | 0.156344 | 0.057595 | 0.276268 | 13118 | 50 |
+| new_onset | Tree | 1.000000 | 0.031215 | 0.000000 | 0.039582 | 0.223726 | 15549 | 0 |
+
+ELM's future-low AP advantage does not establish useful early warning. GaussianNB has stronger pooled onset AP; logistic has stronger macro AP. These metric-specific retrospective rankings do not supply an overall superior model. Onset prevalence is 501/16,050 = 3.1215%; onset ELM AP is below prevalence. High broad-target recall includes ongoing lows.
+
+## 6. Alarm-budget and early-warning results
+
+Fresh checks authenticated **11 inputs and 15 outputs** against the original run02 manifest, recomputed grouped per-record counts/exposure against all **288 summary rows**, and verified all saved budget decisions. Of those rows, **192 describe learned conditions; maximum detected count is zero**. Sources: [summary.csv](../results/alarm_budget_experiment/run02/summary.csv), [per_recording.csv](../results/alarm_budget_experiment/run02/per_recording.csv), [event_matches.csv](../results/alarm_budget_experiment/run02/event_matches.csv).
+
+| Final learned policies, both targets and all budgets | Eligible | Detected | Missed | Matched leads |
+| --- | ---: | ---: | ---: | --- |
+| W=5,10,15 s, each window | 15 | 0 | 15 | Undefined |
+| W=30 s | 14 | 0 | 14 | Undefined |
+| 91/92-interest subset, each window | 3 | 0 | 3 | Undefined |
+
+These W values are **matching look-back windows**, not separately trained horizons in the completed original study. All its models were trained at H=30 s. The paused improvement study does have actual H=5/10/15/30 fits; those must not be silently conflated with the original results.
+
+At W30, new-onset, research budget 5:
+
+| Policy | Detected | Off-event starts | Starts/evaluable h | Alarm-active time |
+| --- | ---: | ---: | ---: | ---: |
+| ELM | 0/14 | 0 | 0 | 0% |
+| Logistic | 0/14 | 4 | 1.394129 | 0.1342% |
+| GaussianNB | 0/14 | 1 | 0.348532 | 0.0116% |
+| Tree | 0/14 | 57 | 19.866334 | 0.8912% |
+| Always-alert | 8/14 | 35 | 12.198626 | 100% |
+| Never-alert | 0/14 | 0 | 0 | 0% |
+
+Same source summary; tree violates even the pooled budget, and other per-record violations are documented in `outer_constraint_status.csv`. All models use **10,329.032 s = 2.869176 evaluable hours**, not the entire raw wall clock. Inter-pulse edges must have valid complete future coverage, no hidden current-low/invalid readings and <=2 s spacing. Active fraction is left-held positive duration/exposure; pulse alert fraction counts rows. FP timestamps, legacy false target episodes/hour, off-event starts/hour and redundant/unmatched starts are different metrics.
+
+Event matching is chronological earliest unused alarm start in **[onset−W,onset)**, one credit per event and alarm. No restarting at window boundaries or reuse by nearby events. Off-event starts have no observed qualifying onset in (start,start+W], considering even sensitivity-excluded real onsets. Always-alert can restart at legitimate coverage/state gaps; its 8/14 is not learned prediction and fails the active cap. Actual lead is onset minus matched start; no lead is zero-filled for a miss. Earlier 14/14 reusable-positive credit and approximately 29.7 s boundary-clipped leads do not demonstrate 14 new alarms; [FINAL_REPORT.md, reconciliation](FINAL_REPORT.md#final-evaluation-alarm-budget-experiment) separates that from audited recall-policy onset ELM 13/14 and budget-policy 0/14.
+
+**Interpretation:** the final policy did not demonstrate useful early warning. Research budgets 1/5/10 and 5% cap are not clinical standards. Weak discrimination, score transfer and scarce events are plausible limitations; no bug should be invented to explain a negative outcome.
+
+## 7. Paused improvement study: provisional evidence only
+
+[ML_IMPROVEMENT_CHECKPOINT.md](ML_IMPROVEMENT_CHECKPOINT.md) and [provisional detecting conditions](../results/ml_improvement/checkpoint01/provisional_detecting_conditions.csv) report GaussianNB training-negative-rank, base10, budget 10: H/W10 detects 1/15 at 1.394129 starts/h; H/W15 detects 1/15 at 0.697064/h; H/W30 detects 1/14 at 1.394129/h. They all concern the same record-07 onset at 367 s, not three independent successes; it is not a severe-interest event. Every condition violates the budget on at least one individual recording. The saved alert leads are 9.824/9.824/13.440 s, respectively, in `provisional_matched_alerts.csv`.
+
+Those point estimates were previously checked and are present now, but this audit did not finish their bootstrap, final policy-parity assertion, latency, figures, manifest or final verifier. **NOT VERIFIED as a finalized improvement; exclude from the main completed-study conclusion or label explicitly provisional.** No experimental run was resumed here. Do not substitute these scores for dashboard final-policy results.
+
+## 8. Latency validity
+
+[results/final/new_onset/latency_benchmark.csv](../results/final/new_onset/latency_benchmark.csv) separates feature calculation, transforms/model, model-only, thresholding, pulse-to-alert, waveform replay and loading. ELM saved median/P95/P99 (ms): model-only 0.0106245/0.011802/0.03650541; features 0.226067/0.28877595/0.982612; threshold 0.000170/0.000191/0.000340; pulse-to-alert 0.4886175/0.74296365/0.90381946, each 2,000 repetitions. Loading has 100 repetitions, median 0.812623/P95 4.879151 and undefined P99. Waveform pulse-producing samples have 236 repetitions, median 0.729743/P95 1.1582205 and undefined P99; the full waveform-sample timer includes non-pulse samples. Raw samples/medians/P95 agree in saved-run gates.
+
+These are historical host computational benchmarks, not new timings, physiological delays, achieved warning lead or device guarantees. Independent component percentiles must not be added as an end-to-end percentile. Training/inner-validation durations in model tables are separate. No timing exists for the unfinished study's final measured run.
+
+## 9. Dashboard and defensible 5–7 minute demo
+
+**Verified functional readiness:** 17 focused tests pass, including actual Streamlit AppTest interactions, dynamic recording selection across the supported 01–30 backend catalog, one playback slot, previous/next controls, reset-on-switch, causal prefix invariance, missing inputs, mode separation, delayed outcomes and visible limitations. Sources: [dashboard/app.py](../dashboard/app.py), [backend.py](../dashboard/backend.py), [DASHBOARD_GUIDE.md](DASHBOARD_GUIDE.md). The backend is intentionally bounded to these 30 IDs, not a universal arbitrary-dataset catalog. The requested “Patient Recording” dropdown does not prove patient identity.
+
+Dependencies are declared and installed: `streamlit==1.66.0`, `plotly==6.9.0` in [requirements-dashboard.txt](../requirements-dashboard.txt), plus pinned research requirements. Setup reference (not executed/installed by this audit):
+
+```bash
+python -m pip install -r requirements.txt
+python -m pip install -r requirements-dashboard.txt
+python -m streamlit run dashboard/app.py --server.address 127.0.0.1 --global.developmentMode=false --browser.gatherUsageStats=false
+```
+
+Launch from repository root with existing trusted local artifacts. Do not rely on vanished `/tmp/oxygen-dashboard-deps`. The startup check here failed with socket `PermissionError: [Errno 1] Operation not permitted`; its process exited 1 and was stopped. This is an environment restriction, not demonstrated app failure. **HTTP health and browser visual verification remain NOT VERIFIED.** No browser connector, Playwright/Selenium or Chromium/Chrome/Firefox executable is available. AppTest is not a visual smoke test.
+
+Recommended failure demonstration, not cherry-picked success:
+
+1. **0–1 min:** state retrospective scope, unverified patients, no oxygen recommendation; show top-level 0/14 notice.
+2. **1–3 min:** `Recording playback` → `Select Patient Recording` = **Recording 07** → model **ELM** → expand **Prediction question and playback source** → **New oxygen drop to 94% or lower**, **Previously evaluated recording · saved final policy**, budget **5**. Start at **335 s**, then select **360 s**. Recommended segment **335–400 s**. Actual source files: `data/bidmc_07_Signals.csv`, `data/bidmc_07_Numerics.csv`; saved policy table is run02 `outer_predictions.csv.gz`.
+3. At cursor 360, the latest eligible prediction is **359.832 s**, score **0.2649192751392906**, cutoff **0.9662794610906745**, decision **0**. Its future 30 s target is positive. Raw PPG is finite at all 8,126 samples from 335–400 s; the saved causal pulse table has 22 accepted pulses over 348–360 s. This confirms available data/detected pulses, not validated signal quality.
+4. **3–4 min:** advance to **367 s**: observed numeric SpO2 changes **95 at 366 →94 at 367 →95 at 368 s**. It is an isolated threshold crossing, not a severe event or proof treatment was needed. At **397–400 s**, the delayed retrospective table can show the eligible missed event (49 opportunities, no first alert/lead). Source: run02 `event_matches.csv`, record7/ELM/new_onset/budget5/W30. “Available lead” 29.728 s is opportunity coverage, not an achieved warning. Do not force an ELM alert or switch to demo mode to manufacture success.
+5. **4–6 min:** open **Research results**, new-onset, budget5, W30: compare learned/always/never policies and exposure/activity. Then show `results/final/new_onset/figures/model_metrics.png` as the explicitly historical timestamp-policy tradeoff and `latency_distributions.png` for compute-time distinctions.
+6. **6–7 min:** show `ALARM_BUDGET_EXPERIMENT.md` final table and limitations. If useful, briefly select another recording to show reset, then return; this also resets playback. Full-data demo mode may illustrate causal software inference separately but cannot supply held-out performance/event credit.
+
+Scores and thresholds are labeled algorithmic, observed readings and delayed outcomes are separate, and demo mode is prominently marked full-data/NOT held-out. All normality/treatment claims remain prohibited. The exact slider/scroll appearance, responsive layout and auto-refresh must still be rehearsed in a browser.
+
+## 10. Figures and tables suitable for submission
+
+Each target's `figures/INDEX.md` supplies captions; `figure_manifest.json` authenticates source tables/images. Both gates verified 23 PNGs per target. Only the two onset figures marked “viewed” were visually inspected in this audit; other visual appearance is NOT VERIFIED here.
+
+| Exact file or pair | Meaning / suitability |
+| --- | --- |
+| `results/final/new_onset/figures/model_metrics.png` and `model_metrics.csv` | Viewed: readable target, pooled/macro labels and 0–1 axes. Suitable for historical recall-policy timestamp comparison only. |
+| `results/final/new_onset/figures/latency_distributions.png` and `latency_distributions.csv` | Viewed: matching PNG/CSV source confirmed. Log ms axes distinguish independent component timers; no warning/clinical claim. |
+| `results/final/new_onset/figures/ranking_curves.png` | Pooled ranking across refits, not probability calibration or budget-policy sensitivity. Source hashes verified; visual not newly inspected. |
+| `results/final/new_onset/figures/false_alarm_burden.png` | Historical target-run false episodes, not final off-event starts. Include that distinction in caption. |
+| `results/final/new_onset/figures/events_and_lead_time.png` | Historical reusable opportunity matching; unsuitable as final one-to-one warning evidence without explicit historical warning. |
+| `results/final/new_onset/figures/ppg_pulse_detection.png` | Causal accepted PPG peaks, not ECG R peaks or validated annotations. |
+| `results/final/new_onset/figures/record_26_temporal.png` | Historical score/threshold/observed outcome trace; disclose policy and retrospective ground truth. |
+| `results/alarm_budget_experiment/run02/summary.csv`, `per_recording.csv`, `event_matches.csv`, `outer_constraint_status.csv` | Primary final-policy tables: detection, burden, actual matches and violations. There is no final-budget PNG plot in that directory; do not imply one exists. |
+| `signal_studies/outputs/control_comparison.png`, `control_metrics.csv`; `bode_comparison.png`, `bode_P.csv`, `bode_PI.csv`, `bode_PID.csv` | Illustrative conditioning-plant/controller math only. Not physiological oxygen/PID validation. No simulation was rerun. |
+| `signal_studies/outputs/waveform_constant.png`, `waveform_constant.csv` | Synthetic PPG conditioning illustration; do not present as observed BIDMC evidence. |
+
+## 11. Documentation contradictions and unsupported-claim risks
+
+- **High:** [PROJECT_REVIEW_EVIDENCE.md, §10.3](PROJECT_REVIEW_EVIDENCE.md#103-missing-evidence-register) says separately trained 5/10/15 s models and predictive-feature ablations are unavailable. Fits/score tables now exist in the paused study; finalized evaluation remains unavailable. Correct the inventory/scope in a later authorized documentation change; preserve historical evidence.
+- **High:** its §3 historical hierarchy (near line680), §9 “Final project outcome” and the README/FINAL_REPORT/dashboard “final” statements reference the completed original run02. These are numerically correct for that named policy, but not a complete current-work inventory. Add a submission-stage notice distinguishing completed baseline from unfinished study; do not replace 0/14 with the provisional one-event result.
+- **Medium:** [README, reproduction section](../README.md#reproduce-the-earlier-recall-oriented-evaluation) sends fitting/report commands to existing `results/final/...` paths. `src/run_experiments.py:run` creates directories with `exist_ok=True` and protects `results/validated`, not every final destination. Copy/pasting can overwrite preserved evidence. Use read-only checks for the demo; any later approved reproduction must use a new destination. No such command was run here.
+- **Medium:** [LATENCY_REPORT.md](LATENCY_REPORT.md) has historical timing values (e.g. ELM model-only 0.0055 ms) different from the final onset artifact (0.0106245 ms). They are different saved runs/targets, not automatically contradictory measurements; the standalone report needs explicit run/target provenance on presentation slides. Use the authenticated final target CSV for quoted numbers.
+- **Medium:** [DASHBOARD_GUIDE.md](DASHBOARD_GUIDE.md), earlier verification sections, and [DASHBOARD_VERIFICATION.md](DASHBOARD_VERIFICATION.md) preserve three-case/temporary-environment and earlier test counts; the current guide labels these historical, but do not use them as current test evidence. Current single-recording wording and tests are authoritative. The project's own reports quote 76/135/136/149/159-test stages: these are dated/stage-specific outcomes, not proof of a currently green suite.
+- **Low:** [MODEL_EVALUATION.md, historical pre-onset wording](MODEL_EVALUATION.md) retains older “genuine pre-onset detection”/lead claims, but an explicit historical warning now qualifies them. [FINAL_REPORT.md, final reconciliation](FINAL_REPORT.md#final-evaluation-alarm-budget-experiment) correctly distinguishes 14/14 reusable positives, 13/14 recall-policy one-to-one ELM and 0/14 budget-policy detections. Extracting the old subsection alone would be misleading.
+- [RELIABILITY_AUDIT.md, next experiment](RELIABILITY_AUDIT.md) recommends an untouched independent-patient cohort; [LOCAL_30_RECORDING_EVALUATION.md](LOCAL_30_RECORDING_EVALUATION.md) explicitly supersedes acquisition for this local-30 study. No new data is needed/authorized for the present submission.
+- No reviewed current safety panel claims clinical readiness, oxygen dosing or demonstrated PID superiority. [PROJECT_REVIEW_EVIDENCE.md, §7/§9](PROJECT_REVIEW_EVIDENCE.md) and [signal_studies/REPORT.md, Study2](../signal_studies/REPORT.md) appropriately limit simulations. A proposed predictive feedforward-PID architecture is not an implemented, validated combined oxygen controller. Novelty and external scientific priority were NOT VERIFIED by a literature search.
+
+## 12. Commands executed and outcomes
+
+From repository root, with no installation, data acquisition or model/experiment execution:
+
+```bash
+MPLCONFIGDIR=/tmp/readiness-mpl OPENBLAS_NUM_THREADS=1 PYTHONDONTWRITEBYTECODE=1 python -m unittest discover -s tests -p 'test_dashboard*.py' -v
+MPLCONFIGDIR=/tmp/readiness-mpl OPENBLAS_NUM_THREADS=1 PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=tests python -m unittest test_pipeline.LabelTests test_pipeline.FeatureTests test_reliability.ReliabilityTests test_alarm_budget.AlarmBudgetTests test_target_hardening.SavedTargetTests.test_historical_outputs_preserved test_local_30.Local30ArtifactTests.test_outputs_and_protected_files_are_unchanged test_alarm_budget.AlarmBudgetArtifactTests.test_inputs_outputs_and_preservation_verified -v
+OPENBLAS_NUM_THREADS=1 PYTHONDONTWRITEBYTECODE=1 python -m src.check_project --audit --links --verify-run results/final/new_onset
+OPENBLAS_NUM_THREADS=1 PYTHONDONTWRITEBYTECODE=1 python -m src.check_project --verify-run results/final/future_low
+```
+
+Results: **17/17 dashboard tests passed in 32.357 s** (including AppTest). **50 targeted tests in 16.018 s: 47 pass, one failure, two errors**. Both original gates passed: four models/23 PNGs, verified datasets/cache/metrics/figure sources; environment audit found all 30 pairs and pinned research dependencies. Before these deliverables, 373 local links resolved. Logs: `/tmp/readiness-dashboard.log`, `readiness-targeted.log`, `readiness-gates.log`, `readiness-future-gate.log` (temporary, not promised durable).
+
+Exact remaining failures:
+
+1. `test_target_hardening.SavedTargetTests.test_historical_outputs_preserved`, `tests/test_target_hardening.py:193`: `assertEqual(fingerprint(path), digest, path)`, mismatch `docs/MODEL_EVALUATION.md`.
+2. `test_local_30.Local30ArtifactTests.test_outputs_and_protected_files_are_unchanged`, `tests/test_local_30.py:99` → `src/local_30_evaluation.py:126`: protected `docs/FULL_PIPELINE_GUIDE.md` mismatch.
+3. `test_alarm_budget.AlarmBudgetArtifactTests.test_inputs_outputs_and_preservation_verified`, `tests/test_alarm_budget.py:103` → `src/alarm_budget_experiment.py:303`: historical `docs/FULL_PIPELINE_GUIDE.md` mismatch.
+
+All three document hashes in the alarm preservation map (also FINAL_REPORT) match old commit **ef927e7**, not current committed report bytes. This corroborates the prior authorized documentation-history explanation; it does not turn strict integrity failures into passes. Receipts/tests were not changed or bypassed. Outcome manifest hashes passed independently of these broader preservation failures.
+
+Startup harness executed the actual command below, polled localhost health and terminated its child in `finally`; bind failed with socket PermissionError (exit1), no live server left:
+
+```bash
+/home/codespace/.python/current/bin/python -m streamlit run dashboard/app.py --global.developmentMode=false --server.headless=true --server.address=127.0.0.1 --server.port=8523 --browser.gatherUsageStats=false
+```
+
+Additional read-only Python checks: SHA-256 enumeration of original alarm manifest inputs/outputs; per-record sum reconciliation against 288 final summary rows; saved decision comparisons and no duplicate per-model sample IDs; local source/demo-point checks; installed UI versions/browser availability; figure viewing. Evidence intermediate is `/tmp/readiness-evidence.json`. An initially overbroad project snapshot traversal was stopped (exit130) and replaced with a scoped source/data/results/docs/tests/UI snapshot excluding unrelated hidden configuration. No model process was interrupted or launched.
+
+**Not rerun:** full suite, expensive saved-OOF exhaustive audits, bootstrap/ML improvement completion, diagnostic refits, simulations, new latency or browser rendering. Prior full-suite evidence [complete_suite_159.log](../results/ml_improvement/verification01/complete_suite_159.log) reports 159 tests/156 passes/one failure/two errors, 220.373 s; it is historical evidence, not this audit's fresh full run. No claim of a wholly passing suite.
+
+## 13. Ranked blockers
+
+- **Critical if claimed as a working medical system:** no useful final early warning, no oxygen/control benefit evidence and no clinical readiness. Resolve by truthful research framing, not a favorable isolated demo or threshold tuning.
+- **High submission:** paused newer study has no finalized manifest/report/uncertainty/timing. Explicitly exclude it from completed claims or authorize a separate bounded completion later. No completion was attempted here.
+- **High submission:** stale current-evidence inventory and unqualified “final” chronology. Supply a clear run/target/policy map and disclose red preservation checks without altering protected hashes.
+- **Medium demo:** browser/local launch unverified in this restricted environment; rehearse 335–400 s on the actual machine and verify artifact availability. Current AppTest success is functional evidence only.
+- **Medium reproducibility:** local ignored artifact dependency, overwrite-prone reproduction snippets, dataset provenance/citation/terms not established here.
+- **Low presentation:** distinguish historical graphs, AP/ROC, event counts, false episodes/starts, compute latency and observed lead; avoid misleading cropped captions.
+
+## 14. Minimum actions before demo and submission
+
+**Before demo:** local browser/launch rehearsal; confirm all saved inputs on that machine; use saved final policy and the verified missed record07 event; show pooled negative results; keep the provisional study out of the demonstration's performance claims. No retraining, new search or UI redesign is needed.
+
+**Before submission:** establish an explicit completed-original-study scope, cross-reference paused work and correct stale inventories in a separate authorized edit; make limitations/test exceptions and run provenance prominent; use immutable input/output receipts and a new-directory reproduction recipe; verify dataset citation/terms; include final-policy tables and clearly historical figure captions. A negative result can be submitted academically; a useful predictive oxygen controller cannot be claimed. Completing the paused study is optional if explicitly excluded, not a prerequisite to submitting the completed negative evaluation.
+
+## 15. Defensible conclusion
+
+The project implements a causal, recording-separated retrospective ML comparison and an offline research dashboard. Its authenticated completed final alert policy detects no eligible events, so high historical recall or fast computation does not demonstrate useful anticipation. The same repeatedly examined 30 recordings, unverified patient independence, 14/15 eligible onsets and three severe-interest events limit inference. Illustrative P/PI/PID plots establish no successful feedforward oxygen control. A professor demo is defensible after local rehearsal when it presents the failure honestly; final submission needs the evidence/scope housekeeping listed above. The paused experiments remain paused.
+
+## Final deliverable checks
+
+After writing these reports, `OPENBLAS_NUM_THREADS=1 PYTHONDONTWRITEBYTECODE=1 python -m src.check_project --links` passed with **419 local links**. A SHA-256 comparison against `/tmp/readiness_snapshot.json` verified **1,772 existing project files, zero changed or missing**, covering source, raw data, all existing results, archives, reports, tests, dashboard/theme, signal studies, README and requirements. Git status after the external commit showed only these two requested audit deliverables as new. A final whitespace/status check is recorded below after execution. No underlying source, model, feature, target, threshold, experimental output, integrity expectation or dashboard behavior was changed.
+
+Final checks executed: `git diff --check` passed; explicit trailing-whitespace assertions passed for both new reports; `git status --short` lists only `docs/FINAL_READINESS_AUDIT.md` and `docs/FINAL_READINESS_CHECKLIST.md` as untracked additions.

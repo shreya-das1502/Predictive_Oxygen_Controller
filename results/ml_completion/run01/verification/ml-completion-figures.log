@@ -1,0 +1,88 @@
+Traceback (most recent call last):
+  File "/usr/local/python/3.14.2/lib/python3.14/site-packages/matplotlib/axis.py", line 1959, in convert_units
+    ret = self._converter.convert(x, self.units, self)
+  File "/usr/local/python/3.14.2/lib/python3.14/site-packages/matplotlib/category.py", line 57, in convert
+    unit.update(values)
+    ~~~~~~~~~~~^^^^^^^^
+  File "/usr/local/python/3.14.2/lib/python3.14/site-packages/matplotlib/category.py", line 217, in update
+    _api.check_isinstance((str, bytes), value=val)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python/3.14.2/lib/python3.14/site-packages/matplotlib/_api/__init__.py", line 150, in check_isinstance
+    raise TypeError(
+    ...<4 lines>...
+            type_name(type(v))))
+TypeError: 'value' must be an instance of str or bytes, not a float
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/workspaces/Predictive_Oxygen_Controller/ml_research/finalize_saved.py", line 135, in <module>
+    p=argparse.ArgumentParser();p.add_argument('--output',type=Path,required=True);p.add_argument('--source',type=Path,default=ROOT/'results/ml_improvement/evaluation01');p.add_argument('--stage',choices=['aggregate','timing','figures'],required=True);a=p.parse_args();run(a.output,a.source,a.stage)
+                                                                                                                                                                                                                                                                             ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspaces/Predictive_Oxygen_Controller/ml_research/finalize_saved.py", line 131, in run
+    figures(output)
+    ~~~~~~~^^^^^^^^
+  File "/workspaces/Predictive_Oxygen_Controller/ml_research/reporting.py", line 225, in figures
+    fig.savefig(directory/'event_counts_and_leads.png',dpi=150);plt.close(fig)
+    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python/3.14.2/lib/python3.14/site-packages/matplotlib/figure.py", line 3515, in savefig
+    self.canvas.print_figure(fname, **kwargs)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/usr/local/python/3.14.2/lib/python3.14/site-packages/matplotlib/backend_bases.py", line 2257, in print_figure
+    self.figure.draw(renderer)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "/usr/local/python/3.14.2/lib/python3.14/site-packages/matplotlib/artist.py", line 94, in draw_wrapper
+    result = draw(artist, renderer, *args, **kwargs)
+  File "/usr/local/python/3.14.2/lib/python3.14/site-packages/matplotlib/artist.py", line 71, in draw_wrapper
+    return draw(artist, renderer)
+  File "/usr/local/python/3.14.2/lib/python3.14/site-packages/matplotlib/figure.py", line 3282, in draw
+    mimage._draw_list_compositing_images(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        renderer, self, artists, self.suppressComposite)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python/3.14.2/lib/python3.14/site-packages/matplotlib/image.py", line 133, in _draw_list_compositing_images
+    a.draw(renderer)
+    ~~~~~~^^^^^^^^^^
+  File "/usr/local/python/3.14.2/lib/python3.14/site-packages/matplotlib/artist.py", line 71, in draw_wrapper
+    return draw(artist, renderer)
+  File "/usr/local/python/3.14.2/lib/python3.14/site-packages/matplotlib/axes/_base.py", line 3372, in draw
+    mimage._draw_list_compositing_images(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        renderer, self, artists, self.get_figure(root=True).suppressComposite)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python/3.14.2/lib/python3.14/site-packages/matplotlib/image.py", line 133, in _draw_list_compositing_images
+    a.draw(renderer)
+    ~~~~~~^^^^^^^^^^
+  File "/usr/local/python/3.14.2/lib/python3.14/site-packages/matplotlib/artist.py", line 71, in draw_wrapper
+    return draw(artist, renderer)
+  File "/usr/local/python/3.14.2/lib/python3.14/site-packages/matplotlib/collections.py", line 1130, in draw
+    super().draw(renderer)
+    ~~~~~~~~~~~~^^^^^^^^^^
+  File "/usr/local/python/3.14.2/lib/python3.14/site-packages/matplotlib/artist.py", line 71, in draw_wrapper
+    return draw(artist, renderer)
+  File "/usr/local/python/3.14.2/lib/python3.14/site-packages/matplotlib/collections.py", line 374, in draw
+    transform, offset_trf, offsets, paths = self._prepare_points()
+                                            ~~~~~~~~~~~~~~~~~~~~^^
+  File "/usr/local/python/3.14.2/lib/python3.14/site-packages/matplotlib/collections.py", line 340, in _prepare_points
+    xs = self.convert_xunits(offsets[:, 0])
+  File "/usr/local/python/3.14.2/lib/python3.14/site-packages/matplotlib/artist.py", line 287, in convert_xunits
+    return ax.xaxis.convert_units(x)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^
+  File "/usr/local/python/3.14.2/lib/python3.14/site-packages/matplotlib/axis.py", line 1961, in convert_units
+    raise munits.ConversionError('Failed to convert value(s) to axis '
+                                 f'units: {x!r}') from e
+matplotlib.units.ConversionError: Failed to convert value(s) to axis units: masked_array(data=[--, --, --, --, --, --, --, --, --, --, --, --, --, --,
+                   --, --, --, --, --, --, --, --, --, --, --, --, --, --,
+                   --, --, --, --, --, --, --, --, --, --, --, --, --, --,
+                   --, --, --, --, --, --, --, --, --, --, --, --, --, --],
+             mask=[ True,  True,  True,  True,  True,  True,  True,  True,
+                    True,  True,  True,  True,  True,  True,  True,  True,
+                    True,  True,  True,  True,  True,  True,  True,  True,
+                    True,  True,  True,  True,  True,  True,  True,  True,
+                    True,  True,  True,  True,  True,  True,  True,  True,
+                    True,  True,  True,  True,  True,  True,  True,  True,
+                    True,  True,  True,  True,  True,  True,  True,  True],
+       fill_value=1e+20,
+            dtype=float64)

@@ -1,5 +1,7 @@
 # Predictive Oxygen Controller
 
+**Completed follow-up:** [ML improvement report](docs/ML_IMPROVEMENT_REPORT.md) and [completion tracker](docs/ML_COMPLETION_TRACKER.md) document the frozen follow-up. Three GaussianNB conditions detect the same one nonsevere event, with individual-record budget violations; no robust detector is established. The original final-policy result below remains unchanged and is the dashboard playback source.
+
 **Final study outcome:** on the 30 local recordings, the final alarm-budget policy detected 0/15 eligible events at 5/10/15 seconds and 0/14 at 30 seconds for all four learned models. The tested 1/5/10 false-starts-per-evaluable-hour budgets and 5% active-time cap are research assumptions, not clinically validated limits. Some held-out constraints were violated. No useful early warning, proven model superiority or clinical readiness was demonstrated; patient independence is unverified. Read the [final evaluation and historical reconciliation](docs/FINAL_REPORT.md) and [alarm-budget experiment](docs/ALARM_BUDGET_EXPERIMENT.md) before using earlier metrics or figures.
 
 Start with **`python -m src.check_project --audit`** from this directory. It verifies installed dependencies and inspects the local source data without training or overwriting results.
@@ -17,19 +19,19 @@ Two separate targets are evaluated:
 
 ```bash
 python -m src.check_project --audit
-python -m src.run_experiments --target future_low --output results/final/future_low
-python -m src.run_experiments --target new_onset --output results/final/new_onset
+python -m src.run_experiments --target future_low --output results/reproduction01/future_low
+python -m src.run_experiments --target new_onset --output results/reproduction01/new_onset
 python -m unittest discover -s tests -v
 python -m src.check_project --links --verify-run results/final/new_onset
 ```
 
-Full runs train fixed models, perform grouped validation, benchmark, generate reports and figures. They take minutes; there is no hyperparameter search. Native BLAS threads are limited to one inside fitting/benchmarking. Running targets sequentially avoids CPU competition during timing.
+Use a NEW destination; do not overwrite preserved results/final artifacts. The reproduction destinations above are examples, not commands executed by this completion. Full runs train fixed models, perform grouped validation, benchmark, generate reports and figures. They take minutes; there is no hyperparameter search. Native BLAS threads are limited to one inside fitting/benchmarking. Running targets sequentially avoids CPU competition during timing.
 
 To regenerate reports and figures without repeating the evaluation:
 
 ```bash
-python -m src.target_reporting --output results/final/new_onset
-python -m src.figures --output results/final/new_onset
+python -m src.target_reporting --output results/reproduction01/new_onset
+python -m src.figures --output results/reproduction01/new_onset
 ```
 
 The figure command performs fixed diagnostic refits for block-permutation importance; it does not select features, tune models or change predictions. It verifies that diagnostic refits reproduce saved held-out scores.

@@ -1,0 +1,7 @@
+# Local dataset provenance and citation
+
+Only the30 existing local BIDMC Signals/Numerics pairs are used. No raw dataset was downloaded or expanded in this completion. Local input hashes are preserved in the original manifests and the completion receipts. External byte-for-byte identity of local CSVs to a released archive has not been independently established; do not invent patient mappings.
+
+The [official PhysioNet BIDMC v1.0.0 resource](https://physionet.org/content/bidmc/1.0.0/) was checked for citation/metadata only. It gives dataset DOI [10.13026/C2208R](https://doi.org/10.13026/C2208R), release20June2018, and lists Open Data Commons Attribution License v1.0. It describes53 eight-minute recordings,125Hz signals and1Hz numerics; that published collection size is not the number analyzed here. The study remains30 local recordings. The official respiratory-rate paper citation is Pimentel et al., DOI [10.1109/TBME.2016.2613124](https://doi.org/10.1109/TBME.2016.2613124). Include the resource's requested dataset/publication/PhysioNet citations in the submitted bibliography.
+
+This public resource reference establishes the cited source/declared license, not verified local redistribution compliance or verified independence of the30 local recording subjects. Review the actual license terms and the submission package before redistributing files. No additional waveform, numeric, demographic or subject-linkage data were acquired.

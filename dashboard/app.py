@@ -21,6 +21,7 @@ st.markdown(f'<style>{variables}\n{Path(__file__).with_name("styles.css").read_t
 st.markdown('<span class="offline">RECORDED DATA · OFFLINE DEMO</span>', unsafe_allow_html=True)
 st.title('Oxygen Research Studio')
 st.caption('Offline predictive oxygen research demonstration.')
+st.caption('Scope: the banner, saved-policy playback and Research results show the preserved original policy. A separate completed follow-up detected one nonsevere event in three GaussianNB conditions, with per-record budget violations. No follow-up policy replaces this playback.')
 st.warning('Research only. Does not recommend or control oxygen delivery. Experimental outputs are not treatment recommendations. Clinician review and prescribed oxygen protocols remain essential. No oxygen delivery is controlled.')
 st.markdown('This dashboard replays existing physiological recordings, runs experimental prediction models, and compares their alerts with oxygen-saturation events observed later in the recordings.')
 st.markdown('**Final research finding: all four learned models detected 0/14 events at 30 s; 0/15 at 5, 10 and 15 s.** No useful early warning was demonstrated under the tested policies. An alert is not an instruction to administer oxygen.')

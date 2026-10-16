@@ -1,0 +1,12 @@
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/workspaces/Predictive_Oxygen_Controller/ml_research/verify.py", line 65, in <module>
+    p=argparse.ArgumentParser();p.add_argument('--output',type=Path,required=True);print(json.dumps(verify(p.parse_args().output),indent=2))
+                                                                                                    ~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspaces/Predictive_Oxygen_Controller/ml_research/verify.py", line 17, in verify
+    protected=verify_snapshot(json.loads((output/'preservation.json').read_text()))
+  File "/workspaces/Predictive_Oxygen_Controller/ml_research/baseline.py", line 29, in verify_snapshot
+    if bad:raise ValueError('Protected file changed: '+str(bad))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: Protected file changed: ['docs/DASHBOARD_GUIDE.md', 'docs/FINAL_REPORT.md', 'docs/PROJECT_REVIEW_EVIDENCE.md', 'dashboard/app.py']

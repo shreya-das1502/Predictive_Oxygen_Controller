@@ -1,5 +1,7 @@
 # Final implementation and verification report
 
+**Completed follow-up (16 October 2026):** the original policy results below are preserved. The separately frozen ML study has now been finalized in [ML_IMPROVEMENT_REPORT.md](ML_IMPROVEMENT_REPORT.md). Three GaussianNB conditions detected the same single nonsevere event while meeting pooled burden assumptions; all violated the start budget on at least one recording. This does not establish robust early warning or a winning model.
+
 ## Final submission summary
 
 The final planned study used only the **30 local recordings**. Under the frozen alarm-budget sensitivity analysis, **none of the four learned models detected an eligible event**: 0/15 at 5, 10 and 15 seconds and 0/14 at 30 seconds, for both original training targets and all tested budgets. The research assumptions were **1, 5 and 10 false alarm starts per evaluable hour with a 5% alarm-active-time cap**; they are not clinically validated limits. Some held-out recordings violated constraints met during training-only threshold selection. The selected policy did not demonstrate useful early warning or proven model superiority.
@@ -162,3 +164,19 @@ Inference is limited by **30 recordings**, only **14 eligible events at 30 secon
 This documentation-only review checked 259 local links, verified the three-stage reconciliation and 12 displayed final-budget rows against the saved summaries, and checked all 96 learned-model target/budget/window combinations. All pre-existing numerical table rows were retained; the other 722 files in the pre-edit snapshot, including data, source, tests and experiment results, remained unchanged. The alarm-budget, reliability-audit and local-30 reports were retained byte-for-byte. Earlier experiment test counts above are historical execution records, not new model-test results from this review.
 
 Historical preservation receipts include pre-review hashes of this report, the guide and the older model report. Those receipts were deliberately retained rather than rewritten; strict document-byte preservation checks will flag the authorized documentation revisions. The experimental artifacts and numerical results were not regenerated.
+
+## Completed bounded ML follow-up — separate from the original final policy
+
+All1120 completed model/fold groups,6720 training-selected cutoffs and144 saved evaluation conditions were reused; no scientific CV/OOF fits or new policies were selected. The original30s/base10/raw event-policy results reproduced all192 learned summary conditions. The new [complete report](ML_IMPROVEMENT_REPORT.md) and [machine-readable comparisons](../results/ml_completion/run01/before_after_comparison.csv) retain both targets, all fixed families, actual trainedH5/10/15/30, the context18-atH30 ablation, raw/training-negative-rank scores, all budgets and all matchingW. The original shorterW tables above still describe H30-trained models.
+
+| New-onset GaussianNB/base10/negative-rank, configured budget10 | Detected / eligible | False starts/evaluable h | Alarm active% | Median lead s | Recording-bootstrap sensitivity95% interval |
+| --- | ---: | ---: | ---: | ---: | --- |
+| H=W10 | 1/15 | 1.394129 | 0.0377 | 9.824 | [0,0.428571] |
+| H=W15 | 1/15 | 0.697064 | 0.0245 | 9.824 | [0,0.428571] |
+| H=W30 | 1/14 | 1.394129 | 0.0505 | 13.440 | [0,0.428571] |
+
+Source: [event_summary.csv](../results/ml_completion/run01/event_summary.csv), [recording intervals](../results/ml_completion/run01/recording_bootstrap_intervals.csv) and [per-record results](../results/ml_completion/run01/event_per_recording.csv). The same record07 onset367s supplies all three detections; it is a single94% reading, not one of the91/92-interest events. Every detecting condition violates budget10 on at least one recording; none is a demonstrated robust policy. All three severe-interest events remain missed in primary learned comparisons. ELM/logistic/tree, future-low and context18 show no primary event gain. No outer-result-selected winner is recommended.
+
+The follow-up saves2000 shared recording-bootstrap draws(seed20261015), complete before/after tables, five traceable figures and actual raw latency samples. Warm transform/model/normalization/threshold median0.200–0.550ms, P950.244–1.342ms across measured conditions; feature medians0.081–0.159ms. These are distinct timers, exclude acquisition/monitor delay and do not show clinical benefit or guaranteed warning. Forty outer-training-only timing refits reproduced saved last-record scores exactly; scientific predictions/thresholds were not replaced.
+
+A saved-array verification passed7820712 predictions,3456 event conditions and6720 cutoffs before authorized submission-document updates. Historical preservation assertions remain unchanged and their document exceptions are disclosed separately. Missing execution-time OOF/reference hashes for1074 recovered groups remain a provenance limitation, not reconstructed evidence. See [completion tracker](ML_COMPLETION_TRACKER.md) for final commands, checks, preservation accounting and remaining browser/patient limitations.

@@ -1,0 +1,19 @@
+{
+  "context": {
+    "Target": "new_onset",
+    "Horizon_s": 10,
+    "FeatureSet": "fixed_baseline",
+    "ScoreSpace": "binary",
+    "Model": "Periodic_10s_1s",
+    "Trained_Horizon_s": 0,
+    "Evaluation_Split": "fixed_recording_baseline",
+    "Threshold_Method": "fixed_binary"
+  },
+  "files": {
+    "per.csv": "673158920239748ff69e4b6569ce4da1e8b0dfcc0271b9364c7db427e6ed8ad3",
+    "summary.csv": "c0893c31002fa6f7751a860a81ae9b17404e2b99aba0a6f33750fbad12496d85",
+    "events.csv": "dac723cec36dc24bc9384078bfd244e95c6e9fc475e49d662afe03fce2ce16f2",
+    "predictions.csv.gz": "d3da761872cef0f0259a6521594c514287ce96903afadcce0d91cc7fa333c593",
+    "times.csv": "6a40352af62c6e6e85f7e08e29617dc316821f3ea4fdebb65f2213146a21a2a6"
+  }
+}

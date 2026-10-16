@@ -1,0 +1,9 @@
+Target,Model,Rows,Max_Score_Difference
+future_low,ELM,20157,3.113065361048939e-13
+future_low,GaussianNB,20157,6.894484982922222e-14
+future_low,Logistic,20157,1.9950707752514063e-13
+future_low,Tree,20157,0.0
+new_onset,ELM,16050,1.2712053631958042e-13
+new_onset,GaussianNB,16050,2.0095036745715333e-14
+new_onset,Logistic,16050,1.0866862965031032e-12
+new_onset,Tree,16050,0.0

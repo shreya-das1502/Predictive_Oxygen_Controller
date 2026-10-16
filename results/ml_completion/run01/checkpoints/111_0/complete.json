@@ -1,0 +1,19 @@
+{
+  "context": {
+    "Target": "new_onset",
+    "Horizon_s": 30,
+    "FeatureSet": "context18",
+    "ScoreSpace": "negative_rank",
+    "Model": "Tree",
+    "Trained_Horizon_s": 30,
+    "Evaluation_Split": "outer_LORO",
+    "Threshold_Method": "inner3_GroupKFold_budget"
+  },
+  "files": {
+    "per.csv": "8dd8bde3e450cf91c001d8694594a90da25ad4f1be0578e3eccf03ee883b57b4",
+    "summary.csv": "beb6da6984e43af049c68bd33714387c72ca65711a4bbae212a9f5fdb3232eeb",
+    "events.csv": "80f5695904a10399a5819d1ac1e07e9a1f8994918bfff20d2a95565d2e908de3",
+    "predictions.csv.gz": "35279c43fc77d87ecef1adcbc0d093f833f447626f1bd80d3e14fef11f78d859",
+    "times.csv": "245294da4313f1fe66eda337ff0cb42e6991e2adfe5bbac04b65dfc20c9f7779"
+  }
+}

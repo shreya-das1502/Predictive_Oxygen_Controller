@@ -1,0 +1,8 @@
+{
+  "status": "passed",
+  "protected_files": 765,
+  "predictions": 7820712,
+  "event_conditions": 3456,
+  "new_thresholds": 6720,
+  "clinical_validation": false
+}

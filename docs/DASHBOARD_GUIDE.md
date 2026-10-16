@@ -1,5 +1,7 @@
 # Oxygen Research Studio dashboard
 
+**Completion-stage scope:** the dashboard still plays the preserved original run02 final policy (0/14), with its own separate full-data demo. [ML_IMPROVEMENT_REPORT.md](ML_IMPROVEMENT_REPORT.md) now documents the bounded follow-up. One record07 GaussianNB event appears in three conditions, all with individual-record budget violations; no policy was selected or substituted into playback. New timing-only model objects are not deployment/demo artifacts.
+
 **Current interface: one selected recording at a time.** Use **Select Patient Recording** near the top of the page. Historical three-case implementation and verification notes below are labeled as earlier stages.
 
 This is a local, offline research demonstration, not a validated medical device or treatment recommendation. It never controls oxygen. Clinician assessment and prescribed protocols remain essential. The visual design uses lavender, white rounded panels and violet charts, following the written HealthPulse aesthetic; no reference image was available for pixel-level comparison.

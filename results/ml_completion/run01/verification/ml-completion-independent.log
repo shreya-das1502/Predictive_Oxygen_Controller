@@ -1,0 +1,31 @@
+{
+  "status": "passed",
+  "prior_partial_timestamp_rows_reproduced": 620,
+  "numeric_metrics_compared": [
+    "Samples",
+    "Positives",
+    "Negatives",
+    "TP",
+    "FP",
+    "FN",
+    "TN",
+    "Recall",
+    "Precision",
+    "Specificity",
+    "F1",
+    "MCC",
+    "PR_AUC_AP",
+    "ROC_AUC",
+    "Alert_Fraction",
+    "Macro_Recall",
+    "Macro_Precision",
+    "Macro_Specificity",
+    "Macro_PR_AUC_AP"
+  ],
+  "complete_conditions": 144,
+  "checkpoint_gzip_concatenation_verified": true,
+  "latency_components_checked": 82,
+  "measured_repetitions_per_component": 1000,
+  "matched_alert_timestamps_checked": 2505,
+  "note": "Window-specific copies of detections are not distinct physiological events."
+}

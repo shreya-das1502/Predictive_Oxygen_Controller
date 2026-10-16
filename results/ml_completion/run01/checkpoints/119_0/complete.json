@@ -1,0 +1,19 @@
+{
+  "context": {
+    "Target": "new_onset",
+    "Horizon_s": 5,
+    "FeatureSet": "fixed_baseline",
+    "ScoreSpace": "binary",
+    "Model": "Pulse_Rate_GT100",
+    "Trained_Horizon_s": 0,
+    "Evaluation_Split": "fixed_recording_baseline",
+    "Threshold_Method": "fixed_binary"
+  },
+  "files": {
+    "per.csv": "685683486979302e3bfff0c0286f3af4e51592ac4274a88dfcd5e28bd49b6b79",
+    "summary.csv": "1b4a5a324cd8116a103a1101e1be53c8c4d380617fc833b8695ef6a36ec90afb",
+    "events.csv": "55a86d4b24d7c660d88d068e27bf6468fb2cdaf2e370e4afa0e913f3862d6417",
+    "predictions.csv.gz": "f13143be47546c75d0427d6e4a25a878b10a7a84ecff6b12af8264ec249ea791",
+    "times.csv": "010e3023749247d158e2827d79b453e7f55db2e7917612b88b15270fd58d9d9c"
+  }
+}

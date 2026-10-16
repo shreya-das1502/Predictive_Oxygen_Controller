@@ -1,0 +1,7 @@
+test_fast_recording_bootstrap_matches_original_repeated_sample_medians (test_ml_finalization.FinalizationTests.test_fast_recording_bootstrap_matches_original_repeated_sample_medians) ... ok
+test_saved_input_cloning_preserves_source_and_rejects_mutation_or_overwrite (test_ml_finalization.FinalizationTests.test_saved_input_cloning_preserves_source_and_rejects_mutation_or_overwrite) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.212s
+
+OK

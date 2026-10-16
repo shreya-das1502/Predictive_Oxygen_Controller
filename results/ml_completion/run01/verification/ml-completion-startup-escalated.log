@@ -1,0 +1,9 @@
+HEALTH 200 ok
+2026-10-16 07:50:47.829 Uvicorn server started on 127.0.0.1:8524
+
+  You can now view your Streamlit app in your browser.
+
+  URL: http://127.0.0.1:8524
+
+  Stopping...
+

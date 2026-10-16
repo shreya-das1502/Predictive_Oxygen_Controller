@@ -1,0 +1,66 @@
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/usr/local/python/3.14.2/lib/python3.14/site-packages/streamlit/__main__.py", line 20, in <module>
+    main(prog_name="streamlit")
+    ~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python/3.14.2/lib/python3.14/site-packages/click/core.py", line 1631, in __call__
+    return self.main(*args, **kwargs)
+           ~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/usr/local/python/3.14.2/lib/python3.14/site-packages/click/core.py", line 1552, in main
+    rv = self.invoke(ctx)
+  File "/usr/local/python/3.14.2/lib/python3.14/site-packages/click/core.py", line 2032, in invoke
+    return _process_result(sub_ctx.command.invoke(sub_ctx))
+                           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/usr/local/python/3.14.2/lib/python3.14/site-packages/click/core.py", line 1415, in invoke
+    return ctx.invoke(self.callback, **ctx.params)
+           ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python/3.14.2/lib/python3.14/site-packages/click/core.py", line 910, in invoke
+    return callback(*args, **kwargs)
+  File "/usr/local/python/3.14.2/lib/python3.14/site-packages/streamlit/web/cli.py", line 358, in main_run
+    _main_run(path_str, args, flag_options=kwargs)
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python/3.14.2/lib/python3.14/site-packages/streamlit/web/cli.py", line 436, in _main_run
+    bootstrap.run(main_script_path, is_hello, args, flag_options)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python/3.14.2/lib/python3.14/site-packages/streamlit/web/bootstrap.py", line 544, in run
+    _run_server_loop(main())
+    ~~~~~~~~~~~~~~~~^^^^^^^^
+  File "/usr/local/python/3.14.2/lib/python3.14/site-packages/streamlit/web/bootstrap.py", line 156, in _run_server_loop
+    asyncio.run(main)
+    ~~~~~~~~~~~^^^^^^
+  File "/usr/local/python/3.14.2/lib/python3.14/asyncio/runners.py", line 204, in run
+    return runner.run(main)
+           ~~~~~~~~~~^^^^^^
+  File "/usr/local/python/3.14.2/lib/python3.14/asyncio/runners.py", line 127, in run
+    return self._loop.run_until_complete(task)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/usr/local/python/3.14.2/lib/python3.14/asyncio/base_events.py", line 719, in run_until_complete
+    return future.result()
+           ~~~~~~~~~~~~~^^
+  File "/usr/local/python/3.14.2/lib/python3.14/site-packages/streamlit/web/bootstrap.py", line 523, in main
+    await run_server()
+  File "/usr/local/python/3.14.2/lib/python3.14/site-packages/streamlit/web/bootstrap.py", line 505, in run_server
+    await server.start()
+  File "/usr/local/python/3.14.2/lib/python3.14/site-packages/streamlit/web/server/server.py", line 94, in start
+    await self._starlette_server.start()
+  File "/usr/local/python/3.14.2/lib/python3.14/site-packages/streamlit/web/server/starlette/starlette_server.py", line 414, in start
+    self._socket, actual_bind_address = _bind_server_socket(
+                                        ~~~~~~~~~~~~~~~~~~~^
+        configured_address,
+        ^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        uvicorn_config.backlog,
+        ^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/usr/local/python/3.14.2/lib/python3.14/site-packages/streamlit/web/server/starlette/starlette_server.py", line 153, in _bind_server_socket
+    return _bind_socket(bind_address, port, backlog), bind_address
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python/3.14.2/lib/python3.14/site-packages/streamlit/web/server/starlette/starlette_server.py", line 311, in _bind_socket
+    sock = socket.socket(family=family)
+  File "/usr/local/python/3.14.2/lib/python3.14/socket.py", line 236, in __init__
+    _socket.socket.__init__(self, family, type, proto, fileno)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+PermissionError: [Errno 1] Operation not permitted
+

@@ -1,0 +1,5 @@
+{
+  "sha256": "ac75fa7269af15e75f0dcdd1e7b7be7d07c75ba953c44adae4b19401409d6a15",
+  "count": 40,
+  "purpose": "Timing-only outer-training refits, no scientific scores/thresholds replaced"
+}

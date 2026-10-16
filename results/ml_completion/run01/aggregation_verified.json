@@ -1,0 +1,7 @@
+{
+  "status": "passed",
+  "conditions": 3456,
+  "bootstrap_repetitions": 2000,
+  "memoized_distinct_contributions": 179,
+  "original_policy_parity_rows": 192
+}

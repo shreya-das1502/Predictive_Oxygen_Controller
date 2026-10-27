@@ -1,0 +1,28 @@
+{
+  "review_mode": "automated PPG-only candidate indicators; no blinded human validation",
+  "windows": 134,
+  "recordings": 30,
+  "manual_priority_windows": 60,
+  "manual_reviewed_windows": 0,
+  "human_reviewers": 0,
+  "accepted_peak_appearances_in_windows": 4147,
+  "full_record_accepted_peaks": 21980,
+  "full_record_emitted_pulses": 21948,
+  "historical_pulse_parity": "passed all30 recordings",
+  "flagged_window_counts": {
+    "Flag_no_peaks": 0,
+    "Flag_long_internal_gap": 0,
+    "Flag_too_close": 0,
+    "Flag_flat_run": 28,
+    "Flag_extreme_plateau": 32,
+    "Flag_abrupt_difference": 65,
+    "Flag_variation_below_detector_amplitude": 0,
+    "Flag_missing_raw": 0
+  },
+  "detector_precision": null,
+  "detector_recall": null,
+  "verified_feature_impact": null,
+  "pipeline_change_justified": false,
+  "packet_has_no_outcome_metadata": true,
+  "future_manual_accuracy_limits": "conditional on actually annotated exhaustive regions and selected windows; no automatic population/clinical validity"
+}

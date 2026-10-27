@@ -1,0 +1,23 @@
+Modality,Model,Population,Probability_Metric_Valid,Brier,Score_Semantics
+Combined,ELM,full_target,False,,not a probability; no Brier assessment
+Combined,ELM,current_normal,False,,not a probability; no Brier assessment
+Combined,GaussianNB,full_target,True,0.050823891844729734,uncalibrated probability-shaped classifier score
+Combined,GaussianNB,current_normal,True,0.06131561505190502,uncalibrated probability-shaped classifier score
+Combined,Logistic,full_target,True,0.023839592878321617,uncalibrated probability-shaped classifier score
+Combined,Logistic,current_normal,True,0.028848266601997546,uncalibrated probability-shaped classifier score
+PPG,ELM,full_target,False,,not a probability; no Brier assessment
+PPG,ELM,current_normal,False,,not a probability; no Brier assessment
+PPG,GaussianNB,full_target,True,0.319923535162071,uncalibrated probability-shaped classifier score
+PPG,GaussianNB,current_normal,True,0.305994094042228,uncalibrated probability-shaped classifier score
+PPG,Logistic,full_target,True,0.25920806464140933,uncalibrated probability-shaped classifier score
+PPG,Logistic,current_normal,True,0.24991038745955566,uncalibrated probability-shaped classifier score
+SpO2_history,ELM,full_target,False,,not a probability; no Brier assessment
+SpO2_history,ELM,current_normal,False,,not a probability; no Brier assessment
+SpO2_history,GaussianNB,full_target,True,0.040088674391673275,uncalibrated probability-shaped classifier score
+SpO2_history,GaussianNB,current_normal,True,0.049032854830962015,uncalibrated probability-shaped classifier score
+SpO2_history,Logistic,full_target,True,0.031200302551928082,uncalibrated probability-shaped classifier score
+SpO2_history,Logistic,current_normal,True,0.0381809913993044,uncalibrated probability-shaped classifier score
+SpO2_history,Persistence,full_target,False,,not a probability; no Brier assessment
+SpO2_history,Persistence,current_normal,False,,not a probability; no Brier assessment
+SpO2_history,Trend10,full_target,False,,not a probability; no Brier assessment
+SpO2_history,Trend10,current_normal,False,,not a probability; no Brier assessment

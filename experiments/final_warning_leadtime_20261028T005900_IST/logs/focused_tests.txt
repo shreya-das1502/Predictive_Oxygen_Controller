@@ -1,0 +1,11 @@
+test_empty_paired (test_analysis.LeadAnalysis.test_empty_paired) ... ok
+test_one_to_one_and_boundary (test_analysis.LeadAnalysis.test_one_to_one_and_boundary) ... ok
+test_outputs (test_analysis.LeadAnalysis.test_outputs) ... ok
+test_record_cluster_weights (test_analysis.LeadAnalysis.test_record_cluster_weights) ... ok
+test_signed_delta (test_analysis.LeadAnalysis.test_signed_delta) ... ok
+test_undefined_rates (test_analysis.LeadAnalysis.test_undefined_rates) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.066s
+
+OK

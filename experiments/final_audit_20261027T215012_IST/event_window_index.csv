@@ -1,0 +1,16 @@
+Record,Event_ID,Onset_s,Original_Eligibility,PNG,PDF
+7,367,367.0,eligible,figures/event_windows/record07_event367.png,figures/event_windows/record07_event367.pdf
+12,210,210.0,eligible,figures/event_windows/record12_event210.png,figures/event_windows/record12_event210.pdf
+17,250,250.0,eligible,figures/event_windows/record17_event250.png,figures/event_windows/record17_event250.pdf
+17,454,454.0,eligible,figures/event_windows/record17_event454.png,figures/event_windows/record17_event454.pdf
+26,22,22.0,incomplete_raw_lead_in,figures/event_windows/record26_event22.png,figures/event_windows/record26_event22.pdf
+26,57,57.0,eligible,figures/event_windows/record26_event57.png,figures/event_windows/record26_event57.pdf
+26,122,122.0,eligible,figures/event_windows/record26_event122.png,figures/event_windows/record26_event122.pdf
+26,144,144.0,eligible,figures/event_windows/record26_event144.png,figures/event_windows/record26_event144.pdf
+26,241,241.0,eligible,figures/event_windows/record26_event241.png,figures/event_windows/record26_event241.pdf
+26,294,294.0,eligible,figures/event_windows/record26_event294.png,figures/event_windows/record26_event294.pdf
+26,310,310.0,eligible,figures/event_windows/record26_event310.png,figures/event_windows/record26_event310.pdf
+29,368,368.0,eligible,figures/event_windows/record29_event368.png,figures/event_windows/record29_event368.pdf
+30,30,30.0,eligible,figures/event_windows/record30_event30.png,figures/event_windows/record30_event30.pdf
+30,72,72.0,eligible,figures/event_windows/record30_event72.png,figures/event_windows/record30_event72.pdf
+30,98,98.0,eligible,figures/event_windows/record30_event98.png,figures/event_windows/record30_event98.pdf

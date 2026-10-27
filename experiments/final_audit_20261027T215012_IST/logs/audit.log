@@ -1,0 +1,12 @@
+AUDIT: raw labels, all seven history features, confirmation times and event inventory agree
+AUDIT: all270 grouped cutoffs, selected training-policy counts and outer transform statistics agree
+AUDIT: all22 event conditions and660 per-record event rows reproduced
+AUDIT: existing paired intervals agree; common-event lead and leave-record-out analyses added
+{
+  "Status": "independently_reproduced_with_documented_limits",
+  "Historical_Files_Unchanged": 4347,
+  "Matched_Rows": 20150,
+  "Reproduced_Event_Conditions": 22,
+  "Metric_Changing_Defect_Found": false,
+  "New_Model_Fits": 0
+}

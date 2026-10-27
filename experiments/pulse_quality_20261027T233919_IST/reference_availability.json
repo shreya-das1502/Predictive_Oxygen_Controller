@@ -1,0 +1,16 @@
+{
+  "ReviewMode": "automated",
+  "Processed_Windows": 134,
+  "Processed_Recordings": 30,
+  "Human_Annotated_Windows": 0,
+  "Human_Reviewers": 0,
+  "Detector_Precision": null,
+  "Detector_Recall": null,
+  "Matched_Reference_Pulses": null,
+  "Verified_Feature_Corrections": 0,
+  "Feature_Impact_Available": false,
+  "Manual_Pulse_Detection_Metrics_CSV_Created": false,
+  "Manual_Feature_Impact_CSV_Created": false,
+  "Automated_Freeze_Verified_Before_Metadata_Join": true,
+  "Blinded_Human_Validation": false
+}

@@ -1,0 +1,6 @@
+Modality,WarningDetected,WindowEvent_Pairs,Unique_Windows,Unique_Events,Unique_Recordings,Median_Candidate_Flag_Count,Median_Long_Gap_Candidates,Median_Flat_Sample_Fraction,Interpretation
+Combined,False,5,4,4,2,1.0,0.0,0.0,automated descriptive proxy association; clustered/overlapping; no cause or precision/recall
+Combined,True,19,17,10,6,2.0,0.0,0.0,automated descriptive proxy association; clustered/overlapping; no cause or precision/recall
+PPG,False,24,20,14,6,1.5,0.0,0.0,automated descriptive proxy association; clustered/overlapping; no cause or precision/recall
+SpO2_history,False,9,8,5,3,1.0,0.0,0.0,automated descriptive proxy association; clustered/overlapping; no cause or precision/recall
+SpO2_history,True,15,12,9,4,2.0,0.0,0.0095961615353858,automated descriptive proxy association; clustered/overlapping; no cause or precision/recall

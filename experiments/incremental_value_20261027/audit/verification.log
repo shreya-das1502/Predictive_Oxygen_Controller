@@ -1,0 +1,16 @@
+{
+  "historical_files_unchanged": 2563,
+  "common_labels_and_latest_measurements": "passed",
+  "record_grouped_fits_and_training_cutoffs": 270,
+  "independently_reconstructed_event_conditions": 22,
+  "recording_bootstrap_sensitivity_intervals": "passed",
+  "forecast_errors_and_matched_rows": "passed",
+  "regression_training_separation_and_forecast_intervals": "passed",
+  "status": "passed",
+  "limits": [
+    "No patient linkage or independent cohort",
+    "Conditional recording bootstrap, no refitting",
+    "Unvalidated clinical event and alarm tolerances",
+    "No clinical benefit or model winner certified"
+  ]
+}

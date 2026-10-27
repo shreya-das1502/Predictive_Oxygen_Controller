@@ -1,0 +1,44 @@
+Modality,Model,Definition,Warning_Outcome_Reason,Events
+Combined,ELM,original,matched actual start,1
+Combined,ELM,original,threshold not crossed in eligible warning window,13
+Combined,ELM,sustained3,matched actual start,1
+Combined,ELM,sustained3,threshold not crossed in eligible warning window,12
+Combined,GaussianNB,original,matched actual start,6
+Combined,GaussianNB,original,positive decisions without a new start in window; alarm already active,1
+Combined,GaussianNB,original,threshold not crossed in eligible warning window,7
+Combined,GaussianNB,sustained3,matched actual start,6
+Combined,GaussianNB,sustained3,threshold not crossed in eligible warning window,7
+Combined,Logistic,original,matched actual start,10
+Combined,Logistic,original,threshold not crossed in eligible warning window,4
+Combined,Logistic,sustained3,matched actual start,9
+Combined,Logistic,sustained3,threshold not crossed in eligible warning window,4
+PPG,ELM,original,threshold not crossed in eligible warning window,14
+PPG,ELM,sustained3,threshold not crossed in eligible warning window,13
+PPG,GaussianNB,original,threshold not crossed in eligible warning window,14
+PPG,GaussianNB,sustained3,threshold not crossed in eligible warning window,13
+PPG,Logistic,original,threshold not crossed in eligible warning window,14
+PPG,Logistic,sustained3,threshold not crossed in eligible warning window,13
+SpO2_history,ELM,original,matched actual start,6
+SpO2_history,ELM,original,threshold not crossed in eligible warning window,8
+SpO2_history,ELM,sustained3,matched actual start,6
+SpO2_history,ELM,sustained3,threshold not crossed in eligible warning window,7
+SpO2_history,GaussianNB,original,matched actual start,10
+SpO2_history,GaussianNB,original,positive decisions without a new start in window; alarm already active,2
+SpO2_history,GaussianNB,original,threshold not crossed in eligible warning window,2
+SpO2_history,GaussianNB,sustained3,matched actual start,10
+SpO2_history,GaussianNB,sustained3,positive decisions without a new start in window; alarm already active,1
+SpO2_history,GaussianNB,sustained3,threshold not crossed in eligible warning window,2
+SpO2_history,Logistic,original,matched actual start,9
+SpO2_history,Logistic,original,threshold not crossed in eligible warning window,5
+SpO2_history,Logistic,sustained3,matched actual start,9
+SpO2_history,Logistic,sustained3,threshold not crossed in eligible warning window,4
+SpO2_history,Persistence,original,threshold not crossed in eligible warning window,14
+SpO2_history,Persistence,sustained3,threshold not crossed in eligible warning window,13
+SpO2_history,Trend10,original,matched actual start,7
+SpO2_history,Trend10,original,no unused start after earlier-event one-to-one assignment,1
+SpO2_history,Trend10,original,positive decisions without a new start in window; alarm already active,1
+SpO2_history,Trend10,original,threshold not crossed in eligible warning window,5
+SpO2_history,Trend10,sustained3,matched actual start,7
+SpO2_history,Trend10,sustained3,no unused start after earlier-event one-to-one assignment,1
+SpO2_history,Trend10,sustained3,positive decisions without a new start in window; alarm already active,1
+SpO2_history,Trend10,sustained3,threshold not crossed in eligible warning window,4

@@ -1,0 +1,56 @@
+{
+  "working_directory": "/workspace/Predictive_Oxygen_Controller",
+  "python": "/workspace/.venvs/oxygen/bin/python",
+  "environment": {
+    "OPENBLAS_NUM_THREADS": "1",
+    "OMP_NUM_THREADS": "1",
+    "MPLBACKEND": "Agg",
+    "MPLCONFIGDIR": "/workspace/.cache/oxygen-mpl",
+    "XDG_CACHE_HOME": "/workspace/.cache",
+    "PYTHONDONTWRITEBYTECODE": "1"
+  },
+  "executed": [
+    {
+      "command": "python -m unittest discover -s tests -v",
+      "log": "logs/existing_tests.log",
+      "exit_code": 1,
+      "result": "162 tests;13 errors;15 skips; pre-existing missing artifacts"
+    },
+    {
+      "command": "python -m unittest experiments.final_audit_20261027T215012_IST.tests.test_audit.EngineTests -v",
+      "log": "logs/unit_tests_before.log",
+      "exit_code": 1,
+      "result": "16 tests;1 incorrect synthetic boundary fixture; original code unaffected"
+    },
+    {
+      "command": "python -m unittest experiments.final_audit_20261027T215012_IST.tests.test_audit.EngineTests -v",
+      "log": "logs/unit_tests_corrected.log",
+      "exit_code": 0,
+      "result": "16 passed after fixture correction"
+    },
+    {
+      "command": "python -m experiments.final_audit_20261027T215012_IST.audit",
+      "log": "logs/audit.log",
+      "exit_code": 0,
+      "result": "Independent masks,270 selected training policies,22 event conditions and paired intervals reproduced; no scientific refit"
+    },
+    {
+      "command": "python -m unittest experiments.final_audit_20261027T215012_IST.tests.test_audit -v",
+      "log": "logs/targeted_tests.log",
+      "exit_code": 0,
+      "result": "20 passed"
+    },
+    {
+      "command": "python -m unittest experiments.incremental_value_20261027.test_study -v",
+      "log": "logs/original_experiment_tests.log",
+      "exit_code": 0,
+      "result": "12 passed"
+    },
+    {
+      "command": "python -m experiments.final_audit_20261027T215012_IST.plot_event_windows",
+      "log": "logs/event_panels.log",
+      "exit_code": 0,
+      "result": "15 qualifying-event panels in PNG/PDF"
+    }
+  ]
+}

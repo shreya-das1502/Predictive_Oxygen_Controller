@@ -1,0 +1,13 @@
+{
+  "SyntheticFixturesOnly": true,
+  "incompleteExportBlocked": true,
+  "reviewerIsolation": true,
+  "resume": true,
+  "finalExport": true,
+  "actualPacketLoad": {
+    "windows": 134,
+    "priority": 60,
+    "packet": "PQ595c29cbb70b"
+  },
+  "errors": []
+}

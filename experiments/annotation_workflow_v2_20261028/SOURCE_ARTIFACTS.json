@@ -1,0 +1,16 @@
+{
+  "source_artifact_sha256": {
+    "experiments/pulse_quality_20261027T233919_IST/reviewer_packet.zip": "4b5eab015313d1cbf77a25489b699f7a9a29a0971a020b19679f3aa85829603d",
+    "experiments/pulse_quality_20261027T233919_IST/ANNOTATION_GUIDE.md": "c4c7fea12ab8f212554d140a997ffda6e579fdef84c6d344afb82ff5351e9341",
+    "experiments/pulse_quality_20261027T233919_IST/reviewer_packet/review.html": "9e629392b6820a27805bc4bb201d36f9cb55f63501f9931ceb200a8c6a863f03",
+    "experiments/pulse_quality_20261027T233919_IST/reviewer_packet/review_app.js": "9a9cbee652ac8a4a78d5e47149c5d72c4d3849dae65bed4b44183a48dc1c5a7a",
+    "experiments/pulse_quality_20261027T233919_IST/reviewer_packet/review_data.js": "002cd2da8d83f943f46e8d7929e067fd99cc6ddc3c00bef39929bd0275656564",
+    "experiments/pulse_quality_20261027T233919_IST/reviewer_packet/window_review_manifest.csv": "595c29cbb70b1603799763eaaa597ec6d19b5af75a08a9874fba06d12e321756",
+    "experiments/pulse_quality_20261027T233919_IST/reviewer_packet/packet_metadata.json": "880e2897a786953c51ea1d493dc9b940bcaa27416af234270b95654e979b1e8b",
+    "experiments/pulse_quality_20261027T233919_IST/reviewer_packet/detected_pulses.csv": "1b5c7f97006cac0c9a28e25fa754c5687114c687ff1b9abfca1f33ef1f676aa4"
+  },
+  "packet_id": "PQ595c29cbb70b",
+  "original_zip_verified_files": 411,
+  "original_manual_runs_found": [],
+  "revised_packet": "Same134 waveforms/window IDs/60 priority subset; coordinator data, candidate flags and pre-marked figures omitted from first-pass packet"
+}

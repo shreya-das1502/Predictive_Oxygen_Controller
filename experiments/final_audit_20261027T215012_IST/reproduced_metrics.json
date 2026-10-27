@@ -1,0 +1,252 @@
+{
+  "Status": "independently_reproduced_with_documented_limits",
+  "Historical_Files_Unchanged": 4347,
+  "Source_Experiment_Files_Checked": 1783,
+  "Matched_Rows": 20150,
+  "Recordings": 30,
+  "Unique_Patients": "unknown",
+  "Eligible_Original_Events": 14,
+  "Eligible_Sustained_Events": 13,
+  "Source_Duration_s": 14400.0,
+  "Evaluable_Exposure_s": 10329.032,
+  "Classifier_Conditions": 11,
+  "Reproduced_Event_Conditions": 22,
+  "Outer_Training_Audit": {
+    "Folds": 270,
+    "Maximum_Outer_Scaler_Mean_Error": 0.0,
+    "Inner_Transform_Limit": "Inner objects not retained; source and causal/partition tests audited, no full inner refit performed"
+  },
+  "Logistic_Results": [
+    {
+      "Modality": "Combined",
+      "Definition": "original",
+      "Detected": 10,
+      "Eligible_Events": 14,
+      "False_Alarm_Starts_Per_Hour": 4.879450465445359,
+      "Source_Duration_Normalized_Starts_Per_Hour": 3.5,
+      "Alarm_Active_Fraction": 0.00954281098170672,
+      "Lead_Median_s": 13.844000000000005,
+      "Meets_Pooled_Research_Constraints": true,
+      "Meets_All_Exposed_Record_Constraints": false
+    },
+    {
+      "Modality": "Combined",
+      "Definition": "sustained3",
+      "Detected": 9,
+      "Eligible_Events": 13,
+      "False_Alarm_Starts_Per_Hour": 5.576514817651838,
+      "Source_Duration_Normalized_Starts_Per_Hour": 4.0,
+      "Alarm_Active_Fraction": 0.00954281098170672,
+      "Lead_Median_s": 10.96,
+      "Meets_Pooled_Research_Constraints": false,
+      "Meets_All_Exposed_Record_Constraints": false
+    },
+    {
+      "Modality": "PPG",
+      "Definition": "original",
+      "Detected": 0,
+      "Eligible_Events": 14,
+      "False_Alarm_Starts_Per_Hour": 0.0,
+      "Source_Duration_Normalized_Starts_Per_Hour": 0.0,
+      "Alarm_Active_Fraction": 0.0,
+      "Lead_Median_s": null,
+      "Meets_Pooled_Research_Constraints": true,
+      "Meets_All_Exposed_Record_Constraints": true
+    },
+    {
+      "Modality": "PPG",
+      "Definition": "sustained3",
+      "Detected": 0,
+      "Eligible_Events": 13,
+      "False_Alarm_Starts_Per_Hour": 0.0,
+      "Source_Duration_Normalized_Starts_Per_Hour": 0.0,
+      "Alarm_Active_Fraction": 0.0,
+      "Lead_Median_s": null,
+      "Meets_Pooled_Research_Constraints": true,
+      "Meets_All_Exposed_Record_Constraints": true
+    },
+    {
+      "Modality": "SpO2_history",
+      "Definition": "original",
+      "Detected": 9,
+      "Eligible_Events": 14,
+      "False_Alarm_Starts_Per_Hour": 3.485321761032399,
+      "Source_Duration_Normalized_Starts_Per_Hour": 2.5,
+      "Alarm_Active_Fraction": 0.013578039065035335,
+      "Lead_Median_s": 14.96,
+      "Meets_Pooled_Research_Constraints": true,
+      "Meets_All_Exposed_Record_Constraints": false
+    },
+    {
+      "Modality": "SpO2_history",
+      "Definition": "sustained3",
+      "Detected": 9,
+      "Eligible_Events": 13,
+      "False_Alarm_Starts_Per_Hour": 3.485321761032399,
+      "Source_Duration_Normalized_Starts_Per_Hour": 2.5,
+      "Alarm_Active_Fraction": 0.013578039065035335,
+      "Lead_Median_s": 14.96,
+      "Meets_Pooled_Research_Constraints": true,
+      "Meets_All_Exposed_Record_Constraints": false
+    }
+  ],
+  "Forecast_Results": [
+    {
+      "Model": "Persistence",
+      "Population": "current_normal",
+      "N": 16050,
+      "MAE": 0.3314018691588785,
+      "RMSE": 0.6544836970141585
+    },
+    {
+      "Model": "Persistence",
+      "Population": "full_target",
+      "N": 20150,
+      "MAE": 0.31627791563275437,
+      "RMSE": 0.6473078434321142
+    },
+    {
+      "Model": "Ridge_Combined",
+      "Population": "current_normal",
+      "N": 16050,
+      "MAE": 0.34069826107488416,
+      "RMSE": 0.4746013822492801
+    },
+    {
+      "Model": "Ridge_Combined",
+      "Population": "full_target",
+      "N": 20150,
+      "MAE": 0.3312308455597171,
+      "RMSE": 0.47426806086963064
+    },
+    {
+      "Model": "Ridge_PPG",
+      "Population": "current_normal",
+      "N": 16050,
+      "MAE": 1.9105837339969522,
+      "RMSE": 2.265759492715659
+    },
+    {
+      "Model": "Ridge_PPG",
+      "Population": "full_target",
+      "N": 20150,
+      "MAE": 2.3172962697304444,
+      "RMSE": 2.7299036028198564
+    },
+    {
+      "Model": "Ridge_SpO2_history",
+      "Population": "current_normal",
+      "N": 16050,
+      "MAE": 0.3440637764089143,
+      "RMSE": 0.4752631656522246
+    },
+    {
+      "Model": "Ridge_SpO2_history",
+      "Population": "full_target",
+      "N": 20150,
+      "MAE": 0.33689459553631057,
+      "RMSE": 0.4775278787299732
+    },
+    {
+      "Model": "Trend10",
+      "Population": "current_normal",
+      "N": 16050,
+      "MAE": 0.7152929562649187,
+      "RMSE": 1.4592235630990458
+    },
+    {
+      "Model": "Trend10",
+      "Population": "full_target",
+      "N": 20150,
+      "MAE": 0.7197456092294802,
+      "RMSE": 1.5188563130299968
+    }
+  ],
+  "Paired_Forecast": [
+    {
+      "Analysis": "forecast",
+      "Model": "Ridge_Combined",
+      "Contrast": "Ridge_Combined minus Ridge_SpO2_history",
+      "Definition": null,
+      "Population": "full_target",
+      "Metric": "MAE",
+      "Difference": -0.0056637499765934685,
+      "Lower_95": -0.021569918967542772,
+      "Upper_95": 0.009835028360420574,
+      "Defined_Replicates": 2000,
+      "Common_Events": null
+    },
+    {
+      "Analysis": "forecast",
+      "Model": "Ridge_Combined",
+      "Contrast": "Ridge_Combined minus Ridge_SpO2_history",
+      "Definition": null,
+      "Population": "full_target",
+      "Metric": "RMSE",
+      "Difference": -0.003259817860342573,
+      "Lower_95": -0.011866177804592567,
+      "Upper_95": 0.00712638527876978,
+      "Defined_Replicates": 2000,
+      "Common_Events": null
+    },
+    {
+      "Analysis": "forecast",
+      "Model": "Ridge_Combined",
+      "Contrast": "Ridge_Combined minus Ridge_SpO2_history",
+      "Definition": null,
+      "Population": "current_normal",
+      "Metric": "MAE",
+      "Difference": -0.0033655153340301225,
+      "Lower_95": -0.019048631918340688,
+      "Upper_95": 0.013869557137304,
+      "Defined_Replicates": 2000,
+      "Common_Events": null
+    },
+    {
+      "Analysis": "forecast",
+      "Model": "Ridge_Combined",
+      "Contrast": "Ridge_Combined minus Ridge_SpO2_history",
+      "Definition": null,
+      "Population": "current_normal",
+      "Metric": "RMSE",
+      "Difference": -0.0006617834029444825,
+      "Lower_95": -0.009627282151594856,
+      "Upper_95": 0.010759785821563088,
+      "Defined_Replicates": 2000,
+      "Common_Events": null
+    }
+  ],
+  "Forecast_Influence": [
+    {
+      "Population": "current_normal",
+      "Improved_Records": 14,
+      "Worse_Records": 12,
+      "Tied_Records": 0,
+      "Median_Record_MAE_Difference": -0.0038549441228592496,
+      "Leave_One_Record_Out_Min": -0.007263478048481057,
+      "Leave_One_Record_Out_Max": 0.0003814433477566873,
+      "Leave_One_Out_Positive_Differences": 1
+    },
+    {
+      "Population": "full_target",
+      "Improved_Records": 16,
+      "Worse_Records": 14,
+      "Tied_Records": 0,
+      "Median_Record_MAE_Difference": -0.0038549441228592496,
+      "Leave_One_Record_Out_Min": -0.008786492205986358,
+      "Leave_One_Record_Out_Max": -0.0018949430980291085,
+      "Leave_One_Out_Positive_Differences": 0
+    }
+  ],
+  "Policy_Metadata_Omission_Rows": 11,
+  "Metric_Changing_Defect_Found": false,
+  "New_Model_Fits": 0,
+  "Clinical_Validation": false,
+  "Source_Hour_Normalization_Interpretation": "Observed evaluable starts / source hours; not a full-monitoring-time false-alarm estimate",
+  "Bootstrap_Limit": "Whole-record paired draws conditional on saved overlapping CV fits; no patient or refit uncertainty",
+  "All_Analysis_Source_SHA256": {
+    "audit.py": "c8a140fef95764aee2ac1ab0d41476ebed9c848743f04534bbf2e6d1d55a4bf9",
+    "engine.py": "ca056ae1c697e60a484acd8806d2c0b0444feffa94c522b09abd6fe54a00857e",
+    "__init__.py": "dafcbee3fb41bd74459679f0eda29c8c2fa301855f28de6c2c46fcfcf215f0c9"
+  }
+}

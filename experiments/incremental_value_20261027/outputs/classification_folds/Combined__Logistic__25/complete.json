@@ -1,0 +1,9 @@
+{
+  "files": {
+    "oof.csv.gz": "5d19fcb6f78148d962b5f1d68ef6d78cbadde94d73e9a6cee8f2ff1cb000930a",
+    "predictions.csv.gz": "748ca36270f15f9da1df28fcb021a286b499764ee13a32239a5787c84648012d",
+    "outer_model.joblib": "aaaf409cf7f0c0acafff0cf20db39a172a0404dfc869cbbc084c17533d5746b1",
+    "training_candidates.csv": "37f8595c5377a2aff2a48a9e77c883050ef26b555de9d4422faa9bed4577942d",
+    "metadata.json": "c81646555e674dc9a9a919ad7998a8ba77df2811283572ca47e242b81d90fea3"
+  }
+}

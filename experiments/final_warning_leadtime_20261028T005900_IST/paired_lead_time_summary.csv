@@ -1,0 +1,7 @@
+Model,Definition,EligibleEvents,EligibleRecordings,PairedEvents,PairedRecordings,Earlier,Equal,Later,MedianAdditionalLead_s,MedianLower95_s,MedianUpper95_s,MedianDefinedBootstrapReplicates,MeanAdditionalLead_s,MeanLower95_s,MeanUpper95_s,MeanDefinedBootstrapReplicates,BootstrapReplicates,BootstrapSeed,SamplingUnit,ConditionalSubset
+Logistic,original,14,6,7,4,2,3,2,0.0,-4.0,10.063999999999965,1977,3.8079999999999976,-4.0,10.218666666666662,1977,2000,20261027,recording,both_models_detected
+Logistic,sustained3,13,5,7,4,2,3,2,0.0,-4.0,10.063999999999965,1977,3.8079999999999976,-4.0,10.218666666666662,1977,2000,20261027,recording,both_models_detected
+GaussianNB,original,14,6,5,3,1,4,0,0.0,0.0,5.071999999999996,1920,2.028799999999998,0.0,5.071999999999996,1920,2000,20261027,recording,both_models_detected
+GaussianNB,sustained3,13,5,5,3,1,4,0,0.0,0.0,5.071999999999996,1920,2.028799999999998,0.0,5.071999999999996,1920,2000,20261027,recording,both_models_detected
+ELM,original,14,6,1,1,1,0,0,10.336000000000013,10.336000000000013,10.336000000000013,1260,10.336000000000013,10.336000000000013,10.336000000000013,1260,2000,20261027,recording,both_models_detected
+ELM,sustained3,13,5,1,1,1,0,0,10.336000000000013,10.336000000000013,10.336000000000013,1260,10.336000000000013,10.336000000000013,10.336000000000013,1260,2000,20261027,recording,both_models_detected

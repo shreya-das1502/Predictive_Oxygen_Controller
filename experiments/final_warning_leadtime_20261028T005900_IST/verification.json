@@ -1,0 +1,97 @@
+{
+  "Status": "passed",
+  "RecomputedConditions": 12,
+  "IndependentStreamComparisons": [
+    {
+      "Modality": "Combined",
+      "Model": "ELM",
+      "Definition": "original",
+      "IndependentDetected": 1,
+      "IndependentEligible": 14
+    },
+    {
+      "Modality": "Combined",
+      "Model": "ELM",
+      "Definition": "sustained3",
+      "IndependentDetected": 1,
+      "IndependentEligible": 13
+    },
+    {
+      "Modality": "Combined",
+      "Model": "GaussianNB",
+      "Definition": "original",
+      "IndependentDetected": 6,
+      "IndependentEligible": 14
+    },
+    {
+      "Modality": "Combined",
+      "Model": "GaussianNB",
+      "Definition": "sustained3",
+      "IndependentDetected": 6,
+      "IndependentEligible": 13
+    },
+    {
+      "Modality": "Combined",
+      "Model": "Logistic",
+      "Definition": "original",
+      "IndependentDetected": 10,
+      "IndependentEligible": 14
+    },
+    {
+      "Modality": "Combined",
+      "Model": "Logistic",
+      "Definition": "sustained3",
+      "IndependentDetected": 9,
+      "IndependentEligible": 13
+    },
+    {
+      "Modality": "SpO2_history",
+      "Model": "ELM",
+      "Definition": "original",
+      "IndependentDetected": 6,
+      "IndependentEligible": 14
+    },
+    {
+      "Modality": "SpO2_history",
+      "Model": "ELM",
+      "Definition": "sustained3",
+      "IndependentDetected": 6,
+      "IndependentEligible": 13
+    },
+    {
+      "Modality": "SpO2_history",
+      "Model": "GaussianNB",
+      "Definition": "original",
+      "IndependentDetected": 10,
+      "IndependentEligible": 14
+    },
+    {
+      "Modality": "SpO2_history",
+      "Model": "GaussianNB",
+      "Definition": "sustained3",
+      "IndependentDetected": 10,
+      "IndependentEligible": 13
+    },
+    {
+      "Modality": "SpO2_history",
+      "Model": "Logistic",
+      "Definition": "original",
+      "IndependentDetected": 9,
+      "IndependentEligible": 14
+    },
+    {
+      "Modality": "SpO2_history",
+      "Model": "Logistic",
+      "Definition": "sustained3",
+      "IndependentDetected": 9,
+      "IndependentEligible": 13
+    }
+  ],
+  "PriorLeadThresholdCounts": "all_72_cells_identical",
+  "OuterFoldsChecked": 180,
+  "CausalFeatureClock": "peak precedes confirmation by 8 ms; SpO2 at/before confirmation; prior causal implementation audit hash-sealed",
+  "PostOnsetWarnings": "not measurable by preserved current-normal preonset matching rule",
+  "NoRefits": true,
+  "NoThresholdChanges": true,
+  "OutputSchemaAndArithmetic": "passed"
+}

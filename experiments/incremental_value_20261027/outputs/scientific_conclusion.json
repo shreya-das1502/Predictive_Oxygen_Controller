@@ -1,0 +1,27 @@
+{
+  "experiment_completed": true,
+  "dataset_expanded": false,
+  "recordings": 30,
+  "common_classification_rows": 20150,
+  "primary_target": "future minimum SpO2<=94 within30s, unchanged",
+  "history_more_informative_than_tested_PPG_only": true,
+  "robust_incremental_PPG_warning_established": false,
+  "Logistic_original_events": {
+    "SpO2_history": "9/14",
+    "PPG": "0/14",
+    "Combined": "10/14"
+  },
+  "Logistic_sustained_events": {
+    "SpO2_history": "9/13",
+    "Combined": "9/13"
+  },
+  "primary_paired_sensitivity_difference": 0.0714285714285714,
+  "conditional95_interval": [
+    -0.4,
+    0.5714285714285714
+  ],
+  "model_selected_for_deployment": false,
+  "clinical_validation": false,
+  "patient_independence_verified": false,
+  "research_status": "exploratory reanalysis; no independent confirmatory cohort"
+}

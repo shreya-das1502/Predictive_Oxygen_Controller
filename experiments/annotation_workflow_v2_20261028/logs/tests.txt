@@ -1,0 +1,12 @@
+test_contract (test_workflow.Workflow.test_contract) ... ok
+test_duplicates_and_incomplete (test_workflow.Workflow.test_duplicates_and_incomplete) ... ok
+test_json (test_workflow.Workflow.test_json) ... ok
+test_matching (test_workflow.Workflow.test_matching) ... ok
+test_synthetic_evaluation (test_workflow.Workflow.test_synthetic_evaluation) ... ok
+test_timestamps (test_workflow.Workflow.test_timestamps) ... ok
+test_unknown (test_workflow.Workflow.test_unknown) ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.073s
+
+OK

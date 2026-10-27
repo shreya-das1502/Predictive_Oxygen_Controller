@@ -1,0 +1,6 @@
+{
+  "classification_predictions.csv.gz": "92202b260e73bb1155fea36c4ec4d95826704ec7f370385494ddb8b5a919d621",
+  "fold_ledger.json": "d5daaf3589da1c830481f7f93cfbf00734e47be223f2d637cfb4b9ce3d165916",
+  "selected_thresholds.csv": "d191aa856df51076941689603f1d2a453fa091c2c652a347456eb3a5af23419b",
+  "training_candidates.csv.gz": "0e8c7e9448c378f19f9ed794a9ccf49c95c1cc6afabca17a6091af4672752e49"
+}

@@ -1,0 +1,12 @@
+{
+  "original_future_low_rows": 20157,
+  "original_positives": 4587,
+  "common_rows": 20150,
+  "common_positives": 4587,
+  "normal_rows": 16050,
+  "raw_events": 22,
+  "qualifying_onsets": 15,
+  "sustained_qualifying_onsets": 14,
+  "historical_label_clock_parity": "passed",
+  "subject_independence": "unverified"
+}

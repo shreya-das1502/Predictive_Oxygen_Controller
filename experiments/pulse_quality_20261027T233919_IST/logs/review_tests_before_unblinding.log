@@ -1,0 +1,22 @@
+test_feature_pure_ppg_has_no_outcome_argument (experiments.pulse_quality_20261027T233919_IST.tests.test_review.CandidateTests.test_feature_pure_ppg_has_no_outcome_argument) ... ok
+test_fixed_detector_interval_flags (experiments.pulse_quality_20261027T233919_IST.tests.test_review.CandidateTests.test_fixed_detector_interval_flags) ... ok
+test_flat_and_extreme_plateaus_are_candidates_not_clipping_truth (experiments.pulse_quality_20261027T233919_IST.tests.test_review.CandidateTests.test_flat_and_extreme_plateaus_are_candidates_not_clipping_truth) ... ok
+test_automated_freeze_precedes_join_and_sources_match (experiments.pulse_quality_20261027T233919_IST.tests.test_review.PacketTests.test_automated_freeze_precedes_join_and_sources_match) ... ok
+test_no_unreferenced_detector_accuracy_or_feature_effect (experiments.pulse_quality_20261027T233919_IST.tests.test_review.PacketTests.test_no_unreferenced_detector_accuracy_or_feature_effect) ... ok
+test_reference_priority_subset_nonoverlapping (experiments.pulse_quality_20261027T233919_IST.tests.test_review.PacketTests.test_reference_priority_subset_nonoverlapping) ... ok
+test_reviewer_packet_no_outcome_fields_or_coordinator_files (experiments.pulse_quality_20261027T233919_IST.tests.test_review.PacketTests.test_reviewer_packet_no_outcome_fields_or_coordinator_files) ... ok
+test_sampling_seed_and_all_recording_quarters (experiments.pulse_quality_20261027T233919_IST.tests.test_review.PacketTests.test_sampling_seed_and_all_recording_quarters) ... ok
+test_draft_or_blank_annotations_are_not_ground_truth (experiments.pulse_quality_20261027T233919_IST.tests.test_review.ReferenceTests.test_draft_or_blank_annotations_are_not_ground_truth) ... ok
+test_empty_or_duplicate_reference_not_perfect_accuracy (experiments.pulse_quality_20261027T233919_IST.tests.test_review.ReferenceTests.test_empty_or_duplicate_reference_not_perfect_accuracy) ... ok
+test_exact_tolerance_and_sample_timing (experiments.pulse_quality_20261027T233919_IST.tests.test_review.ReferenceTests.test_exact_tolerance_and_sample_timing) ... ok
+test_invalid_duplicate_or_overlapping_reference_handling (experiments.pulse_quality_20261027T233919_IST.tests.test_review.ReferenceTests.test_invalid_duplicate_or_overlapping_reference_handling) ... ok
+test_maximum_cardinality_precedes_timing_cost (experiments.pulse_quality_20261027T233919_IST.tests.test_review.ReferenceTests.test_maximum_cardinality_precedes_timing_cost) ... ok
+test_one_to_one_count_and_signed_error (experiments.pulse_quality_20261027T233919_IST.tests.test_review.ReferenceTests.test_one_to_one_count_and_signed_error) ... ok
+test_partial_regions_and_ambiguity_are_not_forced (experiments.pulse_quality_20261027T233919_IST.tests.test_review.ReferenceTests.test_partial_regions_and_ambiguity_are_not_forced) ... ok
+test_uninterpretable_has_no_scored_region (experiments.pulse_quality_20261027T233919_IST.tests.test_review.ReferenceTests.test_uninterpretable_has_no_scored_region) ... ok
+test_unknown_packet_window_or_metadata_rejected (experiments.pulse_quality_20261027T233919_IST.tests.test_review.ReferenceTests.test_unknown_packet_window_or_metadata_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 17 tests in 0.522s
+
+OK

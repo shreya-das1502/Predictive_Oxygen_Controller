@@ -1,0 +1,19 @@
+{
+  "Status": "passed",
+  "FreshRun": "analyze.py --out experiments/final_warning_leadtime_20261028T005900_IST/reproduction_check",
+  "ByteIdenticalOutputs": {
+    "alarm_episodes.csv": "ded9c7d15653d5a4db6be76ce754e795441878d60e333a09d8e9415ef2eff290",
+    "event_level_lead_times.csv": "ec2310021801997ac2addc91c9d97753f64f61056c216612c9478d264f8bb27f",
+    "overall_summary.csv": "c1b4fc7ef2336cd6d18009d911960859f8d14c5567560fca9990a9b1b4053956",
+    "paired_lead_time_summary.csv": "81d2a8abf4ff1c52d83d74d1b5d194373d6ee608d94bd53fc85a4aa4c03cc56a",
+    "paired_warning_rate_differences.csv": "62b939c678b6c0f374d06f10fe26e75dc0f914317fa116364f149c2f8ed783b2",
+    "recording_bootstrap_weights.npy": "bb5f807bf146b87338cf99c3bc5e0aaef79b4511714647b09d356667a771f0d0",
+    "recording_level_summary.csv": "99c314f1cf0af06e0c94e10964db022d725847fd50a340338d0d0dd08e1b46aa",
+    "source_hashes.json": "38eb56bd8b33764ee9328594d131991cacec82138180457e48a90c75fa8ce711",
+    "timely_warning_comparison.png": "42bedcae294c98ca7ddfebecd24720b1d419855c0e2e51cc6288a4c08c87092f",
+    "timely_warning_summary.csv": "100673bce4ca48f640a026471a058507873b57cedda0879d2610dfb47f47da6b",
+    "verification.json": "807b5bfac0813dd15d8198f7965d89a01ffc181e389c2d4acc6ee9e797871f8c",
+    "warning_lead_time_comparison.png": "d4c6d766598d7c4e14003dbeebeeb05e689970270150e61345b97cd92a3662ea"
+  },
+  "TemporaryDuplicateOutputsRemovedAfterComparison": true
+}

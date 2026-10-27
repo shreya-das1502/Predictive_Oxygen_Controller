@@ -1,0 +1,862 @@
+[
+  {
+    "Modality": "Combined",
+    "Model": "ELM",
+    "Definition": "original",
+    "Eligible_Events": 14,
+    "Detected": 1,
+    "Exposure_s": 10329.032,
+    "Alarm_Active_s": 10.504000000000062,
+    "Alarm_Starts": 9,
+    "Off_Event_Alarm_Starts": 4,
+    "Matches": [
+      [
+        17,
+        454,
+        430.4,
+        23.600000000000023
+      ]
+    ]
+  },
+  {
+    "Modality": "Combined",
+    "Model": "ELM",
+    "Definition": "sustained3",
+    "Eligible_Events": 13,
+    "Detected": 1,
+    "Exposure_s": 10329.032,
+    "Alarm_Active_s": 10.504000000000062,
+    "Alarm_Starts": 9,
+    "Off_Event_Alarm_Starts": 4,
+    "Matches": [
+      [
+        17,
+        454,
+        430.4,
+        23.600000000000023
+      ]
+    ]
+  },
+  {
+    "Modality": "Combined",
+    "Model": "GaussianNB",
+    "Definition": "original",
+    "Eligible_Events": 14,
+    "Detected": 6,
+    "Exposure_s": 10329.032,
+    "Alarm_Active_s": 517.7200000000001,
+    "Alarm_Starts": 26,
+    "Off_Event_Alarm_Starts": 10,
+    "Matches": [
+      [
+        17,
+        250,
+        240.216,
+        9.783999999999992
+      ],
+      [
+        17,
+        454,
+        428.4,
+        25.600000000000023
+      ],
+      [
+        29,
+        368,
+        361.632,
+        6.367999999999995
+      ],
+      [
+        30,
+        30,
+        15.04,
+        14.96
+      ],
+      [
+        30,
+        72,
+        46.16,
+        25.840000000000003
+      ],
+      [
+        30,
+        98,
+        68.296,
+        29.703999999999994
+      ]
+    ]
+  },
+  {
+    "Modality": "Combined",
+    "Model": "GaussianNB",
+    "Definition": "sustained3",
+    "Eligible_Events": 13,
+    "Detected": 6,
+    "Exposure_s": 10329.032,
+    "Alarm_Active_s": 517.7200000000001,
+    "Alarm_Starts": 26,
+    "Off_Event_Alarm_Starts": 10,
+    "Matches": [
+      [
+        17,
+        250,
+        240.216,
+        9.783999999999992
+      ],
+      [
+        17,
+        454,
+        428.4,
+        25.600000000000023
+      ],
+      [
+        29,
+        368,
+        361.632,
+        6.367999999999995
+      ],
+      [
+        30,
+        30,
+        15.04,
+        14.96
+      ],
+      [
+        30,
+        72,
+        46.16,
+        25.840000000000003
+      ],
+      [
+        30,
+        98,
+        68.296,
+        29.703999999999994
+      ]
+    ]
+  },
+  {
+    "Modality": "Combined",
+    "Model": "Logistic",
+    "Definition": "original",
+    "Eligible_Events": 14,
+    "Detected": 10,
+    "Exposure_s": 10329.032,
+    "Alarm_Active_s": 98.56800000000013,
+    "Alarm_Starts": 33,
+    "Off_Event_Alarm_Starts": 14,
+    "Matches": [
+      [
+        7,
+        367,
+        350.272,
+        16.72800000000001
+      ],
+      [
+        12,
+        210,
+        203.68,
+        6.319999999999993
+      ],
+      [
+        17,
+        250,
+        240.216,
+        9.783999999999992
+      ],
+      [
+        17,
+        454,
+        428.4,
+        25.600000000000023
+      ],
+      [
+        26,
+        57,
+        37.736,
+        19.264000000000003
+      ],
+      [
+        26,
+        144,
+        138.424,
+        5.575999999999993
+      ],
+      [
+        26,
+        294,
+        270.824,
+        23.175999999999988
+      ],
+      [
+        26,
+        310,
+        285.688,
+        24.312000000000012
+      ],
+      [
+        29,
+        368,
+        361.632,
+        6.367999999999995
+      ],
+      [
+        30,
+        30,
+        19.04,
+        10.96
+      ]
+    ]
+  },
+  {
+    "Modality": "Combined",
+    "Model": "Logistic",
+    "Definition": "sustained3",
+    "Eligible_Events": 13,
+    "Detected": 9,
+    "Exposure_s": 10329.032,
+    "Alarm_Active_s": 98.56800000000013,
+    "Alarm_Starts": 33,
+    "Off_Event_Alarm_Starts": 16,
+    "Matches": [
+      [
+        12,
+        210,
+        203.68,
+        6.319999999999993
+      ],
+      [
+        17,
+        250,
+        240.216,
+        9.783999999999992
+      ],
+      [
+        17,
+        454,
+        428.4,
+        25.600000000000023
+      ],
+      [
+        26,
+        57,
+        37.736,
+        19.264000000000003
+      ],
+      [
+        26,
+        144,
+        138.424,
+        5.575999999999993
+      ],
+      [
+        26,
+        294,
+        270.824,
+        23.175999999999988
+      ],
+      [
+        26,
+        310,
+        285.688,
+        24.312000000000012
+      ],
+      [
+        29,
+        368,
+        361.632,
+        6.367999999999995
+      ],
+      [
+        30,
+        30,
+        19.04,
+        10.96
+      ]
+    ]
+  },
+  {
+    "Modality": "PPG",
+    "Model": "ELM",
+    "Definition": "original",
+    "Eligible_Events": 14,
+    "Detected": 0,
+    "Exposure_s": 10329.032,
+    "Alarm_Active_s": 0.0,
+    "Alarm_Starts": 0,
+    "Off_Event_Alarm_Starts": 0,
+    "Matches": []
+  },
+  {
+    "Modality": "PPG",
+    "Model": "ELM",
+    "Definition": "sustained3",
+    "Eligible_Events": 13,
+    "Detected": 0,
+    "Exposure_s": 10329.032,
+    "Alarm_Active_s": 0.0,
+    "Alarm_Starts": 0,
+    "Off_Event_Alarm_Starts": 0,
+    "Matches": []
+  },
+  {
+    "Modality": "PPG",
+    "Model": "GaussianNB",
+    "Definition": "original",
+    "Eligible_Events": 14,
+    "Detected": 0,
+    "Exposure_s": 10329.032,
+    "Alarm_Active_s": 0.0,
+    "Alarm_Starts": 0,
+    "Off_Event_Alarm_Starts": 0,
+    "Matches": []
+  },
+  {
+    "Modality": "PPG",
+    "Model": "GaussianNB",
+    "Definition": "sustained3",
+    "Eligible_Events": 13,
+    "Detected": 0,
+    "Exposure_s": 10329.032,
+    "Alarm_Active_s": 0.0,
+    "Alarm_Starts": 0,
+    "Off_Event_Alarm_Starts": 0,
+    "Matches": []
+  },
+  {
+    "Modality": "PPG",
+    "Model": "Logistic",
+    "Definition": "original",
+    "Eligible_Events": 14,
+    "Detected": 0,
+    "Exposure_s": 10329.032,
+    "Alarm_Active_s": 0.0,
+    "Alarm_Starts": 0,
+    "Off_Event_Alarm_Starts": 0,
+    "Matches": []
+  },
+  {
+    "Modality": "PPG",
+    "Model": "Logistic",
+    "Definition": "sustained3",
+    "Eligible_Events": 13,
+    "Detected": 0,
+    "Exposure_s": 10329.032,
+    "Alarm_Active_s": 0.0,
+    "Alarm_Starts": 0,
+    "Off_Event_Alarm_Starts": 0,
+    "Matches": []
+  },
+  {
+    "Modality": "SpO2_history",
+    "Model": "ELM",
+    "Definition": "original",
+    "Eligible_Events": 14,
+    "Detected": 6,
+    "Exposure_s": 10329.032,
+    "Alarm_Active_s": 34.04000000000006,
+    "Alarm_Starts": 26,
+    "Off_Event_Alarm_Starts": 12,
+    "Matches": [
+      [
+        17,
+        250,
+        249.096,
+        0.9039999999999964
+      ],
+      [
+        17,
+        454,
+        440.736,
+        13.26400000000001
+      ],
+      [
+        26,
+        57,
+        50.352,
+        6.648000000000003
+      ],
+      [
+        26,
+        294,
+        277.504,
+        16.49599999999998
+      ],
+      [
+        29,
+        368,
+        362.272,
+        5.728000000000009
+      ],
+      [
+        30,
+        30,
+        16.352,
+        13.648
+      ]
+    ]
+  },
+  {
+    "Modality": "SpO2_history",
+    "Model": "ELM",
+    "Definition": "sustained3",
+    "Eligible_Events": 13,
+    "Detected": 6,
+    "Exposure_s": 10329.032,
+    "Alarm_Active_s": 34.04000000000006,
+    "Alarm_Starts": 26,
+    "Off_Event_Alarm_Starts": 12,
+    "Matches": [
+      [
+        17,
+        250,
+        249.096,
+        0.9039999999999964
+      ],
+      [
+        17,
+        454,
+        440.736,
+        13.26400000000001
+      ],
+      [
+        26,
+        57,
+        50.352,
+        6.648000000000003
+      ],
+      [
+        26,
+        294,
+        277.504,
+        16.49599999999998
+      ],
+      [
+        29,
+        368,
+        362.272,
+        5.728000000000009
+      ],
+      [
+        30,
+        30,
+        16.352,
+        13.648
+      ]
+    ]
+  },
+  {
+    "Modality": "SpO2_history",
+    "Model": "GaussianNB",
+    "Definition": "original",
+    "Eligible_Events": 14,
+    "Detected": 10,
+    "Exposure_s": 10329.032,
+    "Alarm_Active_s": 669.6480000000001,
+    "Alarm_Starts": 26,
+    "Off_Event_Alarm_Starts": 12,
+    "Matches": [
+      [
+        17,
+        250,
+        240.216,
+        9.783999999999992
+      ],
+      [
+        17,
+        454,
+        428.4,
+        25.600000000000023
+      ],
+      [
+        26,
+        57,
+        36.384,
+        20.616
+      ],
+      [
+        26,
+        144,
+        132.424,
+        11.575999999999993
+      ],
+      [
+        26,
+        241,
+        239.136,
+        1.8640000000000043
+      ],
+      [
+        26,
+        294,
+        276.176,
+        17.824000000000012
+      ],
+      [
+        26,
+        310,
+        307.632,
+        2.367999999999995
+      ],
+      [
+        29,
+        368,
+        361.632,
+        6.367999999999995
+      ],
+      [
+        30,
+        30,
+        15.04,
+        14.96
+      ],
+      [
+        30,
+        98,
+        78.44,
+        19.560000000000002
+      ]
+    ]
+  },
+  {
+    "Modality": "SpO2_history",
+    "Model": "GaussianNB",
+    "Definition": "sustained3",
+    "Eligible_Events": 13,
+    "Detected": 10,
+    "Exposure_s": 10329.032,
+    "Alarm_Active_s": 669.6480000000001,
+    "Alarm_Starts": 26,
+    "Off_Event_Alarm_Starts": 12,
+    "Matches": [
+      [
+        17,
+        250,
+        240.216,
+        9.783999999999992
+      ],
+      [
+        17,
+        454,
+        428.4,
+        25.600000000000023
+      ],
+      [
+        26,
+        57,
+        36.384,
+        20.616
+      ],
+      [
+        26,
+        144,
+        132.424,
+        11.575999999999993
+      ],
+      [
+        26,
+        241,
+        239.136,
+        1.8640000000000043
+      ],
+      [
+        26,
+        294,
+        276.176,
+        17.824000000000012
+      ],
+      [
+        26,
+        310,
+        307.632,
+        2.367999999999995
+      ],
+      [
+        29,
+        368,
+        361.632,
+        6.367999999999995
+      ],
+      [
+        30,
+        30,
+        15.04,
+        14.96
+      ],
+      [
+        30,
+        98,
+        78.44,
+        19.560000000000002
+      ]
+    ]
+  },
+  {
+    "Modality": "SpO2_history",
+    "Model": "Logistic",
+    "Definition": "original",
+    "Eligible_Events": 14,
+    "Detected": 9,
+    "Exposure_s": 10329.032,
+    "Alarm_Active_s": 140.24800000000005,
+    "Alarm_Starts": 29,
+    "Off_Event_Alarm_Starts": 10,
+    "Matches": [
+      [
+        17,
+        250,
+        240.216,
+        9.783999999999992
+      ],
+      [
+        17,
+        454,
+        428.4,
+        25.600000000000023
+      ],
+      [
+        26,
+        57,
+        36.384,
+        20.616
+      ],
+      [
+        26,
+        294,
+        280.888,
+        13.112000000000023
+      ],
+      [
+        26,
+        310,
+        307.632,
+        2.367999999999995
+      ],
+      [
+        29,
+        368,
+        361.632,
+        6.367999999999995
+      ],
+      [
+        30,
+        30,
+        15.04,
+        14.96
+      ],
+      [
+        30,
+        72,
+        54.864,
+        17.136000000000003
+      ],
+      [
+        30,
+        98,
+        78.44,
+        19.560000000000002
+      ]
+    ]
+  },
+  {
+    "Modality": "SpO2_history",
+    "Model": "Logistic",
+    "Definition": "sustained3",
+    "Eligible_Events": 13,
+    "Detected": 9,
+    "Exposure_s": 10329.032,
+    "Alarm_Active_s": 140.24800000000005,
+    "Alarm_Starts": 29,
+    "Off_Event_Alarm_Starts": 10,
+    "Matches": [
+      [
+        17,
+        250,
+        240.216,
+        9.783999999999992
+      ],
+      [
+        17,
+        454,
+        428.4,
+        25.600000000000023
+      ],
+      [
+        26,
+        57,
+        36.384,
+        20.616
+      ],
+      [
+        26,
+        294,
+        280.888,
+        13.112000000000023
+      ],
+      [
+        26,
+        310,
+        307.632,
+        2.367999999999995
+      ],
+      [
+        29,
+        368,
+        361.632,
+        6.367999999999995
+      ],
+      [
+        30,
+        30,
+        15.04,
+        14.96
+      ],
+      [
+        30,
+        72,
+        54.864,
+        17.136000000000003
+      ],
+      [
+        30,
+        98,
+        78.44,
+        19.560000000000002
+      ]
+    ]
+  },
+  {
+    "Modality": "SpO2_history",
+    "Model": "Persistence",
+    "Definition": "original",
+    "Eligible_Events": 14,
+    "Detected": 0,
+    "Exposure_s": 10329.032,
+    "Alarm_Active_s": 0.0,
+    "Alarm_Starts": 0,
+    "Off_Event_Alarm_Starts": 0,
+    "Matches": []
+  },
+  {
+    "Modality": "SpO2_history",
+    "Model": "Persistence",
+    "Definition": "sustained3",
+    "Eligible_Events": 13,
+    "Detected": 0,
+    "Exposure_s": 10329.032,
+    "Alarm_Active_s": 0.0,
+    "Alarm_Starts": 0,
+    "Off_Event_Alarm_Starts": 0,
+    "Matches": []
+  },
+  {
+    "Modality": "SpO2_history",
+    "Model": "Trend10",
+    "Definition": "original",
+    "Eligible_Events": 14,
+    "Detected": 7,
+    "Exposure_s": 10329.032,
+    "Alarm_Active_s": 590.224,
+    "Alarm_Starts": 125,
+    "Off_Event_Alarm_Starts": 116,
+    "Matches": [
+      [
+        12,
+        210,
+        191.472,
+        18.52799999999999
+      ],
+      [
+        17,
+        454,
+        440.736,
+        13.26400000000001
+      ],
+      [
+        26,
+        122,
+        115.648,
+        6.352000000000004
+      ],
+      [
+        26,
+        241,
+        217.368,
+        23.632000000000005
+      ],
+      [
+        26,
+        294,
+        278.208,
+        15.791999999999973
+      ],
+      [
+        30,
+        30,
+        28.16,
+        1.8399999999999999
+      ],
+      [
+        30,
+        98,
+        78.44,
+        19.560000000000002
+      ]
+    ]
+  },
+  {
+    "Modality": "SpO2_history",
+    "Model": "Trend10",
+    "Definition": "sustained3",
+    "Eligible_Events": 13,
+    "Detected": 7,
+    "Exposure_s": 10329.032,
+    "Alarm_Active_s": 590.224,
+    "Alarm_Starts": 125,
+    "Off_Event_Alarm_Starts": 116,
+    "Matches": [
+      [
+        12,
+        210,
+        191.472,
+        18.52799999999999
+      ],
+      [
+        17,
+        454,
+        440.736,
+        13.26400000000001
+      ],
+      [
+        26,
+        122,
+        115.648,
+        6.352000000000004
+      ],
+      [
+        26,
+        241,
+        217.368,
+        23.632000000000005
+      ],
+      [
+        26,
+        294,
+        278.208,
+        15.791999999999973
+      ],
+      [
+        30,
+        30,
+        28.16,
+        1.8399999999999999
+      ],
+      [
+        30,
+        98,
+        78.44,
+        19.560000000000002
+      ]
+    ]
+  }
+]

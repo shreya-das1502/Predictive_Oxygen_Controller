@@ -1,0 +1,73 @@
+src/features.py:7:class FeatureState:
+src/features.py:37:def add_features(data):
+src/model.py:14:class ELM:
+src/model.py:30:class FittedModel:
+src/preprocessing.py:5:class PulseDetector:
+src/preprocessing.py:40:class WaveformState:
+src/preprocessing.py:60:def extract_pulses(times, ppg):
+src/preprocessing.py:80:def canonical_waveform_times(source_times, fs=125.0):
+src/evaluation.py:10:def outer_splits(groups):
+src/evaluation.py:17:def threshold_table(y,scores):
+src/evaluation.py:30:def choose_threshold(y,scores):
+src/evaluation.py:39:def grouped_oof(X,y,groups,name):
+src/evaluation.py:55:def metrics(y,scores,predictions):
+src/evaluation.py:69:def alarm_statistics(group):
+src/alarm_budget_experiment.py:18:def validate_training(data, oof, allowed, outer_test):
+src/alarm_budget_experiment.py:35:def topology(frame, events, numeric, allowed):
+src/alarm_budget_experiment.py:51:def evaluate_scoped_events(events, frame, numeric, alarms, window):
+src/alarm_budget_experiment.py:61:def detection_count(starts_r, starts_t, eligible, window):
+src/alarm_budget_experiment.py:73:def candidate_statistics(normal, previous_link, duration, events, eligible, quantiles, window=30.):
+src/alarm_budget_experiment.py:97:def choose_candidate(candidates, budget, active_cap):
+src/alarm_budget_experiment.py:103:def select_partition(data, oof, events, numeric, allowed, outer_test, protocol):
+src/alarm_budget_experiment.py:118:def verify_original_inputs(directory, manifest):
+src/alarm_budget_experiment.py:128:def run(output, selection_source=None):
+src/alarm_budget_experiment.py:295:def verify(output):
+src/alarm_budget_experiment.py:319:def main():
+ml_research/core.py:13:class ContextState:
+ml_research/core.py:29:def add_context(raw):
+ml_research/core.py:38:def fit_model(frame,features,name):
+ml_research/core.py:44:def negative_rank(reference, scores):
+ml_research/core.py:50:def training_scores(train,features,name,outer_test):
+ml_research/core.py:68:def array_hash(values):
+src/local_30_evaluation.py:20:def divide(a,b):
+src/local_30_evaluation.py:25:def verify_splits(splits, records):
+src/local_30_evaluation.py:39:def verify_threshold_fold(training, oof, held, test_record, recall=.92):
+src/local_30_evaluation.py:55:def audit_selection(directory):
+src/local_30_evaluation.py:71:def bootstrap_weights(repetitions=2000, seed=20261014, records=RECORDS):
+src/local_30_evaluation.py:79:def lead_summary(leads):
+src/local_30_evaluation.py:85:def bootstrap_metrics(recording, leads, weights, records=RECORDS):
+src/local_30_evaluation.py:104:def interval(values):
+src/local_30_evaluation.py:110:def snapshot_existing(output):
+src/local_30_evaluation.py:117:def verify_output(output, preservation=True):
+src/local_30_evaluation.py:136:def run(output=DEFAULT_OUTPUT, repetitions=2000, seed=20261014):
+src/local_30_evaluation.py:275:def main():
+signal_studies/core.py:8:class P:
+signal_studies/core.py:19:class PI(P):
+signal_studies/core.py:27:class PID(PI):
+signal_studies/core.py:38:def plant():
+signal_studies/core.py:43:def loop(controller):
+signal_studies/core.py:49:def closed_loop(controller):
+signal_studies/core.py:57:def settling_time(t, error, tolerance, hold_s=1.0):
+signal_studies/core.py:74:def response_metrics(t, y, target=1.0):
+signal_studies/core.py:82:def control_run(controller, dt=.002):
+signal_studies/core.py:107:def frequency_response(num, den, w):
+signal_studies/core.py:111:def _positive_roots(coeff):
+signal_studies/core.py:119:def margins(num, den):
+src/labeling.py:6:def future_labels(times, numeric_times, spo2, horizon=HORIZON, threshold=SPO2_THRESHOLD, max_gap=MAX_NUMERIC_GAP):
+src/labeling.py:27:def desaturation_events(numeric_times, spo2, threshold=SPO2_THRESHOLD, max_gap=MAX_NUMERIC_GAP):
+src/labeling.py:54:def onset_labels(times, numeric_times, spo2, horizon=HORIZON, threshold=SPO2_THRESHOLD, max_gap=MAX_NUMERIC_GAP):
+src/reliability_evaluation.py:18:def digest(path):
+src/reliability_evaluation.py:22:def valid_window(nt, s, start, end, gap=1.01):
+src/reliability_evaluation.py:35:def raw_events(numeric):
+src/reliability_evaluation.py:53:def validate_predictions(pred):
+src/reliability_evaluation.py:68:def current_normal(g, numeric):
+src/reliability_evaluation.py:75:def links(g, numeric=None):
+src/reliability_evaluation.py:90:def episodes(g, edge=None):
+src/reliability_evaluation.py:105:def burden(g, numeric=None):
+src/reliability_evaluation.py:116:def eligible_events(events, g, numeric, window):
+src/reliability_evaluation.py:129:def off_event_alarms(alarm_list, events, window):
+src/reliability_evaluation.py:140:def match_events(eligible, g, alarm_list, window, method):
+src/reliability_evaluation.py:162:def independent_historical(pred, events, numeric, target, old_dense=False):
+src/reliability_evaluation.py:192:def baseline_predictions(template, dataset):
+src/reliability_evaluation.py:204:def run(output, inputs):
+src/reliability_evaluation.py:296:def main():

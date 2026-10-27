@@ -1,0 +1,56 @@
+{
+  "cwd": "/workspace/Predictive_Oxygen_Controller",
+  "python": "/workspace/.venvs/oxygen/bin/python",
+  "environment": {
+    "OPENBLAS_NUM_THREADS": "1",
+    "OMP_NUM_THREADS": "1",
+    "MPLBACKEND": "Agg",
+    "MPLCONFIGDIR": "/workspace/.cache/oxygen-mpl",
+    "XDG_CACHE_HOME": "/workspace/.cache",
+    "PYTHONDONTWRITEBYTECODE": "1"
+  },
+  "executed": [
+    {
+      "command": "python -m experiments.pulse_quality_20261027T233919_IST.build --stage build",
+      "log": "logs/build.log",
+      "exit_code": 0,
+      "outcome": "134 PPG-only windows frozen before automated metadata join"
+    },
+    {
+      "command": "node --check experiments/pulse_quality_20261027T233919_IST/review_app.js",
+      "exit_code": 0,
+      "outcome": "syntax checked; no full browser interaction claim"
+    },
+    {
+      "command": "python -m unittest experiments.pulse_quality_20261027T233919_IST.tests.test_review -v",
+      "log": "logs/review_tests_before_unblinding.log",
+      "exit_code": 0,
+      "outcome": "17 passed before automated unblinding"
+    },
+    {
+      "command": "python -m experiments.pulse_quality_20261027T233919_IST.build --stage unblind",
+      "log": "logs/automated_unblinding.log",
+      "exit_code": 0,
+      "outcome": "hash-gated automated associations only; no human reference unblinding"
+    },
+    {
+      "command": "python -m experiments.pulse_quality_20261027T233919_IST.associations",
+      "log": "logs/associations.log",
+      "exit_code": 0,
+      "outcome": "14 exact cases with same-record non-pre-event controls; descriptive only"
+    },
+    {
+      "command": "python -m unittest discover -s tests -p test_pipeline.py -v",
+      "log": "logs/existing_pipeline_tests.log",
+      "exit_code": 0,
+      "outcome": "35 existing pipeline tests passed"
+    },
+    {
+      "command": "python -m unittest experiments.pulse_quality_20261027T233919_IST.tests.test_review -v",
+      "log": "logs/review_tests_final.log",
+      "exit_code": 0,
+      "outcome": "18 passed after additional out-of-region blank-reference safeguard"
+    }
+  ],
+  "not_executed": "No human reference evaluation; no feature correction; no scientific model refitting; no full162-test suite rerun"
+}

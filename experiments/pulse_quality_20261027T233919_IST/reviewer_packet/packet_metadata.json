@@ -1,0 +1,9 @@
+{
+  "packet_id": "PQ595c29cbb70b",
+  "window_count": 134,
+  "recording_count": 30,
+  "manual_priority_windows": 60,
+  "matching_tolerance_s": 0.08,
+  "reference_landmark": "filtered pulse maximum corroborated against raw waveform",
+  "ground_truth_available": false
+}

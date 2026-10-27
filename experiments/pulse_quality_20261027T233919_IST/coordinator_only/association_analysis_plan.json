@@ -1,0 +1,8 @@
+{
+  "Mode": "automated exploratory after PPG freeze; no blinded human validation",
+  "Case": "Exact14 enriched pre20s windows, one per eligible onset regardless of warning",
+  "Control": "Uniform time-stratified windows from the SAME recording with zero overlap of any eligible pre30s interval",
+  "Metric": "Case candidate flag count minus median count of available same-record controls; long-gap/flat/jump indicators also retained",
+  "Inference": "Descriptive only, repeated events clustered by recording; no p-value or causal interpretation",
+  "Source_SHA256": "fc13e67e97a6ea1eda3c775fa2cb40dc012e42436957ebea94e4d23032a15115"
+}

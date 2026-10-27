@@ -1,0 +1,19 @@
+{
+  "status": "proposed; not performed",
+  "dataset": "Same30 recordings only",
+  "single_next_experiment": "Blinded observed-event and PPG-reference quality study before any model change",
+  "cases": "All15 qualifying observed onsets; include the excluded22s onset for timing review",
+  "controls": "Prespecified non-event windows matched by recording/current-SpO2 stratum and available history; do not choose from model scores",
+  "blinding": "Outcome reviewers blinded to model predictions; PPG beat annotators additionally blinded to SpO2/event status",
+  "primary_measures": [
+    "Agreement on observed episode validity/duration",
+    "Pulse detection PPV/recall against independently annotated landmarks",
+    "Uncertain/abstained coverage"
+  ],
+  "limits": [
+    "Does not establish arterial hypoxemia without reference data",
+    "No independent confirmation on repeatedly examined cohort"
+  ],
+  "go_rule": "Only if reference annotations establish a systematic causal detector/SQI defect, test one separately prespecified correction with grouping and all event coverage retained",
+  "stop_rule": "If no systematic defect is demonstrated, preserve the bounded negative incremental-value result instead of further adaptive model search"
+}

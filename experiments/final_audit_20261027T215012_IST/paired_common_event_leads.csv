@@ -1,0 +1,27 @@
+Record,Event_ID,Lead_Time_s_A,Lead_Time_s_B,Lead_Time_s,Model,Contrast,Definition
+17,250,9.783999999999992,9.783999999999992,0.0,Logistic,Combined minus SpO2_history,original
+17,454,25.600000000000023,25.600000000000023,0.0,Logistic,Combined minus SpO2_history,original
+26,57,19.264000000000003,20.616,-1.3519999999999968,Logistic,Combined minus SpO2_history,original
+26,294,23.175999999999988,13.112000000000023,10.063999999999965,Logistic,Combined minus SpO2_history,original
+26,310,24.312000000000012,2.367999999999995,21.944000000000017,Logistic,Combined minus SpO2_history,original
+29,368,6.367999999999995,6.367999999999995,0.0,Logistic,Combined minus SpO2_history,original
+30,30,10.96,14.96,-4.0,Logistic,Combined minus SpO2_history,original
+17,250,9.783999999999992,9.783999999999992,0.0,Logistic,Combined minus SpO2_history,sustained3
+17,454,25.600000000000023,25.600000000000023,0.0,Logistic,Combined minus SpO2_history,sustained3
+26,57,19.264000000000003,20.616,-1.3519999999999968,Logistic,Combined minus SpO2_history,sustained3
+26,294,23.175999999999988,13.112000000000023,10.063999999999965,Logistic,Combined minus SpO2_history,sustained3
+26,310,24.312000000000012,2.367999999999995,21.944000000000017,Logistic,Combined minus SpO2_history,sustained3
+29,368,6.367999999999995,6.367999999999995,0.0,Logistic,Combined minus SpO2_history,sustained3
+30,30,10.96,14.96,-4.0,Logistic,Combined minus SpO2_history,sustained3
+17,250,9.783999999999992,9.783999999999992,0.0,GaussianNB,Combined minus SpO2_history,original
+17,454,25.600000000000023,25.600000000000023,0.0,GaussianNB,Combined minus SpO2_history,original
+29,368,6.367999999999995,6.367999999999995,0.0,GaussianNB,Combined minus SpO2_history,original
+30,30,14.96,14.96,0.0,GaussianNB,Combined minus SpO2_history,original
+30,98,29.703999999999994,19.560000000000002,10.143999999999991,GaussianNB,Combined minus SpO2_history,original
+17,250,9.783999999999992,9.783999999999992,0.0,GaussianNB,Combined minus SpO2_history,sustained3
+17,454,25.600000000000023,25.600000000000023,0.0,GaussianNB,Combined minus SpO2_history,sustained3
+29,368,6.367999999999995,6.367999999999995,0.0,GaussianNB,Combined minus SpO2_history,sustained3
+30,30,14.96,14.96,0.0,GaussianNB,Combined minus SpO2_history,sustained3
+30,98,29.703999999999994,19.560000000000002,10.143999999999991,GaussianNB,Combined minus SpO2_history,sustained3
+17,454,23.600000000000023,13.26400000000001,10.336000000000013,ELM,Combined minus SpO2_history,original
+17,454,23.600000000000023,13.26400000000001,10.336000000000013,ELM,Combined minus SpO2_history,sustained3

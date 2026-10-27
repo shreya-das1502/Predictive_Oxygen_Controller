@@ -1,0 +1,9 @@
+# Supported claims and limits
+
+Supported: a reproducible, frozen-model retrospective comparison on the same 30 recordings; logistic original detection 9/14 vs10/14; original ≥10-second coverage6/14 each; sustained detection9/13 each and timely6/13 vs5/13; logistic paired median0 s with interval−4 to+10.064 s; inconsistent gains/losses and individual recording burden violations. GaussianNB/ELM coverage worsens with PPG.
+
+Unsupported: robust incremental PPG superiority, consistent ≥10-second advance, clinical safety, independent patient generalization, reduced clinician response time, reduced physical oxygen-delivery delay, clinical benefit, deployment readiness, or validated pulse-detection accuracy.
+
+Limits: only14/13 eligible events in6/5 recordings; patient linkage unknown;7 paired logistic events in4 recordings; prior cohort examination; conditional bootstrap over overlapping saved fits, not model refits;3 families and multiple descriptive lead requirements; intermittent current-normal exposure and future-dependent retrospective evaluability; monitor SpO₂ timing/isolated low truth; no clinical adjudication or real human PPG annotations; no independent/prospective cohort; no alarm acknowledgement/actuator/flow logs. Uninterpretable or missing reference is not zero error. Post-onset warnings are not assessed by the existing pre-onset matching rule; missed means no qualifying pre-onset alarm, not evidence of absence of later activity.
+
+Freeze the analysis/models as bounded research artifacts. Human pulse annotations and clinical reference review remain essential to signal-quality and event-validity claims. Independent patient-aware evaluation and prospective alarm/device measurements remain essential to generalization and delivery-delay claims. No refitting or threshold changes were made in this analysis.

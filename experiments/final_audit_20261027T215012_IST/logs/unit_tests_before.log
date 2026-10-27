@@ -1,0 +1,29 @@
+test_boundary_and_one_to_one_matching (experiments.final_audit_20261027T215012_IST.tests.test_audit.EngineTests.test_boundary_and_one_to_one_matching) ... FAIL
+test_common_event_leads_not_different_detected_populations (experiments.final_audit_20261027T215012_IST.tests.test_audit.EngineTests.test_common_event_leads_not_different_detected_populations) ... ok
+test_current_and_history_time_alignment (experiments.final_audit_20261027T215012_IST.tests.test_audit.EngineTests.test_current_and_history_time_alignment) ... ok
+test_cutoff_is_training_grid_only_and_constraints_are_joint (experiments.final_audit_20261027T215012_IST.tests.test_audit.EngineTests.test_cutoff_is_training_grid_only_and_constraints_are_joint) ... ok
+test_denominators_remain_undefined_at_zero_exposure (experiments.final_audit_20261027T215012_IST.tests.test_audit.EngineTests.test_denominators_remain_undefined_at_zero_exposure) ... ok
+test_future_mutations_cannot_change_history (experiments.final_audit_20261027T215012_IST.tests.test_audit.EngineTests.test_future_mutations_cannot_change_history) ... ok
+test_half_open_future_target_and_current_exclusion (experiments.final_audit_20261027T215012_IST.tests.test_audit.EngineTests.test_half_open_future_target_and_current_exclusion) ... ok
+test_invalid_latest_value_is_not_imputed_from_future (experiments.final_audit_20261027T215012_IST.tests.test_audit.EngineTests.test_invalid_latest_value_is_not_imputed_from_future) ... ok
+test_matched_targets_required_for_paired_forecasts (experiments.final_audit_20261027T215012_IST.tests.test_audit.EngineTests.test_matched_targets_required_for_paired_forecasts) ... ok
+test_missing_horizon_is_not_a_negative (experiments.final_audit_20261027T215012_IST.tests.test_audit.EngineTests.test_missing_horizon_is_not_a_negative) ... ok
+test_old_alarm_not_restarted_at_window_boundary (experiments.final_audit_20261027T215012_IST.tests.test_audit.EngineTests.test_old_alarm_not_restarted_at_window_boundary) ... ok
+test_oof_guard_excludes_evaluation_record_and_wrong_labels (experiments.final_audit_20261027T215012_IST.tests.test_audit.EngineTests.test_oof_guard_excludes_evaluation_record_and_wrong_labels) ... ok
+test_overlapping_inner_fold_is_rejected (experiments.final_audit_20261027T215012_IST.tests.test_audit.EngineTests.test_overlapping_inner_fold_is_rejected) ... ok
+test_record_bootstrap_preserves_whole_contributions (experiments.final_audit_20261027T215012_IST.tests.test_audit.EngineTests.test_record_bootstrap_preserves_whole_contributions) ... ok
+test_record_separation_guard (experiments.final_audit_20261027T215012_IST.tests.test_audit.EngineTests.test_record_separation_guard) ... ok
+test_zero_event_record_is_valid_and_missing_leads_stay_missing (experiments.final_audit_20261027T215012_IST.tests.test_audit.EngineTests.test_zero_event_record_is_valid_and_missing_leads_stay_missing) ... ok
+
+======================================================================
+FAIL: test_boundary_and_one_to_one_matching (experiments.final_audit_20261027T215012_IST.tests.test_audit.EngineTests.test_boundary_and_one_to_one_matching)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/Predictive_Oxygen_Controller/experiments/final_audit_20261027T215012_IST/tests/test_audit.py", line 68, in test_boundary_and_one_to_one_matching
+    self.assertFalse(matched.Detected.iloc[0])
+AssertionError: np.float64(nan) is not false
+
+----------------------------------------------------------------------
+Ran 16 tests in 0.061s
+
+FAILED (failures=1)

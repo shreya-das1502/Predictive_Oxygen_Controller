@@ -1,0 +1,39 @@
+{
+  "analysis_source_sha256": "2aa0a5ee3da617792959efa5428b4f32c8e8a52e9953bd07fb7e35a0643f2378",
+  "tables": {
+    "timestamp_summary.csv": "3e73f319f9bb890d1b066c34399c81da960d176c07ef4047978a25dfcdecbcdb",
+    "timestamp_per_recording.csv": "e6c02030893668648ec838e7257954bcc2025d0377312e9dd8f630bc175ce9c0",
+    "calibration_bins.csv": "015b25ef7446f69729aaa91297b4510828df8153ee0a9e7ed97b04c5d3f505a0",
+    "probability_assessment.csv": "ffdedba1553e21089644ebc9726559f6d6941badeef07a700a07be2e2d7930d4",
+    "event_per_recording.csv": "de5057db19dd9c2baaf4d8f92e9a073c2e701dfcd5d52da8554f13f263a6dca1",
+    "event_matches.csv": "95ecb98bd71616a7c2853ee2bf594cc2c65682cb18209471856beb7be0b89aed",
+    "event_summary.csv": "906d14a521c4b78ffc7495234d1ae026643ca509076bd837af0e9b20c5eff013",
+    "event_audit_long.csv": "981f762a335b3f1e153c4c9362932f607913a88eea7a04ef4e1b725920cbeeda",
+    "event_bootstrap_intervals.csv": "fe1dbec7f7ce0fcc8e315b9db5689e36672f659d6e5343111203b3da0ce89257",
+    "paired_modality_differences.csv": "6164fe57ce8e322011d3485ff5ab2c8a53f0f45c7aa212c5b4ece1a6605a998d",
+    "paired_event_changes.csv": "a60a47fd39318514734e38875c9eda88c0360bedd0951fb5cf5669e5b21ee171",
+    "forecast_per_recording.csv": "9abb54acb466a624ac6af4761e89e8db7271d313932f1c216360d0da1557370b",
+    "forecast_summary.csv": "74b9e96239d79f49626f59f5f11212cce45ccf78bbb338450789bb9533dcdea8",
+    "forecast_bootstrap_intervals.csv": "126a529e6e344bc670c0bd225f74c06507b4e5cc9081a49ab10dd6cae0bcc2aa",
+    "paired_forecast_differences.csv": "639bae6f9e1804144946c225a2a9f99da47684beba31fe34eace1aade2623c4a",
+    "feature_modality_ablation.csv": "445dbd8c515d8b71c3ed63809fbdb50e198608cbd54578d781924d7f3f3ecbb1"
+  },
+  "figures": {
+    "precision_recall_current_normal.png": "44c08eb3b438d0dc94db61cf6eb68ff0bdb773547e0b547033a530e99bcae3af",
+    "lead_times.png": "938386c2df0fabd254c42f0fb5ec1e0216680dae2ccbb8f5ffbfbb6647090499",
+    "calibration_diagnostics.png": "a9dad12baf2e91276571d4995f9a9965150a46125c86d244e33658baba1b768e",
+    "forecast_errors.pdf": "ec37f910dd0290685345dce38574cd706dac1e369a843f0c7e02c6cc62baef25",
+    "forecast_errors.png": "ef2c30b2ca5090f6ac50addd5254444d7ed2a368f540dd996f7e62c63acf8fca",
+    "event_error_audit.png": "60da744e5111c11183ee5b8eeea9f218a0fa8f07d4ea91a9d421ac2fb7879655",
+    "event_error_audit.pdf": "1fe189947e0bdc9457c39e2e185b59220454c7921482402105e13adf69d33d82",
+    "precision_recall_full_target.png": "abfdbbf242aa28596bb7eb20005802083a86a0c9859ebf82d4c93768293e34b5",
+    "precision_recall_full_target.pdf": "f50718c252331d37ff673df32828ae0016976bc741862655e5527138b005ef3b",
+    "calibration_diagnostics.pdf": "1eb7975f3248bfe60b6b5d7b64a14854e6da91fe054485ee9793d4bf309e0173",
+    "precision_recall_current_normal.pdf": "d4c37e7900b994a6e7495923296ff6f35cf6656f3fc0dc89f8f662eea5b039c4",
+    "lead_times.pdf": "d5aca8cd528a2c4cd8fbcff6d69b6a6e8cb0101fc1b4c9d32779a6850dcdcf0f",
+    "event_detection_and_burden.png": "85cf632acd843d31e1542285798319f8778add486e9519d062bd842b2960d13c",
+    "event_detection_and_burden.pdf": "9337dbaf2e832ace80831952f90ad1cff8f9931dd9c57ab0406de3cbec25d9e9"
+  },
+  "conditional_bootstrap": true,
+  "clinical_validation": false
+}

@@ -1,0 +1,18 @@
+{
+  "audit_date_timezone": "Asia/Kolkata",
+  "source_experiment": "experiments/incremental_value_20261027",
+  "scope": "Read-only reproduction and failure/influence analysis; no scientific refitting or model/threshold search",
+  "cohort": "The same existing recording IDs 1 through 30; no patient-linkage assumption",
+  "primary_label": "Minimum valid observed SpO2 <=94 in (t,t+30s], complete valid horizon",
+  "original_event_definition": "Valid >94 to <=94 transition, a single reading qualifies",
+  "sustained_event_definition": "At least three consecutive low observations spanning >=2 seconds; same frozen fits/cutoffs",
+  "window_s": 30,
+  "alarm_constraint": "Reuse existing training-selected budget5 starts/evaluable hour and active cap0.05; fixed references remain explicitly unconstrained",
+  "source_hour_rate": "Additional descriptive normalization of evaluable alarm starts by the full source duration; not a measured whole-monitoring-time false-alarm rate",
+  "uncertainty": "Reuse the original 2000 shared whole-recording bootstrap multiplicity draws and verify them against seed20261027; no row bootstrap or fit refitting",
+  "paired_lead_estimand": "Median difference in matched lead on events detected by BOTH conditions, with recording-cluster bootstrap; misses never assigned zero lead",
+  "influence": "Leave-one-recording contribution removal without refitting; diagnostic, not new validation",
+  "minimum_lead_diagnostic": "Fraction of original eligible events with original matched lead >=0,5,10,15,20,30 seconds; no rematching or cutoff tuning",
+  "quality": "Pre-event waveform/pulse statistics and feature trends are descriptive proxies, not validated SQI or causal explanations",
+  "improvement_gate": "Do not retrain or change historical code if no verified correctness defect or validated screening rationale is established"
+}

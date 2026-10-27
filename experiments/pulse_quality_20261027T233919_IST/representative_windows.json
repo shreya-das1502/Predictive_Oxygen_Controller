@@ -1,0 +1,20 @@
+[
+  {
+    "Label": "low_candidate_flag_burden",
+    "WindowID": "W1157282",
+    "Candidate_Flag_Count": 0,
+    "Validated_Quality_Category": false
+  },
+  {
+    "Label": "mixed_candidate_indicators",
+    "WindowID": "W4334157",
+    "Candidate_Flag_Count": 1,
+    "Validated_Quality_Category": false
+  },
+  {
+    "Label": "high_candidate_flag_burden",
+    "WindowID": "W8789489",
+    "Candidate_Flag_Count": 3,
+    "Validated_Quality_Category": false
+  }
+]
